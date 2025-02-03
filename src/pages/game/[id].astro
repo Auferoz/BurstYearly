@@ -1,0 +1,76 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import NavHeader from "../../components/NavHeader.astro";
+
+export async function getStaticPaths() {
+    const games = await getCollection("games");
+
+    return games.map((game: { slug: any; }) => ({
+        params: { id: game.slug },
+        props: { game }
+    }))
+}
+
+const { game } = Astro.props
+const { data, slug } = game
+const { title, released, companie, poster, genre, estado, horas, fecha_inicio, fecha_final, logros_obt, logros_total, console_pc, igdbId } = data
+
+const { Content } = await render(game)
+---
+
+<Layout title={`${title} - BURST`}>
+    <main class="w-full">
+
+        <NavHeader />
+        
+        <section class="p-4 mx-auto max-w-screen-xl">
+            <div class="flex gap-4 flex-col lg:flex-row ">
+                <aside class="flex flex-col items-center w-full">
+                    <img transition:name={`img-${slug}`} src={poster} alt={title} class="rounded-xl w-72 h-auto w-full">
+                </aside>
+                <main class="max-w-2xl prose prose-invert">
+                    <h1 class="text-2xl font-bold mb-4">
+                        {title}
+                    </h1>
+                    <ul>
+                        <li>
+                            <span class="font-bold">Lanzamiento:</span> {released}
+                        </li>
+                        <li>
+                            <span class="font-bold">Gneros:</span> {genre}
+                        </li>
+                        <li>
+                            <span class="font-bold">Fecha de inicio:</span> {fecha_inicio}
+                        </li>
+                        <li>
+                            <span class="font-bold">Fecha de finalización:</span> {fecha_final}
+                        </li>
+                        <li>
+                            <span class="font-bold">Horas jugadas:</span> {horas}
+                        </li>
+                        <li>
+                            <span class="font-bold">Logros obtenidos:</span> {logros_obt} / {logros_total}
+                        </li>
+                        <li>
+                            <span class="font-bold">Estado:</span> {estado}
+                        </li>
+                        <li>
+                            <span class="font-bold">Consola/PC:</span> {console_pc}
+                        </li>
+                        <li>
+                            <span class="font-bold">Compañía:</span> {companie}
+                        </li>
+                        <li>
+                            <span class="font-bold">igdbId:</span> {igdbId}
+                        </li>
+                    </ul>
+                    <aside>
+                        <Content />
+                    </aside>
+                </main>
+            </div>
+        </section>
+
+    </main>
+</Layout>

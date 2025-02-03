@@ -1,0 +1,31 @@
+---
+import { ClientRouter } from "astro:transitions"
+const { title } = Astro.props
+---
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title}</title>
+		<ClientRouter />
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	@import "tailwindcss";
+	@plugin "@tailwindcss/typography";
+
+	html {
+		font-family: system-ui, sans-serif;
+		background: #13151a;
+		color: #fff;
+	}
+
+	body { margin: 0; padding: 0; }
+	body, body::before, body::after { box-sizing: border-box; }
+</style>

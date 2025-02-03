@@ -1,0 +1,22 @@
+---
+title: League Of Legends
+released: 27/10/2009
+companie: Riot Games
+poster: https://images.igdb.com/igdb/image/upload/t_1080p/co49wj.png
+genre: Role-playing (RPG), Strategy, MOBA
+estado: Jugando
+horas: 999
+fecha_inicio: 03/01/2025
+fecha_final: 03/02/2025
+logros_obt: 0
+logros_total: 0
+console_pc: PC Game
+igdbId: 115
+years_played:
+    y2025: true
+    y2024: true
+    y2023: true
+    y2022: true
+---
+
+League of Legends es un trepidante **juego competitivo en línea** que combina la velocidad y la intensidad de un RTS con elementos de RPG. Dos equipos de **poderosos campeones**, cada uno con un diseño y un estilo de juego únicos, se enfrentan en **múltiples campos de batalla y modos de juego**. Con una lista de campeones en constante expansión, **actualizaciones frecuentes y una floreciente escena de torneos**, League of Legends ofrece una rejugabilidad infinita para jugadores de todos los niveles.
