@@ -2,7 +2,7 @@
 title: Lost Ark
 released: 04/12/2018
 companie: Tripod Studio
-poster: https://images.igdb.com/igdb/image/upload/t_1080p/co4w4j.png
+poster: co4w4j.png
 genre: Role-playing (RPG), Hack and slash/Beat 'em up, Adventure
 estado: Completado
 horas: 515

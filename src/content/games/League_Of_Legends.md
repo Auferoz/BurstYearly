@@ -2,11 +2,11 @@
 title: League Of Legends
 released: 27/10/2009
 companie: Riot Games
-poster: https://images.igdb.com/igdb/image/upload/t_1080p/co49wj.png
+poster: co49wj.png
 genre: Role-playing (RPG), Strategy, MOBA
 estado: Jugando
 horas: 999
-fecha_inicio: 03/01/2025
+fecha_inicio: 03/01/2024
 fecha_final: 03/02/2025
 logros_obt: 0
 logros_total: 0
