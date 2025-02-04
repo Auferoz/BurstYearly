@@ -6,12 +6,17 @@ poster: co3b6l.png
 genre:  Role-playing (RPG), Adventure
 estado: Abandonado
 horas: 1
-fecha_inicio: 01/01/2024
-fecha_final: 01/01/2024
 logros_obt: 0
 logros_total: 53
 console_pc: Xbox Series X
 igdbId: 133302
+dates_played:
+    y2025:
+        fecha_inicio: ""
+        fecha_final: ""
+    y2024:
+        fecha_inicio: 01/01/2024
+        fecha_final: 01/01/2024
 years_played:
     y2025: false
     y2024: true

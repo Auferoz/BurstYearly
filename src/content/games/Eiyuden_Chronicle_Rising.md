@@ -6,12 +6,17 @@ poster: co4sxy.png
 genre:  Role-playing (RPG), Adventure
 estado: Completado
 horas: 10
-fecha_inicio: 02/01/2024
-fecha_final: 24/03/2024
 logros_obt: 27
 logros_total: 50
 console_pc: Xbox Series X
 igdbId: 152245
+dates_played:
+    y2025:
+        fecha_inicio: ""
+        fecha_final: ""
+    y2024:
+        fecha_inicio: 02/01/2024
+        fecha_final: 24/03/2024
 years_played:
     y2025: false
     y2024: true

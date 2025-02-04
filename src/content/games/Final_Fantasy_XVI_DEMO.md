@@ -1,13 +1,13 @@
 ---
-title: Final Fantasy XVI
-released: 17/09/2024
+title: Final Fantasy XVI DEMO
+released: 19/08/2024
 companie: Square Enix Creative Studio III
 poster: co5w3k.webp
 genre:  Role-playing (RPG)
 estado: Completado
-horas: 69
-logros_obt: 48
-logros_total: 69
+horas: 3.5
+logros_obt: 0
+logros_total: 0
 console_pc: Steam
 igdbId: 31551
 dates_played:
@@ -15,8 +15,8 @@ dates_played:
         fecha_inicio: ""
         fecha_final: ""
     y2024:
-        fecha_inicio: 07/09/2024
-        fecha_final: 19/10/2024
+        fecha_inicio: 19/08/2024
+        fecha_final: 25/08/2024
 years_played:
     y2025: false
     y2024: true

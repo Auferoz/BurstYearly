@@ -1,11 +1,99 @@
 ---
+import CalendarStats from '../icons/CalendarStats.astro'
 import DatabaseCog from '../icons/DatabaseCog.astro'
-
+import MenuIcon from '../icons/MenuIcon.astro'
 ---
 
 <header class="flex items-center space-x-4 justify-between p-4 border-b border-gray-800 max-w-screen-xl max-w-7xl mx-auto">
-    <a href="/">
-        <h1 class="text-xl font-bold font-mono">BURST - My List Yearly</h1>
-    </a>
-    <DatabaseCog />
+
+    <nav class="w-full flex items-center justify-between"> 
+        
+        <a href="/" title="Home"> 
+            <h1 class="text-xl font-bold font-mono">BURST</h1>
+        </a> 
+
+        <div class="flex shrink flex-row items-center gap-12 lg:hidden text-base"> 
+
+            <details class="MenuDetails">
+                <summary class="accordion  flex cursor-pointer items-center gap-2"> 
+                    <MenuIcon />
+                </summary>
+                <ul class="z-10 w-[96%] bg-slate-900 absolute p-4 left-2 top-15 rounded-b-lg shadow-lg z-5 border border-gray-800">
+                    <li class="pb-2 mb-2 border-b border-gray-800"> 
+                        <a href="/Games/List2024/" class="text-white hover:text-blue-500">Games 2024</a>
+                    </li>
+                    <li class="pb-2 mb-2 border-b border-gray-800"> 
+                        <a href="/Games/List2023/" class="text-white hover:text-blue-500">Games 2023</a>
+                    </li>
+                    <li class="pb-2 mb-2 border-b border-gray-800"> 
+                        <a href="/Games/List2022/" class="text-white hover:text-blue-500">Games 2022</a>
+                    </li>
+                </ul>
+            </details>
+
+        </div>
+
+
+        <div class="hidden shrink flex-row items-center gap-12 lg:flex text-base"> 
+
+            <a href="/" class="text-white hover:text-blue-500">Home</a>
+
+            <details class="group relative MenuDetails">
+                
+                <summary class="accordion  flex cursor-pointer items-center gap-2"> Games 
+                    <svg width="22" height="13" viewBox="0 0 22 13" fill="none" xmlns="http://www.w3.org/2000/svg" 
+                        class="inline-block size-3 rotate-0 transition-transform group-open:-rotate-180 duration-500 " aria-hidden="true">
+                        <path d="M1 1L11 11L21 1" stroke="currentColor" stroke-width="2"></path>
+                    </svg>
+                </summary>
+
+                <ul class="z-10 absolute top-6 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600">  
+                    <li> 
+                        <a href="/Games/List2024/" class="flex items-center gap-2 rounded-md p-3 leading-none transition hover:bg-astro-gray-700 hover:text-white"> 
+                            <CalendarStats /> 
+                            Games 2024
+                        </a> 
+                    </li>
+                    <li> 
+                        <a href="/Games/List2023/" class="flex items-center gap-2 rounded-md p-3 leading-none transition hover:bg-astro-gray-700 hover:text-white"> 
+                            <CalendarStats /> 
+                            Games 2023 
+                        </a> 
+                    </li>
+                    <li> 
+                        <a href="/Games/List2022/" class="flex items-center gap-2 rounded-md p-3 leading-none transition hover:bg-astro-gray-700 hover:text-white"> 
+                            <CalendarStats /> 
+                            Games 2022 
+                        </a> 
+                    </li>
+                </ul>
+
+            </details>
+
+            <a href="/Series/" class="text-white hover:text-blue-500">Series</a> 
+
+            <a href="/Movies/" class="text-white hover:text-blue-500">Movies</a> 
+
+        </div> 
+
+        <div class="hidden gap-4 lg:flex"> 
+            <DatabaseCog />
+        </div> 
+    </nav>
+
 </header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const menuMobile = document.getElementsByClassName('MenuDetails')[0];
+        if (menuMobile) {
+            const links = menuMobile.querySelectorAll('a');
+        
+            links.forEach(link => {
+                link.addEventListener('click', function () {
+                    menuMobile.removeAttribute('open');
+                });
+            });
+        }
+    });
+</script>

@@ -6,12 +6,17 @@ poster: co49wj.png
 genre: Role-playing (RPG), Strategy, MOBA
 estado: Jugando
 horas: 999
-fecha_inicio: 03/01/2024
-fecha_final: 03/02/2025
 logros_obt: 0
 logros_total: 0
 console_pc: PC Game
 igdbId: 115
+dates_played:
+    y2025:
+        fecha_inicio: ""
+        fecha_final: ""
+    y2024:
+        fecha_inicio: 03/01/2024
+        fecha_final: 07/12/2024
 years_played:
     y2025: true
     y2024: true

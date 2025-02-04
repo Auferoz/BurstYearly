@@ -1,0 +1,50 @@
+---
+import ListDetails from "../icons/ListDetails.astro";
+import { getCollection } from 'astro:content';
+
+const games = await getCollection('games');
+const ImgUrl = "https://images.igdb.com/igdb/image/upload/t_cover_big/";
+
+
+const { yearView } = Astro.props
+
+const yAddview = `y${yearView}`
+---
+
+
+
+<section aria-label={`Lista de juegos jugados en el año ${yearView}`}>
+    <div class="mx-auto max-w-screen-xl max-w-7xl p-4 pt-8">
+
+        <h1 class="text-2xl font-bold text-white text-start mb-4 flex align-center items-center"> 
+            <ListDetails /> 
+            <span class="ps-2">Lista del {yearView}</span>
+        </h1>
+
+        <div class="grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        { games
+            .filter((game: { data: any }) => game.data.years_played?.[yAddview])
+            .map((game: { data: any; slug: any; }) => {
+                const { data, slug } = game;
+                const { title, poster, released } = data;
+
+            return (
+                <article class="flex flex-col gap-2">
+                    <a transition:name={`img-${slug}`} href={`/game/${slug}`} class="transition hover:scale-102">
+                        <img src={ImgUrl + poster} alt={title} class="w-full rounded-lg" />
+                    </a>
+                    <div class="flex flex-col justify-center">
+                        <h2 class="text-base font-bold leading-tight text-white text-pretty">
+                            {title}
+                        </h2>
+
+                        <p class="text-gray-300 max-w-sm">
+                            <span class="text-xs"> 📅 Released: {released} </span>
+                        </p>
+                    </div>
+                </article>
+            );
+        })}
+        </div>
+    </div>
+</section>

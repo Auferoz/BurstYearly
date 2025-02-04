@@ -6,12 +6,17 @@ poster: co4w4j.png
 genre: Role-playing (RPG), Hack and slash/Beat 'em up, Adventure
 estado: Completado
 horas: 515
-fecha_inicio: 05/01/2025
-fecha_final: 03/02/2025
 logros_obt: 87
 logros_total: 156
 console_pc: Steam
 igdbId: 26128
+dates_played:
+    y2025:
+        fecha_inicio: ""
+        fecha_final: ""
+    y2024:
+        fecha_inicio: 20/01/2024
+        fecha_final: 10/05/2024
 years_played:
     y2025: true
     y2024: true

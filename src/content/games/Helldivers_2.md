@@ -6,12 +6,17 @@ poster: co741o.webp
 genre:  Role-playing (RPG)
 estado: Jugando
 horas: 1.5
-fecha_inicio: 26/12/2024
-fecha_final: 26/12/2024
 logros_obt: 4
 logros_total: 38
 console_pc: Steam
 igdbId: 250616
+dates_played:
+    y2025:
+        fecha_inicio: ""
+        fecha_final: ""
+    y2024:
+        fecha_inicio: 26/12/2024
+        fecha_final: 26/12/2024
 years_played:
     y2025: false
     y2024: true
