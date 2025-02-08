@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import NavHeader from "../../components/NavHeader.astro";
 
+import PlayerPlay from "../../icons/PlayerPlay.astro";
 import CalendarCheck from "../../icons/CalendarCheck.astro";
 import TagsIcon from "../../icons/TagsIcon.astro";
 import Network from "../../icons/Network.astro";
@@ -32,6 +33,22 @@ const ImgUrl = "https://images.igdb.com/igdb/image/upload/t_1080p/";
 
 const percentTrofeos = Math.round((logros_obt / logros_total) * 100);
 
+const estadoColor = (estado) => {
+    switch (estado.toLowerCase()) {
+        case 'completado':
+            return '#2973B2';
+        case 'pausado':
+            return '#FFD65A';
+        case 'jugando':
+            return '#16C47F';
+        case 'abandonado':
+            return '#D84040';
+        default:
+            return '#FFFFFF';
+    }
+};
+
+const estadoStyle = `${estadoColor(estado)}`;
 
 ---
 
@@ -41,15 +58,16 @@ const percentTrofeos = Math.round((logros_obt / logros_total) * 100);
         <NavHeader />
         
         <section class="p-4 mx-auto max-w-screen-xl">
-            <div class="flex gap-4 flex-col lg:flex-row ">
+            <div class="flex gap-4 flex-col lg:flex-row">
 
                 <aside class="flex flex-col items-center w-full">
                     <img transition:name={`img-${slug}`} src={ImgUrl + poster} alt={title} class="rounded-xl w-72 h-auto w-full">
                 </aside>
 
                 <main class="max-w-2xl prose prose-invert">
-                    <h1 class="text-2xl font-bold mb-4">
+                    <h1 class="flex items-center gap-2 text-2xl font-bold mb-4">
                         {title}
+                        <PlayerPlay width="30" height="30" stroke={estadoStyle} />
                     </h1>
 
                     <li class="flex items-center gap-2">
@@ -62,10 +80,10 @@ const percentTrofeos = Math.round((logros_obt / logros_total) * 100);
                         <span class="font-bold">Compañía:</span> 
                         {companie}
                     </li>
-                    <li class="truncate flex items-center gap-2">
+                    <li class="flex items-center gap-2">
                         <TagsIcon width="20" height="20" />
                         <span class="font-bold ">Generos:</span> 
-                        {genre}
+                        <span class="truncate">{genre}</span>
                     </li>
                     <li class="flex items-center gap-2">
                         <DeviceGamepad width="20" height="20" />
@@ -73,19 +91,19 @@ const percentTrofeos = Math.round((logros_obt / logros_total) * 100);
                         {console_pc}
                     </li>
                     <li class="flex items-center gap-2">
+                        <CircleDashed width="20" height="20" />
+                        <span class="font-bold">Estado:</span> 
+                        {estado}
+                    </li>
+                    <li class="flex items-center gap-2">
                         <Stopwatch width="20" height="20" />
                         <span class="font-bold">Horas jugadas:</span> 
-                        {horas}
+                        {horas} hrs
                     </li>
                     <li class="flex items-center gap-2">
                         <Trophy width="20" height="20" />
                         <span class="font-bold">Logros obtenidos:</span> 
                         {logros_obt} / {logros_total}
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <CircleDashed width="20" height="20" />
-                        <span class="font-bold">Estado:</span> 
-                        {estado}
                     </li>
                     <li class="flex items-center gap-2">
                         <CalendarTime width="20" height="20" />
