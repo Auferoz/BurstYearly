@@ -21,7 +21,7 @@ const yAddview = `y${yearView}`
             <span class="ps-2">Lista del {yearView}</span>
         </h1>
 
-        <div class="grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        <div class="grid gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         { games
             .filter((game: { data: any }) => game.data.years_played?.[yAddview])
             .map((game: { data: any; slug: any; }) => {
@@ -29,16 +29,16 @@ const yAddview = `y${yearView}`
                 const { title, poster, released } = data;
 
             return (
-                <article class="flex flex-col gap-2">
-                    <a transition:name={`img-${slug}`} href={`/game/${slug}`} class="transition hover:scale-102">
+                <article class="flex flex-col gap-2 hover:bg-blue-950 p-4">
+                    <a transition:name={`img-${slug}`} href={`/game/${slug}`}>
                         <img src={ImgUrl + poster} alt={title} class="w-full rounded-lg" />
                     </a>
                     <div class="flex flex-col justify-center">
-                        <h2 class="text-base font-bold leading-tight text-white text-pretty">
+                        <h2 class="text-base font-bold leading-tight text-white truncate">
                             {title}
                         </h2>
 
-                        <p class="text-gray-300 max-w-sm">
+                        <p class="text-gray-500 max-w-sm">
                             <span class="text-xs"> 📅 Released: {released} </span>
                         </p>
                     </div>
