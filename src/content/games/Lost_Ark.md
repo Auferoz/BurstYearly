@@ -12,8 +12,8 @@ console_pc: Steam
 igdbId: 26128
 dates_played:
     y2025:
-        fecha_inicio: ""
-        fecha_final: ""
+        fecha_inicio: "07/01/2025"
+        fecha_final: "02/03/2025"
     y2024:
         fecha_inicio: 20/01/2024
         fecha_final: 10/05/2024

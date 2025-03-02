@@ -12,8 +12,8 @@ console_pc: PC Game
 igdbId: 115
 dates_played:
     y2025:
-        fecha_inicio: ""
-        fecha_final: ""
+        fecha_inicio: "01/01/2025"
+        fecha_final: "02/02/2025"
     y2024:
         fecha_inicio: 03/01/2024
         fecha_final: 07/12/2024

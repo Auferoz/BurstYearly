@@ -9,6 +9,14 @@ const ImgUrl = "https://images.igdb.com/igdb/image/upload/t_1080p/";
 const { yearView } = Astro.props
 
 const yAddview = `y${yearView}`
+
+// Helper to parse "dd/mm/yyyy" strings
+function parseDate(dateString) {
+    if (!dateString) return 0;
+    const parts = dateString.split('/');
+    return new Date(parts[2], parts[1] - 1, parts[0]).getTime();
+}
+
 ---
 
 
@@ -24,9 +32,14 @@ const yAddview = `y${yearView}`
         <div class="grid gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         { games
             .filter((game: { data: any }) => game.data.years_played?.[yAddview])
+            .sort((a: { data: any }, b: { data: any }) => {
+                const dateA = parseDate(a.data.dates_played?.[yAddview]?.fecha_inicio);
+                const dateB = parseDate(b.data.dates_played?.[yAddview]?.fecha_inicio);
+                return dateA - dateB;
+            })
             .map((game: { data: any; slug: any; }) => {
                 const { data, slug } = game;
-                const { title, poster, released } = data;
+                const { title, poster, dates_played } = data;
 
             return (
                 <article class="flex flex-col gap-2 hover:bg-blue-950 p-4">
@@ -39,7 +52,7 @@ const yAddview = `y${yearView}`
                         </h2>
 
                         <p class="text-gray-500 max-w-sm">
-                            <span class="text-xs"> 📅 Released: {released} </span>
+                            <span class="text-xs"> <strong>📅 Played Day:</strong> {dates_played?.[yAddview]?.fecha_inicio} </span>
                         </p>
                     </div>
                 </article>

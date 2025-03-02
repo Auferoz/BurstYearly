@@ -33,22 +33,16 @@ const ImgUrl = "https://images.igdb.com/igdb/image/upload/t_1080p/";
 
 const percentTrofeos = Math.round((logros_obt / logros_total) * 100);
 
-const estadoColor = (estado) => {
-    switch (estado.toLowerCase()) {
-        case 'completado':
-            return '#2973B2';
-        case 'pausado':
-            return '#FFD65A';
-        case 'jugando':
-            return '#16C47F';
-        case 'abandonado':
-            return '#D84040';
-        default:
-            return '#FFFFFF';
-    }
+const estadoStyles = {
+    completado: { className: 'completadoColorBg', iconColor: '#2973B2' },
+    pausado: { className: 'pausadoColorBg', iconColor: '#FFD65A' },
+    jugando: { className: 'jugandoColorBg', iconColor: '#16C47F' },
+    abandonado: { className: 'abandonadoColorBg', iconColor: '#D84040' }
 };
 
-const estadoStyle = `${estadoColor(estado)}`;
+const currentEstado = estadoStyles[estado.toLowerCase()] || { className: 'defaultColorBg', iconColor: '#FFFFFF' };
+
+const estadoStyle = currentEstado.iconColor;
 
 ---
 
@@ -123,7 +117,7 @@ const estadoStyle = `${estadoColor(estado)}`;
 
                     <article>
                         <div class="w-full bg-gray-200 rounded-md dark:bg-gray-700">
-                            <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-md" style=`width: ${percentTrofeos}%;`> {percentTrofeos}%</div>
+                            <div class={`bar ${currentEstado.className} text-xs font-medium text-white text-center p-0.5 leading-none rounded-md`} style={`width: ${percentTrofeos}%;`}> {percentTrofeos}%</div>
                         </div>
                     </article>
 
@@ -137,8 +131,55 @@ const estadoStyle = `${estadoColor(estado)}`;
 
         <section class="p-4 mx-auto max-w-screen-xl pt-8">
             <hr>
-            
         </section>
 
     </main>
 </Layout>
+
+<style>
+    .completadoColorBg {
+        color: white;
+        &.bar {
+            background-color: #2973B2;
+        } 
+        &.icon {
+            fill: #2973B2;
+        }
+    }
+    .pausadoColorBg {
+        color: white;
+        &.bar {
+            background-color: #FFD65A;
+        }
+        &.icon {
+            fill: #FFD65A;
+        }
+    }
+    .jugandoColorBg {
+        color: white;
+        &.bar {
+            background-color: #16C47F;
+        }
+        &.icon {
+            fill: #16C47F;
+        }
+    }
+    .abandonadoColorBg {
+        color: white;
+        &.bar {
+            background-color: #D84040;
+        }
+        &.icon {
+            fill: #D84040;
+        }
+    }
+    .defaultColorBg {
+        color: white;
+        &.bar {
+            background-color: #333;
+        }
+        &.icon {
+            fill: #333;
+        }
+    }
+</style>
