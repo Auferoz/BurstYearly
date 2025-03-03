@@ -33,8 +33,8 @@ function parseDate(dateString) {
         { games
             .filter((game: { data: any }) => game.data.years_played?.[yAddview])
             .sort((a: { data: any }, b: { data: any }) => {
-                const dateA = parseDate(a.data.dates_played?.[yAddview]?.fecha_inicio);
-                const dateB = parseDate(b.data.dates_played?.[yAddview]?.fecha_inicio);
+                const dateA = parseDate(b.data.dates_played?.[yAddview]?.fecha_inicio);
+                const dateB = parseDate(a.data.dates_played?.[yAddview]?.fecha_inicio);
                 return dateA - dateB;
             })
             .map((game: { data: any; slug: any; }) => {
