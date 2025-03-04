@@ -31,7 +31,12 @@ const { Content } = await render(game)
 
 const ImgUrl = "https://images.igdb.com/igdb/image/upload/t_1080p/";
 
-const percentTrofeos = Math.round((logros_obt / logros_total) * 100);
+let percentTrofeos;
+if (logros_obt === 0 && logros_total === 0) {
+    percentTrofeos = 100;
+} else {
+    percentTrofeos = Math.round((logros_obt / logros_total) * 100);
+}
 
 const estadoStyles = {
     completado: { className: 'completadoColorBg', iconColor: '#2973B2' },
