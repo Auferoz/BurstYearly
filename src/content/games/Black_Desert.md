@@ -17,6 +17,12 @@ dates_played:
     y2024:
         fecha_inicio: ""
         fecha_final: ""
+    y2023:
+        fecha_inicio: ""
+        fecha_final: ""
+    y2022:
+        fecha_inicio: ""
+        fecha_final: ""
 years_played:
     y2025: true
     y2024: false

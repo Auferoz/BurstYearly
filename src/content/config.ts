@@ -22,6 +22,14 @@ const games = defineCollection({
                 fecha_inicio: z.string().optional(),
                 fecha_final: z.string().optional(),
             }),
+            y2023: z.object({
+                fecha_inicio: z.string().optional(),
+                fecha_final: z.string().optional(),
+            }),
+            y2022: z.object({
+                fecha_inicio: z.string().optional(),
+                fecha_final: z.string().optional(),
+            }),
         }),
         years_played: z.object({
             y2025: z.boolean(),

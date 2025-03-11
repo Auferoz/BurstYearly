@@ -17,6 +17,12 @@ dates_played:
     y2024:
         fecha_inicio: 28/06/2024
         fecha_final: 08/07/2024
+    y2023:
+        fecha_inicio: ""
+        fecha_final: ""
+    y2022:
+        fecha_inicio: ""
+        fecha_final: ""
 years_played:
     y2025: false
     y2024: true
