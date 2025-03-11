@@ -1,4 +1,7 @@
 ---
+// Agrega para evitar el pre-render y poder acceder a los query parameters:
+export const prerender = false;
+
 import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import NavHeader from "../../components/NavHeader.astro";
@@ -23,12 +26,15 @@ export async function getStaticPaths() {
     }))
 }
 
-
 const { game } = Astro.props
 const { slug, data } = game
 const { title, released, companie, poster, genre, estado, horas, logros_obt, logros_total, console_pc, igdbId, dates_played } = data
 const { Content } = await render(game)
 
+// Agrega la lectura del parámetro year desde la URL:
+const url = new URL(Astro.request.url);
+const selectedYear = url.searchParams.get("year") || "2025";
+const yearKey = `y${selectedYear}`;
 
 const ImgUrl = "https://images.igdb.com/igdb/image/upload/t_1080p/";
 
@@ -50,10 +56,6 @@ const currentEstado = estadoStyles[estado.toLowerCase()] || { className: 'defaul
 
 const estadoStyle = currentEstado.iconColor;
 
-
-
-
-
 ---
 
 <Layout title={`${title} - BURST`}>
@@ -74,6 +76,11 @@ const estadoStyle = currentEstado.iconColor;
                         <PlayerPlay width="30" height="30" stroke={estadoStyle} />
                     </h1>
 
+                    <li class="flex items-center gap-2">
+                        <Number width="20" height="20" />
+                        <span class="font-bold">igdbId:</span> 
+                        {igdbId}
+                    </li>
                     <li class="flex items-center gap-2">
                         <CalendarCheck width="20" height="20" />
                         <span class="font-bold"> Lanzamiento: </span> 
@@ -105,35 +112,24 @@ const estadoStyle = currentEstado.iconColor;
                         {horas} hrs
                     </li>
                     <li class="flex items-center gap-2">
-                        <Trophy width="20" height="20" />
-                        <span class="font-bold">Logros obtenidos:</span> 
-                        {logros_obt} / {logros_total}
-                    </li>
-                    <li class="flex items-center gap-2">
                         <CalendarTime width="20" height="20" />
                         <span class="font-bold">Fecha de inicio:</span> 
-                        {dates_played.y2024.fecha_inicio}
+                        {dates_played[yearKey]?.fecha_inicio}
                     </li>
                     <li class="flex items-center gap-2">
                         <CalendarTime width="20" height="20" />
                         <span class="font-bold">Fecha de finalización:</span> 
-                        {dates_played.y2024.fecha_final}
+                        {dates_played[yearKey]?.fecha_final}
                     </li>
                     <li class="flex items-center gap-2">
-                        <Number width="20" height="20" />
-                        <span class="font-bold">igdbId:</span> 
-                        {igdbId}
+                        <Trophy width="20" height="20" />
+                        <span class="font-bold">Logros obtenidos:</span> 
+                        {logros_obt} / {logros_total}
                     </li>
 
                     <article>
                         <div class="w-full bg-gray-200 rounded-md dark:bg-gray-700">
-                            <div class={`bar ${currentEstado.className} text-md font-medium text-white text-center p-0.5 py-2 leading-none rounded-md flex items-center justify-center font-mono`} style={`width: ${percentTrofeos}%;`}>
-                                {percentTrofeos}% Logros
-                                <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-puzzle ms-2">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                    <path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1" />
-                                </svg>
-                            </div>
+                            <div class={`bar ${currentEstado.className} text-md font-medium text-white text-center p-0.5 py-2 leading-none rounded-md`} style={`width: ${percentTrofeos}%;`}> {percentTrofeos}%</div>
                         </div>
                     </article>
 
