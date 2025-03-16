@@ -4,7 +4,7 @@ released: 16/12/2014
 companie: Pearl Abyss
 poster: co6f1i.webp
 genre: Role-playing (RPG), Hack and slash/Beat 'em up, Adventure
-estado: Jugando
+estado: Pausado
 horas: 1
 logros_obt: 0
 logros_total: 0

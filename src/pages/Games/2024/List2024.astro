@@ -1,4 +1,5 @@
 ---
+import Cardsboard from '../../../components/Cardsboard.astro';
 import ListCardsView from '../../../components/ListCardsView.astro';
 import NavHeader from '../../../components/NavHeader.astro';
 import Layout from '../../../layouts/Layout.astro';
@@ -8,6 +9,8 @@ import Layout from '../../../layouts/Layout.astro';
 	<main>
 
 		<NavHeader />
+
+		<Cardsboard yearView="2024" />
 
 		<ListCardsView yearView="2024" />
 		

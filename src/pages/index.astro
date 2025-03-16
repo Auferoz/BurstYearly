@@ -1,6 +1,20 @@
 ---
+import ListCardsView from '../components/ListCardsView.astro';
 import NavHeader from '../components/NavHeader.astro';
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const games = await getCollection('games');
+const totalGames = games.length;
+const totalHours = games.reduce((acc, game) => acc + Number(game.data.horas || 0), 0);
+const totalLogros = games.reduce((acc, game) => acc + Number(game.data.logros_obt || 0), 0);
+const jugando = games.reduce((acc, game) => acc + (game.data.estado === 'Jugando' ? 1 : 0), 0);
+const pausados = games.reduce((acc, game) => acc + (game.data.estado === 'Pausado' ? 1 : 0), 0);
+const completados = games.reduce((acc, game) => acc + (game.data.estado === 'Completado' ? 1 : 0), 0);
+const abandonados = games.reduce((acc, game) => acc + (game.data.estado === 'Abandonado' ? 1 : 0), 0);
+
+
+const ImgUrl = "https://images.igdb.com/igdb/image/upload/t_1080p/";
 ---
 
 <Layout title="BURST - My List Yearly">
@@ -23,7 +37,7 @@ import Layout from '../layouts/Layout.astro';
 				<article class="bg-gray-800 rounded-xl shadow-lg ">
 					<header class="flex flex-col items-center justify-center border-t-4 border-blue-800 p-4 rounded-t-lg">
 						<p class="text-7xl font-bold text-white">
-							29
+							{totalGames}
 						</p>
 						<p class="text-sm font-thin text-white pt-2">
 							G A M E S
@@ -39,7 +53,7 @@ import Layout from '../layouts/Layout.astro';
 				<article class="bg-gray-800 rounded-xl shadow-lg ">
 					<header class="flex flex-col items-center justify-center border-t-4 border-blue-800 p-4 rounded-t-lg">
 						<p class="text-7xl font-bold text-white">
-							3250
+							{totalHours}
 						</p>
 						<p class="text-sm font-thin text-white pt-2">
 							H O R A S
@@ -55,7 +69,7 @@ import Layout from '../layouts/Layout.astro';
 				<article class="bg-gray-800 rounded-xl shadow-lg ">
 					<header class="flex flex-col items-center justify-center border-t-4 border-blue-800 p-4 rounded-t-lg">
 						<p class="text-7xl font-bold text-white">
-							242
+							{totalLogros}
 						</p>
 						<p class="text-sm font-thin text-white pt-2">
 							L O G R O S
@@ -68,23 +82,92 @@ import Layout from '../layouts/Layout.astro';
 					</footer>
 				</article>
 
-				<article class="bg-gray-800 rounded-xl shadow-lg ">
-					<header class="flex flex-col items-center justify-center border-t-4 border-blue-800 p-4 rounded-t-lg">
-						<p class="text-7xl font-bold text-white">
-							25
-						</p>
-						<p class="text-sm font-thin text-white pt-2">
-							T E R M I N A D O S
-						</p>
-					</header>
-					<footer class="flex flex-col items-center justify-center my-3">
-						<p class="text-xs font-thin font-mono text-green-500">
-							+1 this Year 
-						</p>
-					</footer>
+				<article class="bg-gray-800 rounded-xl shadow-lg p-4 border-t-4 border-blue-800 rounded-t-lg">
+					<div class="grid grid-cols-2 grid-rows-2 gap-4">
+						<aside class="flex flex-col items-center justify-center">
+							<p class="text-4xl font-bold text-white">{jugando}</p>
+							<p class="text-xs font-thin text-white pt-2">J U G A N D O</p>
+						</aside>
+						<aside class="flex flex-col items-center justify-center">
+							<p class="text-4xl font-bold text-white">{pausados}</p>
+							<p class="text-xs font-thin text-white pt-2">P A U S A D O S</p>
+						</aside>
+						<aside class="flex flex-col items-center justify-center">
+							<p class="text-4xl font-bold text-white">{completados}</p>
+							<p class="text-xs font-thin text-white pt-2">C O M P L E T A D O S</p>
+						</aside>
+						<aside class="flex flex-col items-center justify-center">
+							<p class="text-4xl font-bold text-white">{abandonados}</p>
+							<p class="text-xs font-thin text-white pt-2">A B A N D O N A D O S</p>
+						</aside>
+					</div>
 				</article>
 
 			</div>
+		</div>
+
+		<div class="max-w-screen-xl max-w-7xl mx-auto p-4 pt-8">
+
+			<h1 class="font-sans text-md lg:text-2xl font-bold text-white text-start mb-4 flex align-center items-center"> 
+				<span class="ps-2">Jugando</span>
+			</h1>
+
+			<div class="grid gap-2 grid-cols-3 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8">
+				{games
+					.filter(game => game.data.estado === 'Jugando')
+					.map(game => (
+						<article>
+							<img src={ImgUrl + game.data.poster} alt={game.data.title} class="w-full rounded-lg" />
+						</article>
+					))
+				}
+			</div>
+
+			<h1 class="font-sans text-md lg:text-2xl font-bold text-white text-start my-4 flex align-center items-center"> 
+				<span class="ps-2">Pausados</span>
+			</h1>
+
+			<div class="grid gap-2 grid-cols-3 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8">
+				{games
+					.filter(game => game.data.estado === 'Pausado')
+					.map(game => (
+						<article>
+							<img src={ImgUrl + game.data.poster} alt={game.data.title} class="w-full rounded-lg" />
+						</article>
+					))
+				}
+			</div>
+
+			<h1 class="font-sans text-md lg:text-2xl font-bold text-white text-start my-4 flex align-center items-center"> 
+				<span class="ps-2">Abandonados</span>
+			</h1>
+
+			<div class="grid gap-2 grid-cols-3 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8">
+				{games
+					.filter(game => game.data.estado === 'Abandonado')
+					.map(game => (
+						<article>
+							<img src={ImgUrl + game.data.poster} alt={game.data.title} class="w-full rounded-lg" />
+						</article>
+					))
+				}
+			</div>
+
+			<h1 class="font-sans text-md lg:text-2xl font-bold text-white text-start my-4 flex align-center items-center"> 
+				<span class="ps-2">Completados</span>
+			</h1>
+
+			<div class="grid gap-2 grid-cols-3 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8">
+				{games
+					.filter(game => game.data.estado === 'Completado')
+					.map(game => (
+						<article>
+							<img src={ImgUrl + game.data.poster} alt={game.data.title} class="w-full rounded-lg" />
+						</article>
+					))
+				}
+			</div>
+
 		</div>
 
 		<div class="hidden max-w-screen-xl max-w-7xl mx-auto p-4 pt-8">

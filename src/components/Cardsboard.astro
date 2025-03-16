@@ -1,0 +1,138 @@
+---
+
+import { getCollection } from 'astro:content';
+
+const gamesData = await getCollection("games");
+
+const { yearView } = Astro.props
+const yAddview = `y${yearView}`
+
+// Declaramos un arreglo con los años definidos
+const years = ['y2025', 'y2024', 'y2023', 'y2022'];
+
+// Función que retorna true si en el dynamic year es true y el resto son false
+const isValidGame = (game, dynamicYear) => {
+    if (!game.data.years_played) return false;
+    if (game.data.years_played[dynamicYear] !== true) return false;
+    return years.filter(key => key !== dynamicYear).every(key => game.data.years_played[key] === false);
+};
+
+const newGames = gamesData.filter(game => isValidGame(game, yAddview)).length;
+const totalGames = gamesData.filter(game => game.data.years_played?.[yAddview]).length;
+const playingGames = gamesData.filter(game => game.data.years_played?.[yAddview] && game.data.estado === 'Jugando').length;
+const pausedGames = gamesData.filter(game => game.data.years_played?.[yAddview] && game.data.estado === 'Pausado').length;
+const abandonedGames = gamesData.filter(game => game.data.years_played?.[yAddview] && game.data.estado === 'Abandonado').length;
+const completedGames = gamesData.filter(game => game.data.years_played?.[yAddview] && game.data.estado === 'Completado').length;
+
+// Agregamos una nueva constante para obtener los juegos con true en 2 o más items de years_played
+const multiTrueGames = gamesData.filter(game => {
+    if (!game.data.years_played) return false;
+    const trueCount = Object.values(game.data.years_played).filter(val => val === true).length;
+    return trueCount >= 2;
+}).length;
+
+// Definir sortedYears en orden ascendente
+const sortedYears = ['y2022', 'y2023', 'y2024', 'y2025'];
+
+// Para cada juego, se obtiene el primer año (menor) que esté en true, si tiene 2 o más true.
+const Count2022 = gamesData.filter(game => {
+    if (!game.data.years_played) return false;
+    const trueYears = Object.keys(game.data.years_played).filter(key => game.data.years_played[key] === true);
+    if (trueYears.length < 2) return false;
+    const minYear = sortedYears.find(year => game.data.years_played[year] === true);
+    return minYear === 'y2022';
+}).length;
+
+const Count2023 = gamesData.filter(game => {
+    if (!game.data.years_played) return false;
+    const trueYears = Object.keys(game.data.years_played).filter(key => game.data.years_played[key] === true);
+    if (trueYears.length < 2) return false;
+    const minYear = sortedYears.find(year => game.data.years_played[year] === true);
+    return minYear === 'y2023';
+}).length;
+
+const Count2024 = gamesData.filter(game => {
+    if (!game.data.years_played) return false;
+    const trueYears = Object.keys(game.data.years_played).filter(key => game.data.years_played[key] === true);
+    if (trueYears.length < 2) return false;
+    const minYear = sortedYears.find(year => game.data.years_played[year] === true);
+    return minYear === 'y2024';
+}).length;
+
+const Count2025 = gamesData.filter(game => {
+    if (!game.data.years_played) return false;
+    const trueYears = Object.keys(game.data.years_played).filter(key => game.data.years_played[key] === true);
+    if (trueYears.length < 2) return false;
+    const minYear = sortedYears.find(year => game.data.years_played[year] === true);
+    return minYear === 'y2025';
+}).length;
+---
+
+
+<div class="max-w-screen-xl max-w-7xl mx-auto p-4 pt-8">
+    <h1 class="hidden text-md lg:text-2xl font-bold text-white text-start mb-4 flex align-center items-center">
+        Dashboard
+        {multiTrueGames}
+        {Count2022}
+        {Count2023}
+        {Count2024}
+        {Count2025}
+    </h1>
+
+    <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+
+        <article class="bg-gray-800 rounded-xl shadow-lg ">
+            <header class="flex flex-col items-center justify-center border-t-4 border-blue-800 p-4 rounded-t-lg">
+                <p class="text-7xl font-bold text-white">
+                    {totalGames}
+                </p>
+                <p class="text-sm font-thin text-white pt-2">
+                    G A M E S
+                </p>
+            </header>
+            <footer class="flex flex-col items-center justify-center my-3">
+                <p class="text-xs font-thin font-mono text-green-500">
+                    +{newGames} new this Year 
+                </p>
+            </footer>
+        </article>
+
+        <article class="flex flex-col items-center justify-center border-t-4 border-blue-800 p-4 rounded-t-lg bg-gray-800 rounded-xl shadow-lg ">
+            <p class="text-7xl font-bold text-white">
+                {playingGames}
+            </p>
+            <p class="text-sm font-thin text-white pt-2">
+                J U G A N D O
+            </p>
+        </article>
+
+        <article class="flex flex-col items-center justify-center border-t-4 border-blue-800 p-4 rounded-t-lg bg-gray-800 rounded-xl shadow-lg ">
+            <p class="text-7xl font-bold text-white">
+                {pausedGames}
+            </p>
+            <p class="text-sm font-thin text-white pt-2">
+                P A U S A D O S
+            </p>
+        </article>
+
+        <article class="flex flex-col items-center justify-center border-t-4 border-blue-800 p-4 rounded-t-lg bg-gray-800 rounded-xl shadow-lg ">
+            <p class="text-7xl font-bold text-white">
+                {abandonedGames}
+            </p>
+            <p class="text-sm font-thin text-white pt-2">
+                A B A N D O N A D O S
+            </p>
+        </article>
+
+        <article class="flex flex-col items-center justify-center border-t-4 border-blue-800 p-4 rounded-t-lg bg-gray-800 rounded-xl shadow-lg ">
+            <p class="text-7xl font-bold text-white">
+                {completedGames}
+            </p>
+            <p class="text-sm font-thin text-white pt-2">
+                C O M P L E T A D O S
+            </p>
+        </article>
+
+    </div>
+
+</div>

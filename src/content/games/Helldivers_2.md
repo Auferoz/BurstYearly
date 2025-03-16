@@ -4,7 +4,7 @@ released: 08/02/2024
 companie: Arrowhead Game Studios
 poster: co741o.webp
 genre:  Role-playing (RPG)
-estado: Jugando
+estado: Completado
 horas: 1.5
 logros_obt: 4
 logros_total: 38
