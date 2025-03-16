@@ -5,7 +5,7 @@ companie: Tripod Studio
 poster: co4w4j.png
 genre: Role-playing (RPG), Hack and slash/Beat 'em up, Adventure
 estado: Completado
-horas: 515
+horas: 621
 logros_obt: 87
 logros_total: 156
 console_pc: Steam

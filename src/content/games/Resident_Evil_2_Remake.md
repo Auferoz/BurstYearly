@@ -5,7 +5,7 @@ companie: Capcom Development Division 1
 poster: co1ir3.webp
 genre: Shooter, Adventure
 estado: Jugando
-horas: 2
+horas: 1.5
 logros_obt: 8
 logros_total: 44
 console_pc: Steam
