@@ -1,21 +1,21 @@
 ---
-// Agrega para evitar el pre-render y poder acceder a los query parameters:
-export const prerender = false;
+export const prerender = true;
 
 import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import NavHeader from "../../components/NavHeader.astro";
 
-import PlayerPlay from "../../icons/PlayerPlay.astro";
-import CalendarCheck from "../../icons/CalendarCheck.astro";
-import TagsIcon from "../../icons/TagsIcon.astro";
-import Network from "../../icons/Network.astro";
-import DeviceGamepad from "../../icons/DeviceGamepad.astro";
-import Stopwatch from "../../icons/Stopwatch.astro";
-import CircleDashed from "../../icons/CircleDashed.astro";
-import Trophy from "../../icons/Trophy.astro";
-import Number from "../../icons/Number.astro";
-import CalendarTime from "../../icons/CalendarTime.astro";
+import IconPlayerPlay from "../../icons/PlayerPlay.astro";
+import IconCalendarCheck from "../../icons/CalendarCheck.astro";
+import IconTagsIcon from "../../icons/TagsIcon.astro";
+import IconNetwork from "../../icons/Network.astro";
+import IconDeviceGamepad from "../../icons/DeviceGamepad.astro";
+import IconStopwatch from "../../icons/Stopwatch.astro";
+import IconCircleDashed from "../../icons/CircleDashed.astro";
+import IconTrophy from "../../icons/Trophy.astro";
+import IconNumber from "../../icons/Number.astro";
+import IconCalendarTime from "../../icons/CalendarTime.astro";
+import IconPuzzle from "../../icons/puzzle.astro";
 
 export async function getStaticPaths() {
     const games = await getCollection("games");
@@ -71,69 +71,73 @@ const estadoStyle = currentEstado.iconColor;
                 </aside>
 
                 <main class="max-w-2xl prose prose-invert">
-                    <h1 class="flex items-center gap-2 text-2xl font-bold mb-4">
-                        {title}
-                        <PlayerPlay width="30" height="30" stroke={estadoStyle} />
-                    </h1>
 
-                    <li class="flex items-center gap-2">
-                        <Number width="20" height="20" />
-                        <span class="font-bold">igdbId:</span> 
-                        {igdbId}
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <CalendarCheck width="20" height="20" />
-                        <span class="font-bold"> Lanzamiento: </span> 
-                        {released}
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <Network width="20" height="20" />
-                        <span class="font-bold">Compañía:</span> 
-                        {companie}
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <TagsIcon width="20" height="20" />
-                        <span class="font-bold ">Generos:</span> 
-                        <span class="truncate">{genre}</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <DeviceGamepad width="20" height="20" />
-                        <span class="font-bold">Consola/PC:</span> 
-                        {console_pc}
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <CircleDashed width="20" height="20" />
-                        <span class="font-bold">Estado:</span> 
-                        {estado}
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <Stopwatch width="20" height="20" />
-                        <span class="font-bold">Horas jugadas:</span> 
-                        {horas} hrs
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <CalendarTime width="20" height="20" />
-                        <span class="font-bold">Fecha de inicio:</span> 
-                        {dates_played[yearKey]?.fecha_inicio}
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <CalendarTime width="20" height="20" />
-                        <span class="font-bold">Fecha de finalización:</span> 
-                        {dates_played[yearKey]?.fecha_final}
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <Trophy width="20" height="20" />
-                        <span class="font-bold">Logros obtenidos:</span> 
-                        {logros_obt} / {logros_total}
-                    </li>
+                    <div class="bg-[#1b1e25] p-4 rounded-xl mb-3">
+                        <h1 class="flex items-center gap-2 text-2xl font-bold mb-4">
+                            {title}
+                            <IconPlayerPlay width="30" height="30" stroke={estadoStyle} />
+                        </h1>
 
-                    <article>
-                        <div class="w-full bg-gray-200 rounded-md dark:bg-gray-700">
-                            <div class={`bar ${currentEstado.className} text-md font-medium text-white text-center p-0.5 py-2 leading-none rounded-md`} style={`width: ${percentTrofeos}%;`}> {percentTrofeos}%</div>
-                        </div>
-                    </article>
+                        <li class="flex items-center gap-2">
+                            <IconNumber width="20" height="20" />
+                            <span class="font-bold">igdbId:</span> 
+                            {igdbId}
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <IconCalendarCheck width="20" height="20" />
+                            <span class="font-bold"> Lanzamiento: </span> 
+                            {released}
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <IconNetwork width="20" height="20" />
+                            <span class="font-bold">Compañía:</span> 
+                            {companie}
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <IconTagsIcon width="20" height="20" />
+                            <span class="font-bold ">Generos:</span> 
+                            <span class="truncate">{genre}</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <IconDeviceGamepad width="20" height="20" />
+                            <span class="font-bold">Consola/PC:</span> 
+                            {console_pc}
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <IconCircleDashed width="20" height="20" />
+                            <span class="font-bold">Estado:</span> 
+                            {estado}
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <IconStopwatch width="20" height="20" />
+                            <span class="font-bold">Horas jugadas:</span> 
+                            {horas} hrs
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <IconCalendarTime width="20" height="20" />
+                            <span class="font-bold">Fecha de inicio:</span> 
+                            {dates_played[yearKey]?.fecha_inicio}
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <IconCalendarTime width="20" height="20" />
+                            <span class="font-bold">Fecha de finalización:</span> 
+                            {dates_played[yearKey]?.fecha_final ? dates_played[yearKey]?.fecha_final : "En progreso"}
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <IconTrophy width="20" height="20" />
+                            <span class="font-bold">Logros obtenidos:</span> 
+                            {logros_obt} / {logros_total}
+                        </li>
+
+                        <article>
+                            <div class="w-full bg-gray-200 rounded-md dark:bg-gray-700">
+                                <div class={`bar ${currentEstado.className} text-md font-medium text-white text-center p-0.5 py-2 leading-none rounded-md flex items-center justify-center`} style={`width: ${percentTrofeos}%;`}> {percentTrofeos}% Logros <IconPuzzle width="20" height="20" /></div>
+                            </div>
+                        </article>
+                    </div>
 
                     <aside>
+                        <p class="text-xl">Descripción:</p>
                         <Content />
                     </aside>
 
