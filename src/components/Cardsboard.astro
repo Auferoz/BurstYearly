@@ -1,6 +1,7 @@
 ---
 
 import { getCollection } from 'astro:content';
+import IconListDetails from '../icons/ListDetails.astro';
 
 const gamesData = await getCollection("games");
 
@@ -70,23 +71,18 @@ const Count2025 = gamesData.filter(game => {
 
 
 <div class="max-w-screen-xl max-w-7xl mx-auto p-4 pt-8">
-    <h1 class="hidden text-md lg:text-2xl font-bold text-white text-start mb-4 flex align-center items-center">
-        Dashboard
-        {multiTrueGames}
-        {Count2022}
-        {Count2023}
-        {Count2024}
-        {Count2025}
+    <h1 class="text-md lg:text-2xl font-bold text-white text-start mb-4 flex align-center items-center">
+        <IconListDetails /> <span class="ms-2">Dashboard</span>
     </h1>
 
-    <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+    <div class="grid gap-4 grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
 
         <article class="bg-gray-800 rounded-xl shadow-lg ">
             <header class="flex flex-col items-center justify-center border-t-4 border-blue-800 p-4 rounded-t-lg">
                 <p class="text-7xl font-bold text-white">
                     {totalGames}
                 </p>
-                <p class="text-sm font-thin text-white pt-2">
+                <p class="text-[.8rem] lg:text-sm font-thin text-white pt-2">
                     G A M E S
                 </p>
             </header>
@@ -101,7 +97,7 @@ const Count2025 = gamesData.filter(game => {
             <p class="text-7xl font-bold text-white">
                 {playingGames}
             </p>
-            <p class="text-sm font-thin text-white pt-2">
+            <p class="text-[.8rem] lg:text-sm font-thin text-white pt-2">
                 J U G A N D O
             </p>
         </article>
@@ -110,7 +106,7 @@ const Count2025 = gamesData.filter(game => {
             <p class="text-7xl font-bold text-white">
                 {pausedGames}
             </p>
-            <p class="text-sm font-thin text-white pt-2">
+            <p class="text-[.8rem] lg:text-sm font-thin text-white pt-2">
                 P A U S A D O S
             </p>
         </article>
@@ -119,7 +115,7 @@ const Count2025 = gamesData.filter(game => {
             <p class="text-7xl font-bold text-white">
                 {abandonedGames}
             </p>
-            <p class="text-sm font-thin text-white pt-2">
+            <p class="text-[.8rem] lg:text-sm font-thin text-white pt-2">
                 A B A N D O N A D O S
             </p>
         </article>
@@ -128,7 +124,7 @@ const Count2025 = gamesData.filter(game => {
             <p class="text-7xl font-bold text-white">
                 {completedGames}
             </p>
-            <p class="text-sm font-thin text-white pt-2">
+            <p class="text-[.8rem] lg:text-sm font-thin text-white pt-2">
                 C O M P L E T A D O S
             </p>
         </article>
