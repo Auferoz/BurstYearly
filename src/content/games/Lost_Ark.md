@@ -5,15 +5,15 @@ companie: Tripod Studio
 poster: co4w4j.png
 genre: Role-playing (RPG), Hack and slash/Beat 'em up, Adventure
 estado: Completado
-horas: 621
-logros_obt: 87
+horas: 627
+logros_obt: 89
 logros_total: 156
 console_pc: Steam
 igdbId: 26128
 dates_played:
     y2025:
         fecha_inicio: "07/01/2025"
-        fecha_final: "02/03/2025"
+        fecha_final: ""
     y2024:
         fecha_inicio: 20/01/2024
         fecha_final: 10/05/2024

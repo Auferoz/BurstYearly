@@ -13,7 +13,7 @@ igdbId: 6292
 dates_played:
     y2025:
         fecha_inicio: "04/03/2025"
-        fecha_final: ""
+        fecha_final: "04/03/2025"
     y2024:
         fecha_inicio: ""
         fecha_final: ""

@@ -79,52 +79,52 @@ const estadoStyle = currentEstado.iconColor;
                         </h1>
 
                         <li class="flex items-center gap-2">
-                            <IconNumber width="20" height="20" />
+                            <span style=`color:${estadoStyle};`><IconNumber width="20" height="20" /></span>
                             <span class="font-bold">igdbId:</span> 
                             {igdbId}
                         </li>
                         <li class="flex items-center gap-2">
-                            <IconCalendarCheck width="20" height="20" />
+                            <span style=`color:${estadoStyle};`><IconCalendarCheck width="20" height="20" /></span>
                             <span class="font-bold"> Lanzamiento: </span> 
                             {released}
                         </li>
                         <li class="flex items-center gap-2">
-                            <IconNetwork width="20" height="20" />
+                            <span style=`color:${estadoStyle};`><IconNetwork width="20" height="20" /></span>
                             <span class="font-bold">Compañía:</span> 
                             {companie}
                         </li>
                         <li class="flex items-center gap-2">
-                            <IconTagsIcon width="20" height="20" />
+                            <span style=`color:${estadoStyle};`><IconTagsIcon width="20" height="20" /></span>
                             <span class="font-bold ">Generos:</span> 
                             <span class="truncate">{genre}</span>
                         </li>
                         <li class="flex items-center gap-2">
-                            <IconDeviceGamepad width="20" height="20" />
+                            <span style=`color:${estadoStyle};`><IconDeviceGamepad width="20" height="20" /></span>
                             <span class="font-bold">Consola/PC:</span> 
                             {console_pc}
                         </li>
                         <li class="flex items-center gap-2">
-                            <IconCircleDashed width="20" height="20" />
+                            <span style=`color:${estadoStyle};`><IconCircleDashed width="20" height="20" /></span>
                             <span class="font-bold">Estado:</span> 
                             {estado}
                         </li>
                         <li class="flex items-center gap-2">
-                            <IconStopwatch width="20" height="20" />
+                            <span style=`color:${estadoStyle};`><IconStopwatch width="20" height="20" /></span>
                             <span class="font-bold">Horas jugadas:</span> 
                             {horas} hrs
                         </li>
                         <li class="flex items-center gap-2">
-                            <IconCalendarTime width="20" height="20" />
+                            <span style=`color:${estadoStyle};`><IconCalendarTime width="20" height="20" /></span>
                             <span class="font-bold">Fecha de inicio:</span> 
                             {dates_played[yearKey]?.fecha_inicio}
                         </li>
                         <li class="flex items-center gap-2">
-                            <IconCalendarTime width="20" height="20" />
+                            <span style=`color:${estadoStyle};`><IconCalendarTime width="20" height="20" /></span>
                             <span class="font-bold">Fecha de finalización:</span> 
                             {dates_played[yearKey]?.fecha_final ? dates_played[yearKey]?.fecha_final : "En progreso"}
                         </li>
                         <li class="flex items-center gap-2">
-                            <IconTrophy width="20" height="20" />
+                            <span style=`color:${estadoStyle};`><IconTrophy width="20" height="20" /></span>
                             <span class="font-bold">Logros obtenidos:</span> 
                             {logros_obt} / {logros_total}
                         </li>
