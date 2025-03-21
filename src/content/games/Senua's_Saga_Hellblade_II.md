@@ -15,8 +15,8 @@ dates_played:
         fecha_inicio: ""
         fecha_final: ""
     y2024:
-        fecha_inicio: 15/07/2024
-        fecha_final: 16/07/2024
+        fecha_inicio: "15/07/2024"
+        fecha_final: "16/07/2024"
     y2023:
         fecha_inicio: ""
         fecha_final: ""

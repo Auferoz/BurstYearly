@@ -1,0 +1,33 @@
+---
+title: "Inzoi: Creative Studio"
+released: 27/03/2025
+companie: Krafton
+poster: co8pfe.webp
+genre: Simulator
+estado: Jugando
+horas: 1
+logros_obt: 0
+logros_total: 0
+console_pc: Steam
+igdbId: 279051
+dates_played:
+    y2025:
+        fecha_inicio: "20/03/2025"
+        fecha_final: ""
+    y2024:
+        fecha_inicio: ""
+        fecha_final: ""
+    y2023:
+        fecha_inicio: ""
+        fecha_final: ""
+    y2022:
+        fecha_inicio: ""
+        fecha_final: ""
+years_played:
+    y2025: true
+    y2024: false
+    y2023: false
+    y2022: false
+---
+
+Inzoi is a life simulation game where players become gods within the game, allowing them to change everything as they wish and experience endless new stories in various forms of life.

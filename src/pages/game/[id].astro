@@ -31,10 +31,9 @@ const { slug, data } = game
 const { title, released, companie, poster, genre, estado, horas, logros_obt, logros_total, console_pc, igdbId, dates_played } = data
 const { Content } = await render(game)
 
-// Agrega la lectura del parámetro year desde la URL:
-const url = new URL(Astro.request.url);
-const selectedYear = url.searchParams.get("year") || "2025";
-const yearKey = `y${selectedYear}`;
+// Definimos un valor por defecto para year en SSG
+const defaultYear = "2025";
+const defaultYearKey = `y${defaultYear}`;
 
 const ImgUrl = "https://images.igdb.com/igdb/image/upload/t_1080p/";
 
@@ -79,52 +78,61 @@ const estadoStyle = currentEstado.iconColor;
                         </h1>
 
                         <li class="flex items-center gap-2">
-                            <span style=`color:${estadoStyle};`><IconNumber width="20" height="20" /></span>
+                            <span style={`color:${estadoStyle};`}><IconNumber width="20" height="20" /></span>
                             <span class="font-bold">igdbId:</span> 
                             {igdbId}
                         </li>
                         <li class="flex items-center gap-2">
-                            <span style=`color:${estadoStyle};`><IconCalendarCheck width="20" height="20" /></span>
+                            <span style={`color:${estadoStyle};`}><IconCalendarCheck width="20" height="20" /></span>
                             <span class="font-bold"> Lanzamiento: </span> 
                             {released}
                         </li>
                         <li class="flex items-center gap-2">
-                            <span style=`color:${estadoStyle};`><IconNetwork width="20" height="20" /></span>
+                            <span style={`color:${estadoStyle};`}><IconNetwork width="20" height="20" /></span>
                             <span class="font-bold">Compañía:</span> 
                             {companie}
                         </li>
                         <li class="flex items-center gap-2">
-                            <span style=`color:${estadoStyle};`><IconTagsIcon width="20" height="20" /></span>
+                            <span style={`color:${estadoStyle};`}><IconTagsIcon width="20" height="20" /></span>
                             <span class="font-bold ">Generos:</span> 
                             <span class="truncate">{genre}</span>
                         </li>
                         <li class="flex items-center gap-2">
-                            <span style=`color:${estadoStyle};`><IconDeviceGamepad width="20" height="20" /></span>
+                            <span style={`color:${estadoStyle};`}><IconDeviceGamepad width="20" height="20" /></span>
                             <span class="font-bold">Consola/PC:</span> 
                             {console_pc}
                         </li>
                         <li class="flex items-center gap-2">
-                            <span style=`color:${estadoStyle};`><IconCircleDashed width="20" height="20" /></span>
+                            <span style={`color:${estadoStyle};`}><IconCircleDashed width="20" height="20" /></span>
                             <span class="font-bold">Estado:</span> 
                             {estado}
                         </li>
                         <li class="flex items-center gap-2">
-                            <span style=`color:${estadoStyle};`><IconStopwatch width="20" height="20" /></span>
+                            <span style={`color:${estadoStyle};`}><IconStopwatch width="20" height="20" /></span>
                             <span class="font-bold">Horas jugadas:</span> 
                             {horas} hrs
                         </li>
                         <li class="flex items-center gap-2">
-                            <span style=`color:${estadoStyle};`><IconCalendarTime width="20" height="20" /></span>
+                            <span style={`color:${estadoStyle};`}><IconCalendarTime width="20" height="20" /></span>
                             <span class="font-bold">Fecha de inicio:</span> 
-                            {dates_played[yearKey]?.fecha_inicio}
+                            <!-- Se asigna id para actualización en cliente -->
+                            <span id="fecha_inicio">{dates_played[defaultYearKey]?.fecha_inicio}</span>
                         </li>
                         <li class="flex items-center gap-2">
-                            <span style=`color:${estadoStyle};`><IconCalendarTime width="20" height="20" /></span>
+                            <span style={`color:${estadoStyle};`}><IconCalendarTime width="20" height="20" /></span>
                             <span class="font-bold">Fecha de finalización:</span> 
-                            {dates_played[yearKey]?.fecha_final ? dates_played[yearKey]?.fecha_final : "En progreso"}
+                            <!-- Se asigna id para actualización en cliente -->
+                            <span id="fecha_final">{dates_played[defaultYearKey]?.fecha_final ? dates_played[defaultYearKey]?.fecha_final : "En progreso"}</span>
                         </li>
+
+                        <!-- <article>
+                            <div class="w-full bg-gray-200 rounded-md dark:bg-gray-700">
+                                <div class={`bar ${currentEstado.className} text-md font-medium text-white text-center p-0.5 leading-none rounded-md flex items-center justify-center font-mono`} style={`width: 30%;`}> 30 Dias </div>
+                            </div>
+                        </article> -->
+
                         <li class="flex items-center gap-2">
-                            <span style=`color:${estadoStyle};`><IconTrophy width="20" height="20" /></span>
+                            <span style={`color:${estadoStyle};`}><IconTrophy width="20" height="20" /></span>
                             <span class="font-bold">Logros obtenidos:</span> 
                             {logros_obt} / {logros_total}
                         </li>
@@ -145,12 +153,31 @@ const estadoStyle = currentEstado.iconColor;
             </div>
         </section>
 
+        <!-- Contenedor oculto con la data de dates_played para uso en cliente -->
+        <div id="dates-data" class="hidden" data-dates={JSON.stringify(dates_played)}></div>
+
         <section class="p-4 mx-auto max-w-screen-xl pt-8">
             <hr>
         </section>
 
     </main>
 </Layout>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const datesElement = document.getElementById('dates-data');
+        const datesData = datesElement ? JSON.parse(datesElement.dataset.dates || '{}') : {};
+        const params = new URLSearchParams(window.location.search);
+        const selectedYear = params.get("year") || "2025";
+        const yearKey = `y${selectedYear}`;
+        const fechaInicioEl = document.getElementById("fecha_inicio");
+        const fechaFinalEl = document.getElementById("fecha_final");
+        if (datesData[yearKey] && fechaInicioEl && fechaFinalEl) {
+            fechaInicioEl.textContent = datesData[yearKey].fecha_inicio;
+            fechaFinalEl.textContent = datesData[yearKey].fecha_final || "En progreso";
+        }
+    });
+</script>
 
 <style>
     .completadoColorBg {
