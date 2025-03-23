@@ -5,7 +5,7 @@ companie: Krafton
 poster: co8pfe.webp
 genre: Simulator
 estado: Jugando
-horas: 1
+horas: 1.5
 logros_obt: 0
 logros_total: 0
 console_pc: Steam

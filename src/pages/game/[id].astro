@@ -16,6 +16,7 @@ import IconTrophy from "../../icons/Trophy.astro";
 import IconNumber from "../../icons/Number.astro";
 import IconCalendarTime from "../../icons/CalendarTime.astro";
 import IconPuzzle from "../../icons/Puzzle.astro";
+import FileDescription from "../../icons/FileDescription.astro";
 
 export async function getStaticPaths() {
     const games = await getCollection("games");
@@ -71,7 +72,7 @@ const estadoStyle = currentEstado.iconColor;
 
                 <main class="max-w-2xl prose prose-invert">
 
-                    <div class="bg-[#1b1e25] p-4 rounded-xl mb-3">
+                    <div class="bg-[#1b1e25] p-5 rounded-xl mb-3">
                         <h1 class="flex items-center gap-2 text-2xl font-bold mb-4">
                             {title}
                             <IconPlayerPlay width="30" height="30" stroke={estadoStyle} />
@@ -144,8 +145,11 @@ const estadoStyle = currentEstado.iconColor;
                         </article>
                     </div>
 
-                    <aside>
-                        <p class="text-xl">Descripción:</p>
+                    <aside class=" bg-[#1b1e25] rounded-xl p-5">
+                        <p class="text-xl flex items-center gap-2">
+                            <FileDescription width="20" height="20" stroke={estadoStyle} />
+                            Descripción:
+                        </p>
                         <Content />
                     </aside>
 

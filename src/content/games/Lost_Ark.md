@@ -3,9 +3,9 @@ title: Lost Ark
 released: 04/12/2018
 companie: Tripod Studio
 poster: co4w4j.png
-genre: Role-playing (RPG), Hack and slash/Beat 'em up, Adventure
+genre: Role-playing (RPG), Hack and slash, Adventure
 estado: Completado
-horas: 641
+horas: 648
 logros_obt: 89
 logros_total: 156
 console_pc: Steam
@@ -18,11 +18,11 @@ dates_played:
         fecha_inicio: 20/01/2024
         fecha_final: 10/05/2024
     y2023:
-        fecha_inicio: ""
-        fecha_final: ""
+        fecha_inicio: "04/08/2023"
+        fecha_final: "31/12/2023"
     y2022:
-        fecha_inicio: ""
-        fecha_final: ""
+        fecha_inicio: "02/01/2022"
+        fecha_final: "25/12/2022"
 years_played:
     y2025: true
     y2024: true
