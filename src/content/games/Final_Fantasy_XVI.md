@@ -5,8 +5,8 @@ companie: Square Enix Creative Studio III
 poster: co5w3k.webp
 genre:  Role-playing (RPG)
 estado: Completado
-horas: 78
-logros_obt: 58
+horas: 81
+logros_obt: 64
 logros_total: 69
 console_pc: Steam
 igdbId: 31551

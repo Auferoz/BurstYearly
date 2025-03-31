@@ -1,8 +1,8 @@
 ---
-    const { cardText, cardNumber, cardNumberNew, cardView } = Astro.props
+    const { cardText, cardNumber, cardNumberNew, cardClass } = Astro.props
 ---
 
-<article class=`bg-gray-800 rounded-xl shadow-lg flex flex-col items-center justify-center border-t-4 border-blue-800 p-4 rounded-t-lg ${cardView}`>
+<article class=`bg-gray-800 rounded-xl shadow-lg flex flex-col items-center justify-center border-t-4 border-blue-800 p-4 rounded-t-lg ${cardClass}`>
     <p class="text-4xl lg:text-7xl font-bold text-white">
         {cardNumber}
     </p>

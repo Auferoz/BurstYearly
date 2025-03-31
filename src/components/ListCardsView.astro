@@ -43,7 +43,7 @@ function parseDate(dateString: any) {
                 const { title, poster, dates_played } = data;
 
             return (
-                <article class="flex flex-col gap-2 hover:bg-blue-950 lg:p-4">
+                <article class="flex flex-col gap-2 lg:hover:bg-blue-950 lg:p-4">
                     <a transition:name={`img-${slug}`} href={`/game/${slug}?year=${yearView}`}>
                         <img src={ImgUrl + poster} alt={title} class="w-full rounded-lg" />
                     </a>

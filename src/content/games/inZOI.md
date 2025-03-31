@@ -1,19 +1,19 @@
 ---
-title: "inZOI: Creative Studio"
+title: "inZOI"
 released: 27/03/2025
 companie: Krafton
 poster: co8pfe.webp
 genre: Simulator
-estado: Completado
-horas: 1.5
+estado: Jugando
+horas: 5
 logros_obt: 0
 logros_total: 0
 console_pc: Steam
 igdbId: 279051
 dates_played:
     y2025:
-        fecha_inicio: "20/03/2025"
-        fecha_final: "28/03/2025"
+        fecha_inicio: "28/03/2025"
+        fecha_final: ""
     y2024:
         fecha_inicio: ""
         fecha_final: ""

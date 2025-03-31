@@ -26,62 +26,6 @@ const pausedGames = gamesData.filter(game => game.data.years_played?.[yAddview] 
 const abandonedGames = gamesData.filter(game => game.data.years_played?.[yAddview] && game.data.estado === 'Abandonado').length;
 const completedGames = gamesData.filter(game => game.data.years_played?.[yAddview] && game.data.estado === 'Completado').length;
 
-// Agregamos una nueva constante para obtener los juegos con true en 2 o más items de years_played
-const multiTrueGames = gamesData.filter(game => {
-    if (!game.data.years_played) return false;
-    const trueCount = Object.values(game.data.years_played).filter(val => val === true).length;
-    return trueCount >= 2;
-}).length;
-
-// Definir sortedYears en orden ascendente
-const sortedYears = ['y2022', 'y2023', 'y2024', 'y2025'];
-
-// Para cada juego, se obtiene el primer año (menor) que esté en true, si tiene 2 o más true.
-const Count2022 = gamesData.filter(game => {
-    if (!game.data.years_played) return false;
-    const trueYears = Object.keys(game.data.years_played).filter(key => game.data.years_played[key] === true);
-    if (trueYears.length < 2) return false;
-    const minYear = sortedYears.find(year => game.data.years_played[year] === true);
-    return minYear === 'y2022';
-}).length;
-
-const Count2023 = gamesData.filter(game => {
-    if (!game.data.years_played) return false;
-    const trueYears = Object.keys(game.data.years_played).filter(key => game.data.years_played[key] === true);
-    if (trueYears.length < 2) return false;
-    const minYear = sortedYears.find(year => game.data.years_played[year] === true);
-    return minYear === 'y2023';
-}).length;
-
-const Count2024 = gamesData.filter(game => {
-    if (!game.data.years_played) return false;
-    const trueYears = Object.keys(game.data.years_played).filter(key => game.data.years_played[key] === true);
-    if (trueYears.length < 2) return false;
-    const minYear = sortedYears.find(year => game.data.years_played[year] === true);
-    return minYear === 'y2024';
-}).length;
-
-const Count2025 = gamesData.filter(game => {
-    if (!game.data.years_played) return false;
-    const trueYears = Object.keys(game.data.years_played).filter(key => game.data.years_played[key] === true);
-    if (trueYears.length < 2) return false;
-    const minYear = sortedYears.find(year => game.data.years_played[year] === true);
-    return minYear === 'y2025';
-}).length;
-
-const totalNewGames = newGames + Count2022;
-
-if (yearView === '2022') {
-    const totalNewGames = newGames + Count2022;
-} else if (yearView === '2023') {
-    const totalNewGames = newGames + Count2023;
-} else if (yearView === '2024') {
-    const totalNewGames = newGames + Count2024;
-} else if (yearView === '2025') {
-    const totalNewGames = newGames + Count2025;
-}
-
-
 
 ---
 
@@ -93,11 +37,11 @@ if (yearView === '2022') {
 
     <div class="grid gap-4 grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
 
-        <CardDashboard cardText="games" cardNumber={totalGames} cardNumberNew={totalNewGames} cardView="" />
-        <CardDashboard cardText="jugando" cardNumber={playingGames} cardView="" />
-        <CardDashboard cardText="pausados" cardNumber={pausedGames} cardView="" />
-        <CardDashboard cardText="abandonados" cardNumber={abandonedGames} cardView="" />
-        <CardDashboard cardText="completados" cardNumber={completedGames} cardView="" />
+        <CardDashboard cardText="games" cardNumber={totalGames} cardClass="" cardNumberNew={newGames} />
+        <CardDashboard cardText="jugando" cardNumber={playingGames} cardClass="" />
+        <CardDashboard cardText="pausados" cardNumber={pausedGames} cardClass="" />
+        <CardDashboard cardText="abandonados" cardNumber={abandonedGames} cardClass="" />
+        <CardDashboard cardText="completados" cardNumber={completedGames} cardClass="" />
 
     </div>
 

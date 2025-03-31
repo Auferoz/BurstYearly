@@ -17,6 +17,7 @@ import IconNumber from "../../icons/Number.astro";
 import IconCalendarTime from "../../icons/CalendarTime.astro";
 import IconPuzzle from "../../icons/Puzzle.astro";
 import FileDescription from "../../icons/FileDescription.astro";
+import ImagenGames from "../../components/ImagenGames.astro";
 
 export async function getStaticPaths() {
     const games = await getCollection("games");
@@ -64,7 +65,10 @@ const estadoStyle = currentEstado.iconColor;
         <NavHeader />
         
         <section class="p-4 mx-auto max-w-screen-xl">
-            <div class="flex gap-4 flex-col lg:flex-row">
+
+            <a href="javascript:history.back()" class="text-lg font-mono text-gray-300 border py-1 px-2 rounded-md bg-gray-800 border-gray-700 lg:hover:bg-gray-700">↩️ Back</a>
+
+            <div class="flex gap-4 flex-col lg:flex-row pt-3">
 
                 <aside class="flex flex-col items-center w-full">
                     <img transition:name={`img-${slug}`} src={ImgUrl + poster} alt={title} class="rounded-xl w-72 h-auto w-full">
@@ -145,7 +149,7 @@ const estadoStyle = currentEstado.iconColor;
                         </article>
                     </div>
 
-                    <aside class=" bg-[#1b1e25] rounded-xl p-5">
+                    <aside class="bg-[#1b1e25] rounded-xl p-5">
                         <p class="text-xl flex items-center gap-2">
                             <FileDescription width="20" height="20" stroke={estadoStyle} />
                             Descripción:
@@ -160,8 +164,11 @@ const estadoStyle = currentEstado.iconColor;
         <!-- Contenedor oculto con la data de dates_played para uso en cliente -->
         <div id="dates-data" class="hidden" data-dates={JSON.stringify(dates_played)}></div>
 
-        <section class="p-4 mx-auto max-w-screen-xl pt-8">
+        <section class="p-4 mx-auto max-w-screen-xl py-8">
             <hr>
+        </section>
+
+        <section class="p-4 mx-auto max-w-screen-xl">
         </section>
 
     </main>
