@@ -5,7 +5,7 @@ companie: Webzen
 poster: co2mrn.webp
 genre: Fighting, Role-playing (RPG), Strategy, Turn-based strategy (TBS)
 estado: Jugando
-horas: 120
+horas: 210
 logros_obt: 0
 logros_total: 0
 console_pc: PC
