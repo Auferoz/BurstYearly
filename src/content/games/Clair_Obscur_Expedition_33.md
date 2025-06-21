@@ -5,8 +5,8 @@ companie: Sandfall Interactive
 poster: co9gam.webp
 genre: Role-playing (RPG), Turn-based strategy (TBS), Adventure
 estado: Jugando
-horas: 36
-logros_obt: 38
+horas: 40
+logros_obt: 43
 logros_total: 55
 console_pc: Steam
 igdbId: 305152
