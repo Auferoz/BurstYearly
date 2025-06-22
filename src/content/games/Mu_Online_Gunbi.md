@@ -4,7 +4,7 @@ released: 31/10/2001
 companie: Webzen
 poster: co2mrn.webp
 genre: Fighting, Role-playing (RPG), Strategy, Turn-based strategy (TBS)
-estado: Jugando
+estado: Completado
 horas: 210
 logros_obt: 0
 logros_total: 0
@@ -14,7 +14,7 @@ first_year_played: 2025
 dates_played:
     y2025:
         fecha_inicio: "06/04/2025"
-        fecha_final: ""
+        fecha_final: "27/05/2025"
     y2024:
         fecha_inicio: ""
         fecha_final: ""
