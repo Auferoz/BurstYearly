@@ -4,9 +4,9 @@ released: 23/4/2025
 companie: Sandfall Interactive
 poster: co9gam.webp
 genre: Role-playing (RPG), Turn-based strategy (TBS), Adventure
-estado: Jugando
-horas: 50
-logros_obt: 51
+estado: Completado
+horas: 54
+logros_obt: 55
 logros_total: 55
 console_pc: Steam
 igdbId: 305152
@@ -14,7 +14,7 @@ first_year_played: 2025
 dates_played:
     y2025:
         fecha_inicio: "23/04/2025"
-        fecha_final: ""
+        fecha_final: "26/06/2025"
     y2024:
         fecha_inicio: ""
         fecha_final: ""
