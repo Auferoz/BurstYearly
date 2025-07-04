@@ -5,15 +5,15 @@ companie: Square Enix Creative Studio III
 poster: co5w3k.webp
 genre:  Role-playing (RPG)
 estado: Completado
-horas: 83
-logros_obt: 64
+horas: 103
+logros_obt: 69
 logros_total: 69
 console_pc: Steam
 igdbId: 31551
 dates_played:
     y2025:
-        fecha_inicio: "16/03/2025"
-        fecha_final: ""
+        fecha_inicio: "28/06/2025"
+        fecha_final: "03/07/2025"
     y2024:
         fecha_inicio: 07/09/2024
         fecha_final: 19/10/2024
