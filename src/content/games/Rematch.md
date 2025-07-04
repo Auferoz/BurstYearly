@@ -4,7 +4,7 @@ released: 18/06/2025
 companie: Sloclap
 poster: co95fx.webp
 genre: Sport, Indie
-estado: Jugando
+estado: Abandonado
 horas: 1
 logros_obt: 6
 logros_total: 37
@@ -14,7 +14,7 @@ first_year_played: 2025
 dates_played:
     y2025:
         fecha_inicio: "20/06/2025"
-        fecha_final: ""
+        fecha_final: "21/06/2025"
     y2024:
         fecha_inicio: ""
         fecha_final: ""

@@ -4,7 +4,7 @@ released: 27/10/2009
 companie: Riot Games
 poster: co49wj.png
 genre: Role-playing (RPG), Strategy, MOBA
-estado: Jugando
+estado: Completado
 horas: 999
 logros_obt: 0
 logros_total: 0
@@ -13,7 +13,7 @@ igdbId: 115
 dates_played:
     y2025:
         fecha_inicio: "01/01/2025"
-        fecha_final: "02/02/2025"
+        fecha_final: "30/04/2025"
     y2024:
         fecha_inicio: 03/01/2024
         fecha_final: 07/12/2024

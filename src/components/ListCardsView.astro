@@ -18,6 +18,22 @@ function parseDate(dateString: any) {
     return new Date(parts[2], parts[1] - 1, parts[0]).getTime();
 }
 
+function getBorderColor(estado: string) {
+    switch (estado) {
+        case 'Completado':
+            return '#2973B2';
+        case 'Abandonado':
+            return '#D84040';
+        case 'Jugando':
+            return '#16C47F';
+        case 'Pausado':
+            return '#FFD65A';
+        default:
+            return '#333';
+    }
+}
+
+
 ---
 
 
@@ -43,7 +59,7 @@ function parseDate(dateString: any) {
                 const { title, poster, dates_played } = data;
 
             return (
-                <article class="flex flex-col gap-2 lg:hover:bg-blue-950 lg:p-4">
+                <article class="flex flex-col gap-2 lg:hover:bg-blue-950 lg:p-4 border" style={`border-color: ${getBorderColor(data.estado)}`}>
                     <a transition:name={`img-${slug}`} href={`/game/${slug}?year=${yearView}`}>
                         <img src={ImgUrl + poster} alt={title} class="w-full rounded-lg" />
                     </a>
