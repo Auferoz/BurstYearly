@@ -59,9 +59,9 @@ function getBorderColor(estado: string) {
                 const { title, poster, dates_played } = data;
 
             return (
-                <article class="flex flex-col gap-2 group lg:hover:bg-blue-950 lg:m-4 border border-gray-800 rounded-lg">
+                <article class="flex flex-col gap-2 lg:hover:bg-blue-950 lg:m-4 rounded-lg border-2 border-transparent hover:border-2 hover:border-[var(--hover-border-color)] transition-all duration-300" style={`--hover-border-color: ${getBorderColor(data.estado)}`}>
                     <a transition:name={`img-${slug}`} href={`/game/${slug}?year=${yearView}`}>
-                        <div class="w-full rounded-t-lg border-2 border-transparent group-hover:border-[var(--hover-border-color)] transition-all duration-300" style={`--hover-border-color: ${getBorderColor(data.estado)}`}>
+                        <div class="w-full rounded-t-lg">
                             <img src={ImgUrl + poster} alt={title} class="w-full rounded-t-lg" />
                         </div>
                     </a>

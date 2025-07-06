@@ -4,16 +4,16 @@ released: 24/01/2019
 companie: Capcom Development Division 1
 poster: co1ir3.webp
 genre: Shooter, Adventure
-estado: Jugando
-horas: 3
-logros_obt: 11
+estado: Completado
+horas: 8
+logros_obt: 20
 logros_total: 44
 console_pc: Steam
 igdbId: 19686
 dates_played:
     y2025:
         fecha_inicio: "09/03/2025"
-        fecha_final: ""
+        fecha_final: "05/07/2025"
     y2024:
         fecha_inicio: ""
         fecha_final: ""
