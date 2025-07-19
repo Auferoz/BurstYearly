@@ -5,15 +5,15 @@ companie: Capcom Development Division 1
 poster: co1ir3.webp
 genre: Shooter, Adventure
 estado: Completado
-horas: 14
-logros_obt: 36
+horas: 30
+logros_obt: 44
 logros_total: 44
 console_pc: Steam
 igdbId: 19686
 dates_played:
     y2025:
         fecha_inicio: "09/03/2025"
-        fecha_final: "05/07/2025"
+        fecha_final: "13/07/2025"
     y2024:
         fecha_inicio: ""
         fecha_final: ""
