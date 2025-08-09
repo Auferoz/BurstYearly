@@ -4,9 +4,9 @@ released: 15/03/2010
 companie: 4A Games
 poster: co1rd6.webp
 genre: Shooter, Role-playing (RPG)
-estado: Jugando
-horas: 15
-logros_obt: 6
+estado: Completado
+horas: 20
+logros_obt: 13
 logros_total: 48
 console_pc: Steam
 igdbId: 495
@@ -14,7 +14,7 @@ first_year_played: 2025
 dates_played:
     y2025:
         fecha_inicio: "20/07/2025"
-        fecha_final: ""
+        fecha_final: "09/08/2025"
     y2024:
         fecha_inicio: ""
         fecha_final: ""
