@@ -4,7 +4,7 @@ released: 15/12/2021
 companie: Image & Form
 poster: co49u0.webp
 genre: Adventure
-estado: Jugando
+estado: Completado
 horas: 5
 logros_obt: 16
 logros_total: 17
