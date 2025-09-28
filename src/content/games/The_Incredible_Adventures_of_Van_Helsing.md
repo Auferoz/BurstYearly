@@ -4,16 +4,16 @@ released: 21/05/2013
 companie: NeocoreGames
 poster: co23cq.webp
 genre: Role-playing (RPG), Strategy, Hack and slash/Beat 'em up, Adventure, Indie
-estado: Jugando
-horas: 6
-logros_obt: 35
+estado: Completado
+horas: 11
+logros_obt: 54
 logros_total: 95
 console_pc: Steam
 igdbId: 2638
 dates_played:
     y2025:
         fecha_inicio: "01/09/2025"
-        fecha_final: ""
+        fecha_final: "28/09/2025"
     y2024:
         fecha_inicio: ""
         fecha_final: ""
