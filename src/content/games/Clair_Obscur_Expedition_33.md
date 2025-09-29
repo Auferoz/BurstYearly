@@ -3,6 +3,7 @@ title: 'Clair Obscur Expedition 33'
 released: 23/4/2025
 companie: Sandfall Interactive
 poster: co9gam.webp
+trailer: ejgW-upPMgk
 genre: Role-playing (RPG), Turn-based strategy (TBS), Adventure
 estado: Completado
 horas: 54

@@ -3,6 +3,7 @@ title: "Eiyuden Chronicle: Rising"
 released: 10/05/2022
 companie: Rabbit & Bear Studios
 poster: co4sxy.png
+trailer: aVYr1xPsGgY
 genre:  Role-playing (RPG), Adventure
 estado: Completado
 horas: 10

@@ -3,6 +3,7 @@ title: The Gunk
 released: 15/12/2021
 companie: Image & Form
 poster: co49u0.webp
+trailer: Cs96h12uHiE
 genre: Adventure
 estado: Completado
 horas: 5

@@ -18,6 +18,8 @@ import IconCalendarTime from "../../icons/CalendarTime.astro";
 import IconPuzzle from "../../icons/Puzzle.astro";
 import FileDescription from "../../icons/FileDescription.astro";
 import ImagenGames from "../../components/ImagenGames.astro";
+import VideoTrailer from "../../components/VideoTrailer.astro";
+import Video from "../../icons/video.astro";
 
 export async function getStaticPaths() {
     const games = await getCollection("games");
@@ -30,7 +32,7 @@ export async function getStaticPaths() {
 
 const { game } = Astro.props
 const { slug, data } = game
-const { title, released, companie, poster, genre, estado, horas, logros_obt, logros_total, console_pc, igdbId, dates_played } = data
+const { title, released, companie, poster, trailer, genre, estado, horas, logros_obt, logros_total, console_pc, igdbId, dates_played } = data
 const { Content } = await render(game)
 
 // Definimos un valor por defecto para year en SSG
@@ -169,6 +171,13 @@ const estadoStyle = currentEstado.iconColor;
         </section>
 
         <section class="p-4 mx-auto max-w-screen-xl">
+            <div class="bg-[#1b1e25] rounded-xl p-5">
+                <p class="text-xl flex items-center gap-2 mb-5">
+                    <Video width="20" height="20" stroke={estadoStyle} />
+                    Trailer:
+                </p>
+                <VideoTrailer slug={trailer} />
+            </div>
         </section>
 
     </main>

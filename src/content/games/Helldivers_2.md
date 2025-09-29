@@ -3,6 +3,7 @@ title: Helldivers 2
 released: 08/02/2024
 companie: Arrowhead Game Studios
 poster: co741o.webp
+trailer: rE7KTE28HrA
 genre:  Role-playing (RPG)
 estado: Completado
 horas: 1.5

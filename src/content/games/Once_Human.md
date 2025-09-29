@@ -3,6 +3,7 @@ title: Once Human
 released: 08/07/2024
 companie: Starry Studio
 poster: co81es.webp
+trailer: XXpfbP9Ml_4
 genre: Shooter, Role-playing (RPG), Strategy, Adventure
 estado: Completado
 horas: 50

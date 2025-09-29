@@ -3,6 +3,7 @@ title: Final Fantasy XVI DEMO
 released: 19/08/2024
 companie: Square Enix Creative Studio III
 poster: co5w3k.webp
+trailer: SdoKnM29qrA
 genre:  Role-playing (RPG)
 estado: Completado
 horas: 3.5

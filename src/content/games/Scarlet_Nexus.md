@@ -3,6 +3,7 @@ title: Scarlet Nexus
 released: 24/06/2021
 companie: Bandai Namco Studios
 poster: co3b6l.png
+trailer: zQxlnOwIOdA
 genre:  Role-playing (RPG), Adventure
 estado: Abandonado
 horas: 1

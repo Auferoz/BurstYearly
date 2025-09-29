@@ -3,6 +3,7 @@ title: Final Fantasy XIII
 released: 17/12/2009
 companie: Square Enix
 poster: co2ukg.png
+trailer: nEbylzeHnpg
 genre: Role-playing (RPG), Adventure
 estado: Abandonado
 horas: 23

@@ -3,6 +3,7 @@ title: "Black Desert"
 released: 16/12/2014
 companie: Pearl Abyss
 poster: co6f1i.webp
+trailer: XdFV4IhIAyQ
 genre: Role-playing (RPG), Hack and slash/Beat 'em up, Adventure
 estado: Abandonado
 horas: 1

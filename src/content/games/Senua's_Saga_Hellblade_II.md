@@ -3,6 +3,7 @@ title: "Senua's Saga: Hellblade II"
 released: 20/05/2024
 companie: Ninja Theory
 poster: co81i4.webp
+trailer: PRbOmIcVXak
 genre: Adventure
 estado: Completado
 horas: 8

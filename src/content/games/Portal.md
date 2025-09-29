@@ -3,6 +3,7 @@ title: Portal
 released: 10/10/2007
 companie: Valve
 poster: co1x7d.webp
+trailer: nA9ChSA6wV4
 genre: Shooter, Platform, Puzzle
 estado: Completado
 horas: 2

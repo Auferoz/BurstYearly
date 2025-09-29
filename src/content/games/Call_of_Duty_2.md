@@ -3,6 +3,7 @@ title: Call of Duty® 2
 released: 25/10/2005
 companie: Infinity Ward
 poster: co3acf.png
+trailer: XexzQKXGQrk
 genre: Shooter
 estado: Completado
 horas: 8.5

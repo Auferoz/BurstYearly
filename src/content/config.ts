@@ -6,6 +6,7 @@ const games = defineCollection({
         released: z.string(),
         companie: z.string(),
         poster: z.string(),
+        trailer: z.string().optional(),
         genre: z.string(),
         estado: z.string(),
         horas: z.number(),

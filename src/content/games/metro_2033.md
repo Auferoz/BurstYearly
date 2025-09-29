@@ -3,6 +3,7 @@ title: Metro 2033
 released: 15/03/2010
 companie: 4A Games
 poster: co1rd6.webp
+trailer: QThDHIu8sZE
 genre: Shooter, Role-playing (RPG)
 estado: Completado
 horas: 20

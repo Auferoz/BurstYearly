@@ -3,6 +3,7 @@ title: Wheel World
 released: 22/07/2025
 companie: Messhof
 poster: co8ycw.webp
+trailer: 6Jx-PeNzly
 genre: Racing, Sport, Adventure
 estado: Completado
 horas: 11

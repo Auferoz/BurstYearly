@@ -3,6 +3,7 @@ title: "Granblue Fantasy: Relink"
 released: 31/01/2024
 companie: Cygames Osaka
 poster: co7ptq.webp
+trailer: odAeEqQTIrU
 genre: Role-playing (RPG), Hack and slash/Beat 'em up, Adventure
 estado: Completado
 horas: 20

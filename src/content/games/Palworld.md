@@ -3,6 +3,7 @@ title: Palworld
 released: 19/01/2024
 companie: PocketPair
 poster: co7n02.png
+trailer: 7tVwvbv6GjE
 genre: Shooter, Role-playing (RPG), Hack and slash/Beat 'em up, Adventure, Indie
 estado: Completado
 horas: 80

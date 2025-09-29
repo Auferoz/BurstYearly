@@ -3,6 +3,7 @@ title: "inZOI"
 released: 27/03/2025
 companie: Krafton
 poster: co8pfe.webp
+trailer: Igakmd3kwLs
 genre: Simulator
 estado: Abandonado
 horas: 5

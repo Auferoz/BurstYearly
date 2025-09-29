@@ -3,6 +3,7 @@ title: Limbo
 released: 28/06/2016
 companie: Playdead
 poster: co1qrs.webp
+trailer: Y4HSyVXKYz8
 genre: Platform, Puzzle, Adventure, Indie
 estado: Completado
 horas: 4

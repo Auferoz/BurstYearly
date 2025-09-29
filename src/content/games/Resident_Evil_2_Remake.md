@@ -3,6 +3,7 @@ title: Resident Evil 2
 released: 24/01/2019
 companie: Capcom Development Division 1
 poster: co1ir3.webp
+trailer: nog956eX-ik
 genre: Shooter, Adventure
 estado: Completado
 horas: 30

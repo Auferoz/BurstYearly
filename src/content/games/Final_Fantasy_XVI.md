@@ -3,6 +3,7 @@ title: Final Fantasy XVI
 released: 17/09/2024
 companie: Square Enix Creative Studio III
 poster: co5w3k.webp
+trailer: vAaJXiew1t0
 genre:  Role-playing (RPG)
 estado: Completado
 horas: 103

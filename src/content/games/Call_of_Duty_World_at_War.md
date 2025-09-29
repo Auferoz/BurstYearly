@@ -3,6 +3,7 @@ title: "Call of Duty: World at War"
 released: 10/11/2008
 companie: Treyarch
 poster: co1wl8.webp
+trailer: PLT2AmsdGNg
 genre: Shooter, Adventure
 estado: Completado
 horas: 8

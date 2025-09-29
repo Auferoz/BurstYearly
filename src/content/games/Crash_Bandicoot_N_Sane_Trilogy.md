@@ -3,6 +3,7 @@ title: Crash Bandicoot N. Sane Trilogy | C1
 released: 29/06/2017
 companie: Vicarious Visions
 poster: co1v62.webp
+trailer: AvK197_CP0Q
 genre: Platform, Adventure
 estado: Completado
 horas: 5.8

@@ -3,6 +3,7 @@ title: Euro Truck Simulator 2
 released: 18/10/2012
 companie: SCS Software
 poster: co7et5.png
+trailer: 5uvwfskYwl0
 genre: Racing, Simulator
 estado: Completado
 horas: 34

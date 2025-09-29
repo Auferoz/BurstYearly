@@ -3,6 +3,7 @@ title: Jusant
 released: 30/10/2023
 companie: Playdead
 poster: coa2kv.webp
+trailer: ME27Pxsy8RU
 genre: Platform, Puzzle, Adventure
 estado: Completado
 horas: 5

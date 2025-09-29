@@ -3,6 +3,7 @@ title: The Incredible Adventures of Van Helsing
 released: 21/05/2013
 companie: NeocoreGames
 poster: co23cq.webp
+trailer: ulfLPCF2yR4
 genre: Role-playing (RPG), Strategy, Hack and slash/Beat 'em up, Adventure, Indie
 estado: Completado
 horas: 11

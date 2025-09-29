@@ -3,6 +3,7 @@ title: "Call of Duty: Warzone 2.0"
 released: 16/11/2022
 companie: Infinity Ward
 poster: co5r6t.png
+trailer: 0E44DClsX5Q
 genre: Shooter, Tactical
 estado: Abandonado
 horas: 23

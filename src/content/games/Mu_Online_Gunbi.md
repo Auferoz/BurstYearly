@@ -3,6 +3,7 @@ title: 'Mu Online: Gunbi'
 released: 31/10/2001
 companie: Webzen
 poster: co2mrn.webp
+trailer: MrDcpRtYhGY
 genre: Fighting, Role-playing (RPG), Strategy, Turn-based strategy (TBS)
 estado: Completado
 horas: 210

@@ -3,6 +3,7 @@ title: "Call of Duty® 4: Modern Warfare® (2007)"
 released: 05/11/2007
 companie: Treyarch
 poster: co1wko.png
+trailer: 8e-i2D-2GAc
 genre: Shooter, Simulator
 estado: Completado
 horas: 5.6

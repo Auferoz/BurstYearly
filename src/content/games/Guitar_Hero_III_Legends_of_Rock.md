@@ -3,6 +3,7 @@ title: "Guitar Hero III: Legends of Rock"
 released: 28/10/2007
 companie: Vicarious Visions
 poster: co1wqm.png
+trailer: aCtwnGyEGOU
 genre: Music, Simulator
 estado: Abandonado
 horas: 5

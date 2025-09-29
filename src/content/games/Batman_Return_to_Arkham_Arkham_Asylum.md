@@ -3,6 +3,7 @@ title: "Batman: Return to Arkham - Arkham Asylum"
 released: 17/10/2016
 companie: Rocksteady Studios
 poster: co1voj.png
+trailer: 4F3KQjWsv_8
 genre: Hack and slash/Beat 'em up, Adventure
 estado: Completado
 horas: 12

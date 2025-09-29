@@ -3,6 +3,7 @@ title: Final Fantasy VIII
 released: 05/12/2013
 companie: Square
 poster: co4tsp.png
+trailer: bFvkzoaOHUU
 genre: Role-playing (RPG), Adventure
 estado: Completado
 horas: 15

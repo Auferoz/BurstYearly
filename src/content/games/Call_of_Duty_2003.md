@@ -3,6 +3,7 @@ title: Call of Duty® (2003)
 released: 29/10/2003
 companie: Infinity Ward
 poster: co2n19.png
+trailer: YUrUDrjOFYY
 genre: Shooter
 estado: Completado
 horas: 6.3

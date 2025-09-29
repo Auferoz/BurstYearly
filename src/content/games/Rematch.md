@@ -3,6 +3,7 @@ title: 'Rematch'
 released: 18/06/2025
 companie: Sloclap
 poster: co95fx.webp
+trailer: FxpFiokmI2c
 genre: Sport, Indie
 estado: Abandonado
 horas: 1

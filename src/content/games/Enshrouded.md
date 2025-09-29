@@ -3,6 +3,7 @@ title: Enshrouded
 released: 24/01/2024
 companie: Keen Games
 poster: co6gct.png
+trailer: A2Pdio9EqRU
 genre: Role-playing (RPG), Adventure
 estado: Completado
 horas: 120

@@ -3,6 +3,7 @@ title: League Of Legends
 released: 27/10/2009
 companie: Riot Games
 poster: co49wj.png
+trailer: BGtROJeMPeE
 genre: Role-playing (RPG), Strategy, MOBA
 estado: Completado
 horas: 999

@@ -3,6 +3,7 @@ title: "inZOI: Creative Studio"
 released: 27/03/2025
 companie: Krafton
 poster: co8pfe.webp
+trailer: wfn_U1UHiQ8
 genre: Simulator
 estado: Completado
 horas: 1.5

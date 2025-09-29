@@ -3,6 +3,7 @@ title: Inside
 released: 28/06/2016
 companie: Playdead
 poster: co2fca.webp
+trailer: op4G1--kb-g
 genre: Platform, Puzzle, Adventure, Indie
 estado: Completado
 horas: 3

@@ -3,6 +3,7 @@ title: Lost Ark
 released: 04/12/2018
 companie: Tripod Studio
 poster: co4w4j.png
+trailer: YDyiYrIGF00
 genre: Role-playing (RPG), Hack and slash, Adventure
 estado: Completado
 horas: 663
