@@ -5,7 +5,7 @@ companie: Blizzard Entertainment
 poster: co69sm.webp
 trailer: 9bRWIdOMfro
 genre:  Role-playing (RPG), Hack and slash/Beat 'em up
-estado: Abandoned
+estado: Abandonado
 horas: 15
 logros_obt: 0
 logros_total: 0
