@@ -16,7 +16,7 @@ const totalcompletados = games.reduce((acc, game) => acc + (game.data.estado ===
 const totalabandonados = games.reduce((acc, game) => acc + (game.data.estado === 'Abandonado' ? 1 : 0), 0);
 
 
-const ImgUrl = "https://images.igdb.com/igdb/image/upload/t_1080p/";
+const ImgUrl = "https://images.igdb.com/igdb/image/upload/t_cover_big/";
 ---
 
 <Layout title="BURST - My List Yearly">
