@@ -19,12 +19,12 @@ import IconPuzzle from "../../icons/Puzzle.astro";
 import FileDescription from "../../icons/FileDescription.astro";
 import ImagenGames from "../../components/ImagenGames.astro";
 import VideoTrailer from "../../components/VideoTrailer.astro";
-import Video from "../../icons/video.astro";
+import IconVideo from "../../icons/video.astro";
 
 export async function getStaticPaths() {
     const games = await getCollection("games");
 
-    return games.map((game: { slug: any; }) => ({
+    return games.map((game) => ({
         params: { id: game.slug },
         props: { game }
     }))
@@ -76,9 +76,9 @@ const estadoStyle = currentEstado.iconColor;
                     <img transition:name={`img-${slug}`} src={ImgUrl + poster} alt={title} class="rounded-xl w-72 h-auto w-full">
                 </aside>
 
-                <main class="max-w-2xl prose prose-invert">
+                <main class="max-w-3xl prose prose-invert w-full">
 
-                    <div class="bg-[#1b1e25] p-5 rounded-xl mb-3">
+                    <div class="bg-[#1b1e25] p-2 rounded-xl mb-3">
                         <h1 class="flex items-center gap-2 text-2xl font-bold mb-4">
                             {title}
                             <IconPlayerPlay width="30" height="30" stroke={estadoStyle} />
@@ -170,10 +170,10 @@ const estadoStyle = currentEstado.iconColor;
             <hr>
         </section>
 
-        <section class="p-4 mx-auto max-w-screen-xl">
+        <section class="p-4 mx-auto max-w-screen-xl ">
             <div class="bg-[#1b1e25] rounded-xl p-5">
                 <p class="text-xl flex items-center gap-2 mb-5">
-                    <Video width="20" height="20" stroke={estadoStyle} />
+                    <IconVideo width="20" height="20" stroke={estadoStyle} />
                     Trailer:
                 </p>
                 <VideoTrailer slug={trailer} />
