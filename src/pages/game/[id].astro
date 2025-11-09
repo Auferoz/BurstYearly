@@ -73,7 +73,7 @@ const estadoStyle = currentEstado.iconColor;
             <div class="flex gap-4 flex-col lg:flex-row pt-3">
 
                 <aside class="flex flex-col items-center w-full">
-                    <img transition:name={`img-${slug}`} src={ImgUrl + poster} alt={title} class="rounded-xl w-72 h-auto w-full">
+                    <img transition:name={`img-${slug}`} src={ImgUrl + poster} alt={title} class="rounded-xl w-72 h-auto w-full" loading="lazy">
                 </aside>
 
                 <main class="max-w-3xl prose prose-invert w-full">
@@ -140,13 +140,49 @@ const estadoStyle = currentEstado.iconColor;
 
                         <li class="flex items-center gap-2">
                             <span style={`color:${estadoStyle};`}><IconTrophy width="20" height="20" /></span>
-                            <span class="font-bold">Logros obtenidos:</span> 
+                            <span class="font-bold">Logros obtenidos:</span>
                             {logros_obt} / {logros_total}
                         </li>
 
-                        <article>
-                            <div class="w-full bg-gray-200 rounded-md dark:bg-gray-700">
-                                <div class={`bar ${currentEstado.className} text-md font-medium text-white text-center p-0.5 py-2 leading-none rounded-md flex items-center justify-center font-mono`} style={`width: ${percentTrofeos}%;`}> {percentTrofeos}% Logros <IconPuzzle width="20" height="20" classe="ms-1" /></div>
+                        <article class="mt-2">
+                            <div class="progress-container">
+                                <div class="progress-background">
+                                    <div
+                                        class={`progress-bar ${currentEstado.className}`}
+                                        style={`width: ${percentTrofeos}%;`}
+                                        role="progressbar"
+                                        aria-valuenow={percentTrofeos}
+                                        aria-valuemin="0"
+                                        aria-valuemax="100"
+                                    >
+                                        <span class="progress-content">
+                                            {percentTrofeos >= 20 && (
+                                                <>
+                                                    <span class="progress-percentage">{percentTrofeos}%</span>
+                                                    <span class="progress-icon-wrapper">
+                                                        <IconPuzzle width="18" height="18" />
+                                                    </span>
+                                                </>
+                                            )}
+                                        </span>
+                                    </div>
+                                </div>
+                                {percentTrofeos < 20 && percentTrofeos >= 10 && (
+                                    <span class="progress-label-outside-20">
+                                        <span class="progress-text">{percentTrofeos}%</span>
+                                        <span class="progress-icon-wrapper">
+                                            <IconPuzzle width="16" height="16" />
+                                        </span>
+                                    </span>
+                                )}
+                                {percentTrofeos < 10 && (
+                                    <span class="progress-label-outside-10">
+                                        <span class="progress-text">{percentTrofeos}%</span>
+                                        <span class="progress-icon-wrapper">
+                                            <IconPuzzle width="16" height="16" />
+                                        </span>
+                                    </span>
+                                )}
                             </div>
                         </article>
                     </div>
@@ -200,46 +236,193 @@ const estadoStyle = currentEstado.iconColor;
 </script>
 
 <style>
+    /* Progress Bar Styles */
+    .progress-container {
+        position: relative;
+        width: 100%;
+    }
+
+    .progress-background {
+        width: 100%;
+        height: 32px;
+        background: linear-gradient(to right, rgba(55, 65, 81, 0.5), rgba(75, 85, 99, 0.5));
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+        position: relative;
+    }
+
+    .progress-bar {
+        height: 100%;
+        border-radius: 8px;
+        transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        min-width: 2px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .progress-bar::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.2) 50%,
+            rgba(255, 255, 255, 0) 100%
+        );
+        animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+    }
+
+    .progress-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        height: 100%;
+        font-weight: 600;
+        font-size: 0.875rem;
+        letter-spacing: 0.025em;
+        position: relative;
+        z-index: 1;
+    }
+
+    .progress-percentage {
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        color: white;
+    }
+
+    .progress-icon-wrapper {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+    }
+
+    .progress-icon-wrapper svg {
+        fill: white;
+        stroke: white;
+    }
+
+    .progress-label-outside-20 {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: bold;
+        font-size: 0.875rem;
+        font-family: 'Courier New', monospace;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: white;
+        /*
+        border-radius: 6px;
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(0, 0, 0, 0.6);
+        padding: 4px 10px; 
+        */
+    }
+
+    .progress-label-outside-10 {
+        position: absolute;
+        left: 40px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: bold;
+        font-size: 0.875rem;
+        font-family: 'Courier New', monospace;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: white;
+        /*
+        border-radius: 6px;
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(0, 0, 0, 0.6);
+        padding: 4px 10px; 
+        */
+    }
+
+    .progress-text {
+        color: white;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Estado Colors */
     .completadoColorBg {
         color: white;
         &.bar {
             background-color: #2973B2;
-        } 
+        }
+        &.progress-bar {
+            background: linear-gradient(90deg, #2973B2 0%, #3a8fd9 100%);
+        }
         &.icon {
             fill: #2973B2;
         }
     }
+
     .pausadoColorBg {
         color: white;
         &.bar {
             background-color: #FFD65A;
         }
+        &.progress-bar {
+            background: linear-gradient(90deg, #FFD65A 0%, #ffe080 100%);
+        }
         &.icon {
             fill: #FFD65A;
         }
     }
+
     .jugandoColorBg {
         color: white;
         &.bar {
             background-color: #16C47F;
         }
+        &.progress-bar {
+            background: linear-gradient(90deg, #16C47F 0%, #2de69d 100%);
+        }
         &.icon {
             fill: #16C47F;
         }
     }
+
     .abandonadoColorBg {
         color: white;
         &.bar {
             background-color: #D84040;
         }
+        &.progress-bar {
+            background: linear-gradient(90deg, #D84040 0%, #e86060 100%);
+        }
         &.icon {
             fill: #D84040;
         }
     }
+
     .defaultColorBg {
         color: white;
         &.bar {
             background-color: #333;
+        }
+        &.progress-bar {
+            background: linear-gradient(90deg, #333 0%, #444 100%);
         }
         &.icon {
             fill: #333;

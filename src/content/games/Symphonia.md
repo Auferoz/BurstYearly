@@ -25,7 +25,7 @@ dates_played:
         fecha_inicio: ""
         fecha_final: ""
 years_played:
-    y2025: false
+    y2025: true
     y2024: false
     y2023: false
     y2022: false

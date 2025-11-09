@@ -2,14 +2,64 @@
 const { slug } = Astro.props;
 ---
 
-<article>
-    <iframe
-        class="w-full h-[170px] md:h-[391px] lg:h-[675px]"
-        src={`https://www.youtube.com/embed/${slug}`}
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen>
-    </iframe>
+<article class="video-container">
+    <div class="video-placeholder" data-video-id={slug}>
+        <img
+            src={`https://img.youtube.com/vi/${slug}/maxresdefault.jpg`}
+            alt="Video thumbnail"
+            class="w-full h-[170px] md:h-[391px] lg:h-[675px] object-cover rounded-lg cursor-pointer"
+        />
+        <button class="play-button" aria-label="Play video">
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="white" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.7)"/>
+                <polygon points="10 8 16 12 10 16 10 8" fill="white"/>
+            </svg>
+        </button>
+    </div>
 </article>
+
+<style>
+    .video-container {
+        position: relative;
+    }
+    .video-placeholder {
+        position: relative;
+        cursor: pointer;
+    }
+    .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+    .play-button:hover {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const placeholders = document.querySelectorAll('.video-placeholder');
+
+        placeholders.forEach(placeholder => {
+            placeholder.addEventListener('click', function() {
+                const videoId = this.getAttribute('data-video-id');
+
+                const iframe = document.createElement('iframe');
+                iframe.className = 'w-full h-[170px] md:h-[391px] lg:h-[675px] rounded-lg';
+                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                iframe.title = 'YouTube video player';
+                iframe.style.border = '0';
+                iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+                iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+                iframe.allowFullscreen = true;
+
+                this.parentElement?.replaceWith(iframe);
+            });
+        });
+    });
+</script>
