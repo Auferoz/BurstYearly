@@ -6,8 +6,8 @@ poster: co1n1f.webp
 trailer: lcEW7_dr7mc
 genre: Role-playing (RPG), Hack and slash/Beat 'em up, Adventure
 estado: Jugando
-horas: 5
-logros_obt: 1
+horas: 8
+logros_obt: 2
 logros_total: 30
 console_pc: Steam
 igdbId: 119244

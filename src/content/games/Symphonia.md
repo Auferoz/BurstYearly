@@ -5,16 +5,16 @@ companie: Sunny Peak
 poster: co6zic.webp
 trailer: T5JOJiEVnFA
 genre: Platform, Adventure, Indie
-estado: Jugando
-horas: 2
-logros_obt: 5
+estado: Completado
+horas: 8
+logros_obt: 9
 logros_total: 22
 console_pc: Xbox Series X
 igdbId: 263008
 dates_played:
     y2025:
         fecha_inicio: "25/10/2025"
-        fecha_final: "01/11/2025"
+        fecha_final: "17/11/2025"
     y2024:
         fecha_inicio: ""
         fecha_final: ""
