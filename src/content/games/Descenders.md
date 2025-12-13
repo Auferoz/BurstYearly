@@ -11,6 +11,7 @@ logros_obt: 15
 logros_total: 40
 console_pc: Xbox Series X
 igdbId: 52200
+first_year_played: 2025
 dates_played:
     y2025:
         fecha_inicio: "11/10/2025"

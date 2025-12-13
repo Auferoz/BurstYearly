@@ -11,6 +11,7 @@ logros_obt: 5
 logros_total: 12
 console_pc: Steam
 igdbId: 134072
+first_year_played: 2025
 dates_played:
     y2025:
         fecha_inicio: "29/09/2025"

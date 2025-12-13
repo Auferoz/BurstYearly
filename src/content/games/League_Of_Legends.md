@@ -11,6 +11,7 @@ logros_obt: 0
 logros_total: 0
 console_pc: PC Game
 igdbId: 115
+first_year_played: 2022
 dates_played:
     y2025:
         fecha_inicio: "01/01/2025"
@@ -19,11 +20,11 @@ dates_played:
         fecha_inicio: 03/01/2024
         fecha_final: 07/12/2024
     y2023:
-        fecha_inicio: ""
-        fecha_final: ""
+        fecha_inicio: "01/01/2025"
+        fecha_final: "30/04/2025"
     y2022:
-        fecha_inicio: ""
-        fecha_final: ""
+        fecha_inicio: "01/01/2025"
+        fecha_final: "30/04/2025"
 years_played:
     y2025: true
     y2024: true

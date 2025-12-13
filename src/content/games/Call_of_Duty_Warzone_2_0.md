@@ -7,12 +7,11 @@ trailer: 0E44DClsX5Q
 genre: Shooter, Tactical
 estado: Abandonado
 horas: 23
-fecha_inicio: 07/01/2024
-fecha_final: 08/02/2024
 logros_obt: 0
 logros_total: 63
 console_pc: Steam
 igdbId: 217815
+first_year_played: 2024
 dates_played:
     y2025:
         fecha_inicio: ""
