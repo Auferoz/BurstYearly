@@ -5,8 +5,8 @@ companie: Capcom
 poster: co9wwv.webp
 trailer: A6YCL6UW1lI
 genre: Shooter, Adventure
-estado: Jugando
-horas: 0
+estado: Completado
+horas: 1
 logros_obt: 0
 logros_total: 0
 console_pc: Steam
@@ -14,8 +14,8 @@ igdbId: 134612
 first_year_played: 2025
 dates_played:
     y2025:
-        fecha_inicio: "12/12/2025"
-        fecha_final: ""
+        fecha_inicio: "13/12/2025"
+        fecha_final: "13/12/2025"
     y2024:
         fecha_inicio: ""
         fecha_final: ""

@@ -6,7 +6,7 @@ poster: co9gam.webp
 trailer: ejgW-upPMgk
 genre: Role-playing (RPG), Turn-based strategy (TBS), Adventure
 estado: Completado
-horas: 54
+horas: 60
 logros_obt: 55
 logros_total: 55
 console_pc: Steam
