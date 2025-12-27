@@ -6,26 +6,35 @@ poster: co7ptq.webp
 trailer: odAeEqQTIrU
 genre: Role-playing (RPG), Hack and slash/Beat 'em up, Adventure
 estado: Completado
-horas: 20
+horasTotal: 20
 logros_obt: 33
 logros_total: 54
 console_pc: Steam
 igdbId: 22788
 first_year_played: 2024
 dates_played:
+    y2026:
+        fecha_inicio: ""
+        fecha_final: ""
+        horas: ""
     y2025:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2024:
-        fecha_inicio: 01/07/2024
-        fecha_final: 14/08/2024
+        fecha_inicio: "01/07/2024"
+        fecha_final: "14/08/2024"
+        horas: ""
     y2023:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2022:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
 years_played:
+    y2026: false
     y2025: false
     y2024: true
     y2023: false

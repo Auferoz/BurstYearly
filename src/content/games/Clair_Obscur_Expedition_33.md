@@ -6,26 +6,35 @@ poster: co9gam.webp
 trailer: ejgW-upPMgk
 genre: Role-playing (RPG), Turn-based strategy (TBS), Adventure
 estado: Completado
-horas: 60
+horasTotal: 60
 logros_obt: 55
 logros_total: 55
 console_pc: Steam
 igdbId: 305152
 first_year_played: 2025
 dates_played:
+    y2026:
+        fecha_inicio: ""
+        fecha_final: ""
+        horas: ""
     y2025:
         fecha_inicio: "23/04/2025"
         fecha_final: "26/06/2025"
+        horas: ""
     y2024:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2023:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2022:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
 years_played:
+    y2026: false
     y2025: true
     y2024: false
     y2023: false

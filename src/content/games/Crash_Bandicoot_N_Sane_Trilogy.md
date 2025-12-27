@@ -6,26 +6,35 @@ poster: co1v62.webp
 trailer: AvK197_CP0Q
 genre: Platform, Adventure
 estado: Completado
-horas: 5.8
+horasTotal: 6
 logros_obt: 14
 logros_total: 74
 console_pc: Steam
 igdbId: 26196
 first_year_played: 2024
 dates_played:
+    y2026:
+        fecha_inicio: ""
+        fecha_final: ""
+        horas: ""
     y2025:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2024:
-        fecha_inicio: 28/06/2024
-        fecha_final: 08/07/2024
+        fecha_inicio: "28/06/2024"
+        fecha_final: "08/07/2024"
+        horas: ""
     y2023:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2022:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
 years_played:
+    y2026: false
     y2025: false
     y2024: true
     y2023: false

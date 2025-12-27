@@ -6,26 +6,35 @@ poster: co6f1i.webp
 trailer: XdFV4IhIAyQ
 genre: Role-playing (RPG), Hack and slash/Beat 'em up, Adventure
 estado: Abandonado
-horas: 1
+horasTotal: 1
 logros_obt: 0
 logros_total: 0
 console_pc: Steam
 igdbId: 6292
 first_year_played: 2025
 dates_played:
+    y2026:
+        fecha_inicio: ""
+        fecha_final: ""
+        horas: ""
     y2025:
         fecha_inicio: "04/03/2025"
         fecha_final: "04/03/2025"
+        horas: ""
     y2024:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2023:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2022:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
 years_played:
+    y2026: false
     y2025: true
     y2024: false
     y2023: false

@@ -6,26 +6,35 @@ poster: coaav6.webp
 trailer: 64gYTiV-LAk
 genre: Role-playing (RPG), Adventure
 estado: Completado
-horas: 70
+horasTotal: 70
 logros_obt: 36
 logros_total: 45
 console_pc: Xbox Series X
 igdbId: 136625
 first_year_played: 2023
 dates_played:
+    y2026:
+        fecha_inicio: ""
+        fecha_final: ""
+        horas: ""
     y2025:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2024:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2023:
         fecha_inicio: "06/02/2023"
         fecha_final: "14/06/2023"
+        horas: ""
     y2022:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
 years_played:
+    y2026: false
     y2025: false
     y2024: false
     y2023: true

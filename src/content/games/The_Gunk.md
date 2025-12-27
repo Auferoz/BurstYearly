@@ -6,26 +6,35 @@ poster: co49u0.webp
 trailer: Cs96h12uHiE
 genre: Adventure
 estado: Completado
-horas: 5
+horasTotal: 5
 logros_obt: 16
 logros_total: 17
 console_pc: Xbox Series X
 igdbId: 136000
 first_year_played: 2025
 dates_played:
+    y2026:
+        fecha_inicio: ""
+        fecha_final: ""
+        horas: ""
     y2025:
         fecha_inicio: "21/09/2025"
         fecha_final: "22/09/2025"
+        horas: ""
     y2024:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2023:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2022:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
 years_played:
+    y2026: false
     y2025: true
     y2024: false
     y2023: false

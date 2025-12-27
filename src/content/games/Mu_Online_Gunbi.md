@@ -6,26 +6,35 @@ poster: co2mrn.webp
 trailer: MrDcpRtYhGY
 genre: Fighting, Role-playing (RPG), Strategy, Turn-based strategy (TBS)
 estado: Completado
-horas: 210
+horasTotal: 210
 logros_obt: 0
 logros_total: 0
 console_pc: PC
 igdbId: 26359
 first_year_played: 2025
 dates_played:
+    y2026:
+        fecha_inicio: ""
+        fecha_final: ""
+        horas: ""
     y2025:
         fecha_inicio: "06/04/2025"
         fecha_final: "27/05/2025"
+        horas: ""
     y2024:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2023:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2022:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
 years_played:
+    y2026: false
     y2025: true
     y2024: false
     y2023: false

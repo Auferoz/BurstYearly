@@ -6,26 +6,35 @@ poster: co6gct.png
 trailer: A2Pdio9EqRU
 genre: Role-playing (RPG), Adventure
 estado: Completado
-horas: 120
+horasTotal: 120
 logros_obt: 33
 logros_total: 37
 console_pc: Steam
 igdbId: 248643
 first_year_played: 2024
 dates_played:
+    y2026:
+        fecha_inicio: ""
+        fecha_final: ""
+        horas: ""
     y2025:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2024:
-        fecha_inicio: 30/01/2024
-        fecha_final: 23/03/2024
+        fecha_inicio: "30/01/2024"
+        fecha_final: "23/03/2024"
+        horas: ""
     y2023:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2022:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
 years_played:
+    y2026: false
     y2025: false
     y2024: true
     y2023: false

@@ -6,26 +6,35 @@ poster: co1ir3.webp
 trailer: nog956eX-ik
 genre: Shooter, Adventure
 estado: Completado
-horas: 30
+horasTotal: 30
 logros_obt: 44
 logros_total: 44
 console_pc: Steam
 igdbId: 19686
 first_year_played: 2023
 dates_played:
+    y2026:
+        fecha_inicio: ""
+        fecha_final: ""
+        horas: ""
     y2025:
         fecha_inicio: "09/03/2025"
         fecha_final: "13/07/2025"
+        horas: ""
     y2024:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2023:
         fecha_inicio: "14/06/2023"
         fecha_final: "21/06/2023"
+        horas: ""
     y2022:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
 years_played:
+    y2026: false
     y2025: true
     y2024: false
     y2023: true

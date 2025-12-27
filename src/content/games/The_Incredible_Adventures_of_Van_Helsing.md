@@ -6,26 +6,35 @@ poster: co23cq.webp
 trailer: ulfLPCF2yR4
 genre: Role-playing (RPG), Strategy, Hack and slash/Beat 'em up, Adventure, Indie
 estado: Completado
-horas: 11
+horasTotal: 11
 logros_obt: 54
 logros_total: 95
 console_pc: Steam
 igdbId: 2638
 first_year_played: 2025
 dates_played:
+    y2026:
+        fecha_inicio: ""
+        fecha_final: ""
+        horas: ""
     y2025:
         fecha_inicio: "01/09/2025"
         fecha_final: "28/09/2025"
+        horas: ""
     y2024:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2023:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2022:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
 years_played:
+    y2026: false
     y2025: true
     y2024: false
     y2023: false

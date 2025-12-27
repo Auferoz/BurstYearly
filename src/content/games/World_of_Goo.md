@@ -6,26 +6,35 @@ poster: co24jz.webp
 trailer: 92rWWaspoFI
 genre: Puzzle, Simulator, Strategy, Indie
 estado: Completado
-horas: 7
+horasTotal: 7
 logros_obt: 1
 logros_total: 8
 console_pc: Steam
 igdbId: 942
 first_year_played: 2025
 dates_played:
+    y2026:
+        fecha_inicio: ""
+        fecha_final: ""
+        horas: ""
     y2025:
         fecha_inicio: "29/09/2025"
         fecha_final: "26/10/2025"
+        horas: ""
     y2024:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2023:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2022:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
 years_played:
+    y2026: false
     y2025: true
     y2024: false
     y2023: false

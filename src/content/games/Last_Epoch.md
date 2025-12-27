@@ -6,26 +6,35 @@ poster: co7p46.webp
 trailer: esrO1CocQ9w
 genre: Role-playing (RPG), Hack and slash/Beat 'em up, Adventure, Indie
 estado: Jugando
-horas: 5
+horasTotal: 5
 logros_obt: 0
 logros_total: 0
 console_pc: Steam
 igdbId: 95118
 first_year_played: 2024
 dates_played:
+    y2026:
+        fecha_inicio: ""
+        fecha_final: ""
+        horas: ""
     y2025:
         fecha_inicio: "19/12/2025"
-        fecha_final: "20/12/2025"
+        fecha_final: ""
+        horas: ""
     y2024:
         fecha_inicio: "24/02/2024"
         fecha_final: "24/02/2024"
+        horas: ""
     y2023:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2022:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
 years_played:
+    y2026: false
     y2025: true
     y2024: true
     y2023: false

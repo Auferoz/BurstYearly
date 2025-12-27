@@ -6,26 +6,35 @@ poster: co1n1f.webp
 trailer: lcEW7_dr7mc
 genre: Role-playing (RPG), Hack and slash/Beat 'em up, Adventure
 estado: Completado
-horas: 14
+horasTotal: 14
 logros_obt: 8
 logros_total: 30
 console_pc: Steam
 igdbId: 119244
 first_year_played: 2025
 dates_played:
+    y2026:
+        fecha_inicio: ""
+        fecha_final: ""
+        horas: ""
     y2025:
         fecha_inicio: "09/11/2025"
         fecha_final: "12/12/2025"
+        horas: ""
     y2024:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2023:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2022:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
 years_played:
+    y2026: false
     y2025: true
     y2024: false
     y2023: false

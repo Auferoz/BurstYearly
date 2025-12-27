@@ -6,26 +6,35 @@ poster: co2n19.png
 trailer: YUrUDrjOFYY
 genre: Shooter
 estado: Completado
-horas: 6.3
+horasTotal: 6
 logros_obt: 0
 logros_total: 0
 console_pc: Steam
 igdbId: 621
 first_year_played: 2024
 dates_played:
+    y2026:
+        fecha_inicio: ""
+        fecha_final: ""
+        horas: ""
     y2025:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2024:
-        fecha_inicio: 10/02/2024
-        fecha_final: 11/02/2024
+        fecha_inicio: "10/02/2024"
+        fecha_final: "11/02/2024"
+        horas: ""
     y2023:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2022:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
 years_played:
+    y2026: false
     y2025: false
     y2024: true
     y2023: false

@@ -9,30 +9,40 @@ const games = defineCollection({
         trailer: z.string().optional(),
         genre: z.string(),
         estado: z.string(),
-        horas: z.number(),
+        horasTotal: z.number(),
         logros_obt: z.number(),
         logros_total: z.number(),
         console_pc: z.string(),
         igdbId: z.number(),
         dates_played: z.object({
+            y2026: z.object({
+                fecha_inicio: z.string().optional(),
+                fecha_final: z.string().optional(),
+                horas: z.string().optional(),
+            }),
             y2025: z.object({
                 fecha_inicio: z.string().optional(),
                 fecha_final: z.string().optional(),
+                horas: z.string().optional(),
             }),
             y2024: z.object({
                 fecha_inicio: z.string().optional(),
                 fecha_final: z.string().optional(),
+                horas: z.string().optional(),
             }),
             y2023: z.object({
                 fecha_inicio: z.string().optional(),
                 fecha_final: z.string().optional(),
+                horas: z.string().optional(),
             }),
             y2022: z.object({
                 fecha_inicio: z.string().optional(),
                 fecha_final: z.string().optional(),
+                horas: z.string().optional(),
             }),
         }),
         years_played: z.object({
+            y2026: z.boolean(),
             y2025: z.boolean(),
             y2024: z.boolean(),
             y2023: z.boolean(),

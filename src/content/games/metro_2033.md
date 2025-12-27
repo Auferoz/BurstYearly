@@ -6,26 +6,35 @@ poster: co1rd6.webp
 trailer: QThDHIu8sZE
 genre: Shooter, Role-playing (RPG)
 estado: Completado
-horas: 20
+horasTotal: 20
 logros_obt: 13
 logros_total: 48
 console_pc: Steam
 igdbId: 495
 first_year_played: 2025
 dates_played:
+    y2026:
+        fecha_inicio: ""
+        fecha_final: ""
+        horas: ""
     y2025:
         fecha_inicio: "20/07/2025"
         fecha_final: "09/08/2025"
+        horas: ""
     y2024:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2023:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2022:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
 years_played:
+    y2026: false
     y2025: true
     y2024: false
     y2023: false

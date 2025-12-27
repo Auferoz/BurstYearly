@@ -6,26 +6,35 @@ poster: coa2kv.webp
 trailer: ME27Pxsy8RU
 genre: Platform, Puzzle, Adventure
 estado: Completado
-horas: 5
+horasTotal: 5
 logros_obt: 11
 logros_total: 21
 console_pc: Xbox Series X
 igdbId: 252836
 first_year_played: 2025
 dates_played:
+    y2026:
+        fecha_inicio: ""
+        fecha_final: ""
+        horas: ""
     y2025:
         fecha_inicio: "13/09/2025"
         fecha_final: "13/09/2025"
+        horas: ""
     y2024:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2023:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2022:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
 years_played:
+    y2026: false
     y2025: true
     y2024: false
     y2023: false

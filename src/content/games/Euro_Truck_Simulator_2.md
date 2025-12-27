@@ -6,26 +6,35 @@ poster: co7et5.png
 trailer: 5uvwfskYwl0
 genre: Racing, Simulator
 estado: Completado
-horas: 34
+horasTotal: 34
 logros_obt: 8
 logros_total: 87
 console_pc: Steam
 igdbId: 3070
 first_year_played: 2024
 dates_played:
+    y2026:
+        fecha_inicio: ""
+        fecha_final: ""
+        horas: ""
     y2025:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2024:
-        fecha_inicio: 05/01/2024
-        fecha_final: 14/02/2024
+        fecha_inicio: "05/01/2024"
+        fecha_final: "14/02/2024"
+        horas: ""
     y2023:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2022:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
 years_played:
+    y2026: false
     y2025: false
     y2024: true
     y2023: false

@@ -8,7 +8,7 @@ import { getCollection } from 'astro:content';
 const games = await getCollection('games');
 
 const totalGames = games.length;
-const totalHours = games.reduce((acc, game) => acc + Number(game.data.horas || 0), 0);
+const totalHours = games.reduce((acc, game) => acc + Number(game.data.horasTotal || 0), 0);
 const totalLogros = games.reduce((acc, game) => acc + Number(game.data.logros_obt || 0), 0);
 const totaljugando = games.reduce((acc, game) => acc + (game.data.estado === 'Jugando' ? 1 : 0), 0);
 const totalpausados = games.reduce((acc, game) => acc + (game.data.estado === 'Pausado' ? 1 : 0), 0);
@@ -17,6 +17,162 @@ const totalabandonados = games.reduce((acc, game) => acc + (game.data.estado ===
 
 
 const ImgUrl = "https://images.igdb.com/igdb/image/upload/t_cover_big/";
+
+
+const proximamenteGames = [
+	{
+		title: "MIO: Memories in Orbit",
+		poster: "https://i.3djuegos.com/juegos/19814/mio_memories_in_orbit/fotos/ficha/mio_memories_in_orbit-5901335.webp",
+		dateRelease: "20-01-2026",
+	},
+	{
+		title: "Dispatch",
+		poster: "https://i.3djuegos.com/juegos/20141/dispatch/fotos/ficha/dispatch-5936351.webp",
+		dateRelease: "22-10-2025",
+	},
+	{
+		title: "Disciples: Domination",
+		poster: "https://i.3djuegos.com/juegos/20791/disciples_domination/fotos/ficha/disciples_domination-6004935.webp",
+		dateRelease: "12-02-2026",
+	},
+	{
+		title: "ReAnimal",
+		poster: "https://i.3djuegos.com/juegos/19933/reanimal/fotos/ficha/reanimal-5913054.webp",
+		dateRelease: "13-02-2026",
+	},
+	{
+		title: "Resident Evil 9: Requiem",
+		poster: "https://i.3djuegos.com/juegos/20426/resident_evil_9_requiem/fotos/ficha/resident_evil_9_requiem-5965849.webp",
+		dateRelease: "27-02-2026",
+	},
+	{
+		title: "Windstorm: The Legend of Khiimori",
+		poster: "https://i.3djuegos.com/juegos/20004/windstorm_the_legend_of_khiimori/fotos/ficha/windstorm_the_legend_of_khiimori-5924875.webp",
+		dateRelease: "03-03-2026",
+	},
+	{
+		title: "Replaced",
+		poster: "https://i.3djuegos.com/juegos/18035/replaced/fotos/ficha/replaced-5911367.webp",
+		dateRelease: "12-03-2026",
+	},
+	{
+		title: "Crimson Desert",
+		poster: "https://i.3djuegos.com/juegos/16975/crimson_desert/fotos/ficha/crimson_desert-5936467.webp",
+		dateRelease: "19-03-2026",
+	},
+	{
+		title: "Mouse: P.I. For Hire",
+		poster: "https://i.3djuegos.com/juegos/19076/mouse/fotos/ficha/mouse-5994391.webp",
+		dateRelease: "19-03-2026",
+	},
+	{
+		title: "Pragmata",
+		poster: "https://i.3djuegos.com/juegos/17372/pragmata/fotos/ficha/pragmata-5965600.webp",
+		dateRelease: "24-04-2026",
+	},
+	{
+		title: "LEGO Batman: Legacy of The Dark Knight",
+		poster: "https://i.3djuegos.com/juegos/20550/lego_batman_legacy_of_the_dark_knight/fotos/ficha/lego_batman_legacy_of_the_dark_knight-5979251.webp",
+		dateRelease: "29-05-2026",
+	},
+	{
+		title: "Phantom Blade Zero",
+		poster: "https://i.3djuegos.com/juegos/19100/phantom_blade_0/fotos/ficha/phantom_blade_0-6003845.webp",
+		dateRelease: "09-09-2026",
+	},
+	{
+		title: "Forza Horizon 6",
+		poster: "https://images.igdb.com/igdb/image/upload/t_cover_big/coakbt.webp",
+		dateRelease: "",
+	},
+	{
+		title: "Aeterna Lucis",
+		poster: "https://images.igdb.com/igdb/image/upload/t_cover_big/co9i7h.webp",
+		dateRelease: "",
+	},
+	{
+		title: "Gears of War: E-Day",
+		poster: "https://images.igdb.com/igdb/image/upload/t_cover_big/co8bor.webp",
+		dateRelease: "",
+	},
+	{
+		title: "Marvel's Wolverine",
+		poster: "https://images.igdb.com/igdb/image/upload/t_cover_big/coajxy.webp",
+		dateRelease: "",
+	},
+	{
+		title: "Grand Theft Auto VI",
+		poster: "https://images.igdb.com/igdb/image/upload/t_cover_big/co9rwo.webp",
+		dateRelease: "18-11-2026",
+	},
+	{
+		title: "Silent Hill: Townfall",
+		poster: "https://images.igdb.com/igdb/image/upload/t_cover_big/co5l17.webp",
+		dateRelease: "",
+	},
+	{
+		title: "Fable",
+		poster: "https://images.igdb.com/igdb/image/upload/t_cover_big/co8bop.webp",
+		dateRelease: "",
+	},
+	{
+		title: "007 First Light",
+		poster: "https://images.igdb.com/igdb/image/upload/t_cover_big/coaoiz.webp",
+		dateRelease: "",
+	},
+	{
+		title: "Yoshi and the Mysterious Book",
+		poster: "https://images.igdb.com/igdb/image/upload/t_cover_big/coag5l.webp",
+		dateRelease: "",
+	},
+	{
+		title: "OD: Knock",
+		poster: "https://images.igdb.com/igdb/image/upload/t_cover_big/coajod.webp",
+		dateRelease: "",
+	},
+	{
+		title: "Zoopunk",
+		poster: "https://images.igdb.com/igdb/image/upload/t_cover_big/coav98.webp",
+		dateRelease: "",
+	},
+	{
+		title: "Tides of Annihilation",
+		poster: "https://images.igdb.com/igdb/image/upload/t_cover_big/coaveg.webp",
+		dateRelease: "",
+	},
+	{
+		title: "State of Decay 3",
+		poster: "https://images.igdb.com/igdb/image/upload/t_cover_big/co2eby.webp",
+		dateRelease: "",
+	},
+	{
+		title: "The Blood of Dawnwalker",
+		poster: "https://images.igdb.com/igdb/image/upload/t_cover_big/co99rj.webp",
+		dateRelease: "",
+	},
+	{
+		title: "The Mound: Omen of Cthulhu ",
+		poster: "https://images.igdb.com/igdb/image/upload/t_cover_big/coave2.webp",
+		dateRelease: "",
+	},
+	{
+		title: "Resonance: A Plague Tale Legacy",
+		poster: "https://images.igdb.com/igdb/image/upload/t_cover_big/co9xuo.webp",
+		dateRelease: "",
+	},
+	{
+		title: "Darksiders 4",
+		poster: "https://images.igdb.com/igdb/image/upload/t_cover_big/coa7p4.webp",
+		dateRelease: "",
+	},
+	{
+		title: "Marvel 1943: Rise of Hydra",
+		poster: "https://images.igdb.com/igdb/image/upload/t_cover_big/coa1rh.webp",
+		dateRelease: "",
+	},
+];
+
+
 ---
 
 <Layout title="BURST - My List Yearly">
@@ -51,7 +207,7 @@ const ImgUrl = "https://images.igdb.com/igdb/image/upload/t_cover_big/";
 							<p class="text-[.5rem] lg:text-xs font-thin text-white pt-2">J U G A N D O</p>
 						</aside>
 						<aside class="flex flex-col items-center justify-center">
-							<p class="text-2xl lg:text-4xl font-bold text-white">{totaljugando}</p>
+							<p class="text-2xl lg:text-4xl font-bold text-white">{totalpausados}</p>
 							<p class="text-[.5rem] lg:text-xs font-thin text-white pt-2">P A U S A D O S</p>
 						</aside>
 						<aside class="flex flex-col items-center justify-center">
@@ -74,14 +230,61 @@ const ImgUrl = "https://images.igdb.com/igdb/image/upload/t_cover_big/";
 				<span class="ps-2">Jugando</span>
 			</h1>
 
-			<div class="grid gap-2 grid-cols-3 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8">
+			<div class="grid gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-6">
 				{games
 					.filter(game => game.data.estado === 'Jugando')
 					.map(game => (
-						<article>
+						<article class="flex flex-col gap-2 justify-between">
 							<img src={ImgUrl + game.data.poster} alt={game.data.title} class="w-full rounded-lg" />
+							<p class="text-sm tracking-widest font-medium text-white text-center">en {game.data.console_pc}</p>
 						</article>
 					))
+				}
+			</div>
+
+		</div>
+
+		<div class="max-w-screen-xl max-w-7xl mx-auto p-4 pt-8">
+
+			<h1 class="text-md lg:text-2xl font-bold text-white text-start mb-4 flex align-center items-center"> 
+				<span class="ps-2">Proximos a jugar</span>
+			</h1>
+
+			<code>
+			🖱️ Resident Evil 3 (Remake)	= 6Hrs <br>
+			🖱️ Mafia: Definitive Edition	= 11Hrs <br>
+			🖱️ Metro: Last Light Redux		= 10Hrs <br>
+			🎮 Super Lucky's Tale			=	6Hrs <br>
+			🎮 Ryse: Son of Rome			=	7Hrs <br>
+			🎮 Tales of Kenzera: Zau		=	8Hrs <br>
+			</code>
+
+		</div>
+
+		<div class="max-w-screen-xl max-w-7xl mx-auto p-4 pt-8">
+
+			<h1 class="text-md lg:text-2xl font-bold text-white text-start mb-4 flex align-center items-center"> 
+				<span class="ps-2">Proximos Lanzamientos</span>
+			</h1>
+
+			<div class="grid gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-6">
+				{proximamenteGames.map(proxGame => (
+					<article class="flip-card group border border-gray-700 rounded-lg bg-gray-800 flex flex-col p-2">
+						<div class="flip-card-inner group-hover:rotate-y-180">
+							<div class="flip-card-front">
+								<img src={proxGame.poster} alt={proxGame.title} class="w-full h-full rounded-lg" />
+							</div>
+							<div class="flip-card-back countdown" data-date={proxGame.dateRelease}>
+								<div class="flex flex-col gap-4 justify-start items-start">
+									<div class="text-sm tracking-widest"><span class="days font-bold text-4xl bg-blue-800/50 px-2 rounded-lg border border-blue-800">---</span> Days</div>
+									<div class="text-sm tracking-widest"><span class="hours font-bold text-4xl bg-blue-800/50 px-2 rounded-lg border border-blue-800">---</span> Hours</div>
+									<div class="text-sm tracking-widest"><span class="minutes font-bold text-4xl bg-blue-800/50 px-2 rounded-lg border border-blue-800">---</span> Minutes</div>
+									<div class="text-sm tracking-widest"><span class="seconds font-bold text-4xl bg-blue-800/50 px-2 rounded-lg border border-blue-800">---</span> Seconds</div>
+								</div>
+							</div>
+						</div>
+					</article>
+				))
 				}
 			</div>
 
@@ -141,3 +344,89 @@ const ImgUrl = "https://images.igdb.com/igdb/image/upload/t_cover_big/";
 		
 	</main>
 </Layout>
+
+<style>
+	.flip-card {
+		perspective: 1000px;
+	}
+
+	.flip-card-inner {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		transition: transform 0.8s;
+		transform-style: preserve-3d;
+	}
+
+	.group:hover .flip-card-inner {
+		transform: rotateY(180deg);
+	}
+
+	.flip-card-front,
+	.flip-card-back {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
+		border-radius: 0.5rem;
+	}
+
+	.flip-card-back {
+		border: 1px solid #374151;
+		transform: rotateY(180deg);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 1rem;
+		color: white;
+	}
+
+	.flip-card {
+		aspect-ratio: 3/4;
+	}
+
+	.flip-card-inner {
+		aspect-ratio: 3/4;
+	}
+</style>
+
+<script>
+	function updateCountdowns() {
+		const countdowns = document.querySelectorAll('.countdown');
+
+		countdowns.forEach(countdown => {
+			const dateStr = countdown.getAttribute('data-date');
+			if (!dateStr) return;
+
+			const [day, month, year] = dateStr.split('-').map(Number);
+			const releaseDate = new Date(year, month - 1, day);
+			const now = new Date();
+
+			const diff = releaseDate.getTime() - now.getTime();
+
+			if (diff <= 0) {
+				countdown.innerHTML = '<p class="text-green-400 text-4xl font-bold border-gray-600 py-2">LANZADO</p>';
+				return;
+			}
+
+			const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+			const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+			const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+			const daysEl = countdown.querySelector('.days');
+			const hoursEl = countdown.querySelector('.hours');
+			const minutesEl = countdown.querySelector('.minutes');
+			const secondsEl = countdown.querySelector('.seconds');
+
+			if (daysEl) daysEl.textContent = days.toString();
+			if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
+			if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
+			if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
+		});
+	}
+
+	updateCountdowns();
+	setInterval(updateCountdowns, 1000);
+</script>

@@ -6,26 +6,35 @@ poster: co7n02.png
 trailer: 7tVwvbv6GjE
 genre: Shooter, Role-playing (RPG), Hack and slash/Beat 'em up, Adventure, Indie
 estado: Completado
-horas: 80
+horasTotal: 80
 logros_obt: 12
 logros_total: 12
 console_pc: Steam
 igdbId: 151665
 first_year_played: 2024
 dates_played:
+    y2026:
+        fecha_inicio: ""
+        fecha_final: ""
+        horas: ""
     y2025:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2024:
-        fecha_inicio: 27/01/2024
-        fecha_final: 02/03/2024
+        fecha_inicio: "27/01/2024"
+        fecha_final: "02/03/2024"
+        horas: ""
     y2023:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2022:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
 years_played:
+    y2026: false
     y2025: false
     y2024: true
     y2023: false

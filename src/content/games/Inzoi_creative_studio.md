@@ -6,26 +6,35 @@ poster: co8pfe.webp
 trailer: wfn_U1UHiQ8
 genre: Simulator
 estado: Completado
-horas: 1.5
+horasTotal: 2
 logros_obt: 0
 logros_total: 0
 console_pc: Steam
 igdbId: 279051
 first_year_played: 2025
 dates_played:
+    y2026:
+        fecha_inicio: ""
+        fecha_final: ""
+        horas: ""
     y2025:
         fecha_inicio: "20/03/2025"
         fecha_final: "28/03/2025"
+        horas: ""
     y2024:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2023:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2022:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
 years_played:
+    y2026: false
     y2025: true
     y2024: false
     y2023: false

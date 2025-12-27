@@ -6,26 +6,35 @@ poster: co4w4j.png
 trailer: YDyiYrIGF00
 genre: Role-playing (RPG), Hack and slash, Adventure
 estado: Completado
-horas: 663
+horasTotal: 663
 logros_obt: 90
 logros_total: 156
 console_pc: Steam
 igdbId: 26128
 first_year_played: 2022
 dates_played:
+    y2026:
+        fecha_inicio: ""
+        fecha_final: ""
+        horas: ""
     y2025:
         fecha_inicio: "07/01/2025"
         fecha_final: "27/04/2025"
+        horas: ""
     y2024:
-        fecha_inicio: 20/01/2024
-        fecha_final: 10/05/2024
+        fecha_inicio: "20/01/2024"
+        fecha_final: "10/05/2024"
+        horas: ""
     y2023:
         fecha_inicio: "04/08/2023"
         fecha_final: "31/12/2023"
+        horas: ""
     y2022:
         fecha_inicio: "02/01/2022"
         fecha_final: "25/12/2022"
+        horas: ""
 years_played:
+    y2026: false
     y2025: true
     y2024: true
     y2023: true

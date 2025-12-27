@@ -6,26 +6,35 @@ poster: co8ycw.webp
 trailer: 6Jx-PeNzly
 genre: Racing, Sport, Adventure
 estado: Completado
-horas: 11
+horasTotal: 11
 logros_obt: 25
 logros_total: 41
 console_pc: Xbox Series X 
 igdbId: 255091
 first_year_played: 2025
 dates_played:
+    y2026:
+        fecha_inicio: ""
+        fecha_final: ""
+        horas: ""
     y2025:
         fecha_inicio: "25/07/2025"
         fecha_final: "27/07/2025"
+        horas: ""
     y2024:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2023:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2022:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
 years_played:
+    y2026: false
     y2025: true
     y2024: false
     y2023: false

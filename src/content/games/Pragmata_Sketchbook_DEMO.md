@@ -6,26 +6,35 @@ poster: co9wwv.webp
 trailer: A6YCL6UW1lI
 genre: Shooter, Adventure
 estado: Completado
-horas: 1
+horasTotal: 1
 logros_obt: 0
 logros_total: 0
 console_pc: Steam
 igdbId: 134612
 first_year_played: 2025
 dates_played:
+    y2026:
+        fecha_inicio: ""
+        fecha_final: ""
+        horas: ""
     y2025:
         fecha_inicio: "13/12/2025"
         fecha_final: "13/12/2025"
+        horas: ""
     y2024:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2023:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2022:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
 years_played:
+    y2026: false
     y2025: true
     y2024: false
     y2023: false

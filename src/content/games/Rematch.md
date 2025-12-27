@@ -6,26 +6,35 @@ poster: co95fx.webp
 trailer: FxpFiokmI2c
 genre: Sport, Indie
 estado: Abandonado
-horas: 1
+horasTotal: 1
 logros_obt: 6
 logros_total: 37
 console_pc: Xbox Console
 igdbId: 325588
 first_year_played: 2025
 dates_played:
+    y2026:
+        fecha_inicio: ""
+        fecha_final: ""
+        horas: ""
     y2025:
         fecha_inicio: "20/06/2025"
         fecha_final: "21/06/2025"
+        horas: ""
     y2024:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2023:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
     y2022:
         fecha_inicio: ""
         fecha_final: ""
+        horas: ""
 years_played:
+    y2026: false
     y2025: true
     y2024: false
     y2023: false
