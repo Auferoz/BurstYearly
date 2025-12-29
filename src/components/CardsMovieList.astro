@@ -1,22 +1,37 @@
 ---
 const TRAKT_CLIENT_ID = import.meta.env.TRAKT_CLIENT_ID;
 
-// GET a tu lista pública con imágenes
-const response = await fetch(
-    "https://api.trakt.tv/users/auferoz/lists/movies-2025/items/movies?extended=full,images",
-    {
-        headers: {
-        "Content-Type": "application/json",
-        "trakt-api-key": TRAKT_CLIENT_ID,
-        "trakt-api-version": "2",
-        },
-    }
-);
+let movies = [];
+let error = null;
 
-const movies = await response.json();
-// console.log(movies);
+try {
+    console.log('TRAKT_CLIENT_ID exists:', !!TRAKT_CLIENT_ID);
+
+    const response = await fetch(
+        "https://api.trakt.tv/users/auferoz/lists/movies-2025/items/movies?extended=full,images",
+        {
+            headers: {
+                "Content-Type": "application/json",
+                "trakt-api-key": TRAKT_CLIENT_ID,
+                "trakt-api-version": "2",
+            },
+        }
+    );
+
+    console.log('Response status:', response.status);
+
+    if (!response.ok) {
+        error = `Error ${response.status}: ${response.statusText}`;
+    } else {
+        movies = await response.json();
+    }
+} catch (e) {
+    error = e.message;
+    console.error('Fetch error:', e);
+}
 ---
 
+{error && <p class="text-red-500 col-span-full">{error}</p>}
 {
     movies.toReversed().map((item) => (
         <article class="flex flex-col gap-2 justify-between relative">
