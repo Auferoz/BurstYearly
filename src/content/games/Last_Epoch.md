@@ -6,7 +6,7 @@ poster: co7p46.webp
 trailer: esrO1CocQ9w
 genre: Role-playing (RPG), Hack and slash/Beat 'em up, Adventure, Indie
 estado: Jugando
-horasTotal: 5
+horasTotal: 8
 logros_obt: 0
 logros_total: 0
 console_pc: Steam
@@ -16,7 +16,7 @@ dates_played:
     y2026:
         fecha_inicio: ""
         fecha_final: ""
-        horas: ""
+        horas: "7"
     y2025:
         fecha_inicio: "19/12/2025"
         fecha_final: ""
@@ -24,7 +24,7 @@ dates_played:
     y2024:
         fecha_inicio: "24/02/2024"
         fecha_final: "24/02/2024"
-        horas: ""
+        horas: "1"
     y2023:
         fecha_inicio: ""
         fecha_final: ""
