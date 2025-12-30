@@ -1,117 +1,238 @@
 ---
 import CalendarStats from '../icons/CalendarStats.astro'
 import DatabaseCog from '../icons/DatabaseCog.astro'
-import MenuIcon from '../icons/MenuIcon.astro'
 ---
 
-<header class="flex items-center space-x-4 justify-between p-4 border-b border-gray-800 max-w-screen-xl max-w-7xl mx-auto">
+<header class="border-b border-gray-800">
+    <nav class="flex items-center justify-between p-4 max-w-7xl mx-auto">
 
-    <nav class="w-full flex items-center justify-between"> 
-        
-        <a href="/" title="Home"> 
+        <!-- Logo -->
+        <a href="/" title="Home">
             <h1 class="text-xl font-bold font-mono">BURST</h1>
-        </a> 
+        </a>
 
-        <div class="flex shrink flex-row items-center gap-12 lg:hidden text-base"> 
+        <!-- Hamburger Button (mobile) -->
+        <button id="menu-toggle" class="lg:hidden p-2 text-white hover:text-blue-500 focus:outline-none" aria-label="Toggle menu">
+            <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+            <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
 
-            <details class="MenuDetails">
-                <summary class="accordion  flex cursor-pointer items-center gap-2"> 
-                    <MenuIcon />
-                </summary>
-                <ul class="z-10 w-[auto] bg-slate-900 absolute p-4 right-2 top-15 rounded-b-lg shadow-lg z-5 border border-gray-800">
-                    <li class="pb-2 mb-2 border-b border-gray-800"> 
-                        <a href="/Games/2026/List2026/" class="text-white hover:text-blue-500">Games 2026</a>
-                    </li>
-                    <li class="pb-2 mb-2 border-b border-gray-800"> 
-                        <a href="/Games/2025/List2025/" class="text-white hover:text-blue-500">Games 2025</a>
-                    </li>
-                    <li class="pb-2 mb-2 border-b border-gray-800"> 
-                        <a href="/Games/2024/List2024/" class="text-white hover:text-blue-500">Games 2024</a>
-                    </li>
-                    <li class="pb-2 mb-2 border-b border-gray-800"> 
-                        <a href="/Games/2023/List2023/" class="text-white hover:text-blue-500">Games 2023</a>
-                    </li>
-                    <li class="pb-2 mb-2 border-b border-gray-800"> 
-                        <a href="/Games/2022/List2022/" class="text-white hover:text-blue-500">Games 2022</a>
-                    </li>
+        <!-- Navigation Menu -->
+        <div id="nav-menu" class="hidden lg:flex lg:items-center lg:gap-8
+            fixed lg:static inset-0 top-[65px] lg:top-0
+            bg-slate-950 lg:bg-transparent
+            flex-col lg:flex-row
+            p-6 lg:p-0
+            z-50">
+
+            <a href="/" class="block py-3 lg:py-0 text-white hover:text-blue-500 border-b border-gray-800 lg:border-0">
+                Home
+            </a>
+
+            <!-- Games Dropdown -->
+            <div class="nav-dropdown relative">
+                <button class="dropdown-toggle flex items-center justify-between w-full py-3 lg:py-0 text-white hover:text-blue-500 border-b border-gray-800 lg:border-0">
+                    <span>Games</span>
+                    <svg class="dropdown-arrow w-4 h-4 ml-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <ul class="dropdown-menu hidden lg:absolute lg:top-full lg:left-0 lg:pt-2
+                    lg:min-w-[180px]
+                    pl-4 lg:pl-0">
+                    <div class="bg-slate-900 lg:bg-gray-800 lg:rounded-lg lg:shadow-lg overflow-hidden">
+                        <li>
+                            <a href="/Games/List2026/" class="flex items-center gap-2 py-3 px-4 text-white hover:bg-gray-700 hover:text-blue-400 transition">
+                                <CalendarStats />
+                                Games 2026
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Games/List2025/" class="flex items-center gap-2 py-3 px-4 text-white hover:bg-gray-700 hover:text-blue-400 transition">
+                                <CalendarStats />
+                                Games 2025
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Games/List2024/" class="flex items-center gap-2 py-3 px-4 text-white hover:bg-gray-700 hover:text-blue-400 transition">
+                                <CalendarStats />
+                                Games 2024
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Games/List2023/" class="flex items-center gap-2 py-3 px-4 text-white hover:bg-gray-700 hover:text-blue-400 transition">
+                                <CalendarStats />
+                                Games 2023
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Games/List2022/" class="flex items-center gap-2 py-3 px-4 text-white hover:bg-gray-700 hover:text-blue-400 transition">
+                                <CalendarStats />
+                                Games 2022
+                            </a>
+                        </li>
+                    </div>
                 </ul>
-            </details>
+            </div>
 
+            <a href="/Series/" class="block py-3 lg:py-0 text-white hover:text-blue-500 border-b border-gray-800 lg:border-0">
+                Series
+            </a>
+
+            <!-- Movies Dropdown -->
+            <div class="nav-dropdown relative">
+                <button class="dropdown-toggle flex items-center justify-between w-full py-3 lg:py-0 text-white hover:text-blue-500 border-b border-gray-800 lg:border-0">
+                    <span>Movies</span>
+                    <svg class="dropdown-arrow w-4 h-4 ml-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <ul class="dropdown-menu hidden lg:absolute lg:top-full lg:left-0 lg:pt-2
+                    lg:min-w-[180px]
+                    pl-4 lg:pl-0">
+                    <div class="bg-slate-900 lg:bg-gray-800 lg:rounded-lg lg:shadow-lg overflow-hidden">
+                        <li>
+                            <a href="/Movies/List2026/" class="flex items-center gap-2 py-3 px-4 text-white hover:bg-gray-700 hover:text-blue-400 transition">
+                                <CalendarStats />
+                                Movies 2026
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Movies/List2025/" class="flex items-center gap-2 py-3 px-4 text-white hover:bg-gray-700 hover:text-blue-400 transition">
+                                <CalendarStats />
+                                Movies 2025
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Movies/List2024/" class="flex items-center gap-2 py-3 px-4 text-white hover:bg-gray-700 hover:text-blue-400 transition">
+                                <CalendarStats />
+                                Movies 2024
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Movies/List2023/" class="flex items-center gap-2 py-3 px-4 text-white hover:bg-gray-700 hover:text-blue-400 transition">
+                                <CalendarStats />
+                                Movies 2023
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Movies/List2022/" class="flex items-center gap-2 py-3 px-4 text-white hover:bg-gray-700 hover:text-blue-400 transition">
+                                <CalendarStats />
+                                Movies 2022
+                            </a>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+
+            <!-- DatabaseCog (visible in mobile menu too) -->
+            <div class="mt-4 lg:mt-0 lg:ml-4 pt-4 lg:pt-0 border-t border-gray-800 lg:border-0">
+                <DatabaseCog />
+            </div>
         </div>
 
-
-        <div class="hidden shrink flex-row items-center gap-12 lg:flex text-base"> 
-
-            <a href="/" class="text-white hover:text-blue-500">Home</a>
-
-            <details class="group relative MenuDetails">
-                
-                <summary class="accordion  flex cursor-pointer items-center gap-2"> Games 
-                    <svg width="22" height="13" viewBox="0 0 22 13" fill="none" xmlns="http://www.w3.org/2000/svg" 
-                        class="inline-block size-3 rotate-0 transition-transform group-open:-rotate-180 duration-500 " aria-hidden="true">
-                        <path d="M1 1L11 11L21 1" stroke="currentColor" stroke-width="2"></path>
-                    </svg>
-                </summary>
-
-                <ul class="z-10 absolute top-6 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600">  
-                    <li class="hover:bg-gray-800 hover:text-white rounded-md"> 
-                        <a href="/Games/2026/List2026/" class="flex items-center gap-2 p-3 leading-none transition"> 
-                            <CalendarStats /> 
-                            Games 2026
-                        </a> 
-                    </li>  
-                    <li class="hover:bg-gray-800 hover:text-white rounded-md"> 
-                        <a href="/Games/2025/List2025/" class="flex items-center gap-2 p-3 leading-none transition"> 
-                            <CalendarStats /> 
-                            Games 2025
-                        </a> 
-                    </li>  
-                    <li class="hover:bg-gray-800 hover:text-white rounded-md"> 
-                        <a href="/Games/2024/List2024/" class="flex items-center gap-2 p-3 leading-none transition"> 
-                            <CalendarStats /> 
-                            Games 2024
-                        </a> 
-                    </li>
-                    <li class="hover:bg-gray-800 hover:text-white rounded-md"> 
-                        <a href="/Games/2023/List2023/" class="flex items-center gap-2 p-3 leading-none transition"> 
-                            <CalendarStats /> 
-                            Games 2023 
-                        </a> 
-                    </li>
-                    <li class="hover:bg-gray-800 hover:text-white rounded-md"> 
-                        <a href="/Games/2022/List2022/" class="flex items-center gap-2 p-3 leading-none transition"> 
-                            <CalendarStats /> 
-                            Games 2022 
-                        </a> 
-                    </li>
-                </ul>
-
-            </details>
-
-            <a href="/Series/" class="text-white hover:text-blue-500">Series</a> 
-
-            <a href="/Movies/" class="text-white hover:text-blue-500">Movies</a> 
-
-        </div> 
-
-        <div class="hidden gap-4 lg:flex"> 
-            <DatabaseCog />
-        </div> 
     </nav>
-
 </header>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const menuMobile = document.getElementsByClassName('MenuDetails')[0];
-        if (menuMobile) {
-            const links = menuMobile.querySelectorAll('a');
-        
-            links.forEach(link => {
-                link.addEventListener('click', function () {
-                    menuMobile.removeAttribute('open');
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+        // Toggle mobile menu
+        menuToggle?.addEventListener('click', () => {
+            const isOpen = !navMenu?.classList.contains('hidden');
+
+            if (isOpen) {
+                navMenu?.classList.add('hidden');
+                navMenu?.classList.remove('flex');
+                menuIcon?.classList.remove('hidden');
+                closeIcon?.classList.add('hidden');
+            } else {
+                navMenu?.classList.remove('hidden');
+                navMenu?.classList.add('flex');
+                menuIcon?.classList.add('hidden');
+                closeIcon?.classList.remove('hidden');
+            }
+        });
+
+        // Toggle dropdowns
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const dropdown = toggle.closest('.nav-dropdown');
+                const menu = dropdown?.querySelector('.dropdown-menu');
+                const arrow = toggle.querySelector('.dropdown-arrow');
+
+                // Close other dropdowns
+                dropdownToggles.forEach(otherToggle => {
+                    if (otherToggle !== toggle) {
+                        const otherDropdown = otherToggle.closest('.nav-dropdown');
+                        const otherMenu = otherDropdown?.querySelector('.dropdown-menu');
+                        const otherArrow = otherToggle.querySelector('.dropdown-arrow');
+                        otherMenu?.classList.add('hidden');
+                        otherArrow?.classList.remove('rotate-180');
+                    }
                 });
+
+                // Toggle current dropdown
+                menu?.classList.toggle('hidden');
+                arrow?.classList.toggle('rotate-180');
             });
-        }
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+            const target = e.target as HTMLElement;
+            if (!target.closest('.nav-dropdown')) {
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.add('hidden');
+                });
+                document.querySelectorAll('.dropdown-arrow').forEach(arrow => {
+                    arrow.classList.remove('rotate-180');
+                });
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        navMenu?.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 1024) {
+                    navMenu?.classList.add('hidden');
+                    navMenu?.classList.remove('flex');
+                    menuIcon?.classList.remove('hidden');
+                    closeIcon?.classList.add('hidden');
+                }
+            });
+        });
+
+        // Handle resize - reset menu state on desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) {
+                navMenu?.classList.remove('flex');
+                navMenu?.classList.add('hidden');
+                menuIcon?.classList.remove('hidden');
+                closeIcon?.classList.add('hidden');
+            }
+        });
     });
 </script>
+
+<style>
+    /* Desktop hover for dropdown */
+    @media (min-width: 1024px) {
+        .nav-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .nav-dropdown:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+    }
+</style>
