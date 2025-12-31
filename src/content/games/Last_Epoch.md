@@ -6,7 +6,7 @@ poster: co7p46.webp
 trailer: esrO1CocQ9w
 genre: Role-playing (RPG), Hack and slash/Beat 'em up, Adventure, Indie
 estado: Jugando
-horasTotal: 8
+horasTotal: 10
 logros_obt: 0
 logros_total: 0
 console_pc: Steam
