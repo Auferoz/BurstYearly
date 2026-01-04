@@ -1,0 +1,26 @@
+---
+interface Props {
+    bgImage?: string;
+}
+
+const { bgImage = 'walter-r2.trakt.tv/images/movies/000/191/797/fanarts/full/ddc1503bbe.jpg.webp' } = Astro.props;
+
+// Asegura que la URL tenga el prefijo https://
+const fullImageUrl = bgImage.startsWith('http') ? bgImage : `https://${bgImage}`;
+---
+
+<div
+    class="movie-bg-list fixed inset-0 w-full h-auto -z-10"
+    style={`background-image: url('${fullImageUrl}')`}
+>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/90"></div>
+</div>
+
+<style>
+    .movie-bg-list {
+        background-size: 100% auto;
+        background-position: top center;
+        background-repeat: no-repeat;
+        opacity: 0.3;
+    }
+</style>

@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import NavHeader from '../../components/NavHeader.astro';
 import CardsMovieList from '../../components/CardsMovieList.astro';
 import { getMoviesByYear } from '../../services/apiMovies.js';
+import CarruselImage from '../../components/CarruselImage.astro';
 
 const years = [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026];
 
@@ -30,9 +31,11 @@ const timeToWatch = [
 ---
 <Layout title="BURST Movies - My List Yearly">
     <main>
-        <NavHeader />
 
+        <NavHeader />
+        
         <div class="max-w-screen-xl max-w-7xl mx-auto p-4 pt-8">
+
 
             <!-- <pre>{JSON.stringify(movies, null, 2)}</pre> -->
 
