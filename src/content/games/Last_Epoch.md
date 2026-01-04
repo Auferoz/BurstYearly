@@ -5,8 +5,8 @@ companie: Eleventh Hour Games
 poster: co7p46.webp
 trailer: esrO1CocQ9w
 genre: Role-playing (RPG), Hack and slash/Beat 'em up, Adventure, Indie
-estado: Jugando
-horasTotal: 10
+estado: Completado
+horasTotal: 23
 logros_obt: 0
 logros_total: 0
 console_pc: Steam
@@ -14,13 +14,13 @@ igdbId: 95118
 first_year_played: 2024
 dates_played:
     y2026:
-        fecha_inicio: ""
-        fecha_final: ""
-        horas: "7"
+        fecha_inicio: "01/01/2026"
+        fecha_final: "03/01/2026"
+        horas: "13"
     y2025:
         fecha_inicio: "19/12/2025"
-        fecha_final: ""
-        horas: ""
+        fecha_final: "31/12/2025"
+        horas: "9"
     y2024:
         fecha_inicio: "24/02/2024"
         fecha_final: "24/02/2024"
@@ -34,7 +34,7 @@ dates_played:
         fecha_final: ""
         horas: ""
 years_played:
-    y2026: false
+    y2026: true
     y2025: true
     y2024: true
     y2023: false

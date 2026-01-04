@@ -1,0 +1,27 @@
+---
+import Cardsboard from '../../components/Cardsboard.astro';
+import ListCardsView from '../../components/ListCardsView.astro';
+import NavHeader from '../../components/NavHeader.astro';
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+    const years = [2022, 2023, 2024, 2025, 2026];
+    return years.map(year => ({
+        params: { year: year.toString() }
+    }));
+}
+
+const { year } = Astro.params;
+---
+
+<Layout title={`List Games ${year} - BURST`}>
+	<main>
+
+		<NavHeader />
+
+		<Cardsboard yearView={year} />
+
+		<ListCardsView yearView={year} />
+
+	</main>
+</Layout>

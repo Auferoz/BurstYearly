@@ -6,8 +6,8 @@ poster: co2z8z.webp
 trailer: wpx2Z2CCjPs
 genre: Role-playing (RPG), Adventure
 estado: Jugando
-horasTotal: 4
-logros_obt: 10
+horasTotal: 10
+logros_obt: 13
 logros_total: 34
 console_pc: Xbox Series X
 igdbId: 119374
@@ -19,8 +19,8 @@ dates_played:
         horas: ""
     y2025:
         fecha_inicio: "24/12/2025"
-        fecha_final: ""
-        horas: "4"
+        fecha_final: "31/12/2025"
+        horas: "10"
     y2024:
         fecha_inicio: ""
         fecha_final: ""

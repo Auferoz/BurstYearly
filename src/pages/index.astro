@@ -293,13 +293,14 @@ const proximamenteGames = [
 						<div class="flip-card-inner group-hover:rotate-y-180">
 							<div class="flip-card-front">
 								<img src={proxGame.poster} alt={proxGame.title} class="w-full h-full rounded-lg" />
+								<p class="absolute bottom-1 left-2">{proxGame.dateRelease}</p>
 							</div>
 							<div class="flip-card-back countdown" data-date={proxGame.dateRelease}>
-								<div class="flex flex-col gap-4 justify-start items-start">
-									<div class="text-sm tracking-widest"><span class="days font-bold text-4xl bg-blue-800/50 px-2 rounded-lg border border-blue-800">---</span> Days</div>
-									<div class="text-sm tracking-widest"><span class="hours font-bold text-4xl bg-blue-800/50 px-2 rounded-lg border border-blue-800">---</span> Hours</div>
-									<div class="text-sm tracking-widest"><span class="minutes font-bold text-4xl bg-blue-800/50 px-2 rounded-lg border border-blue-800">---</span> Minutes</div>
-									<div class="text-sm tracking-widest"><span class="seconds font-bold text-4xl bg-blue-800/50 px-2 rounded-lg border border-blue-800">---</span> Seconds</div>
+								<div class="flex flex-col gap-1 lg:gap-4 justify-start items-start">
+									<div class="text-xs lg:text-sm tracking-widest"><span class="days font-bold text-2xl lg:text-4xl bg-blue-800/50 px-2 rounded-lg border border-blue-800">---</span> Days</div>
+									<div class="text-xs lg:text-sm tracking-widest"><span class="hours font-bold text-2xl lg:text-4xl bg-blue-800/50 px-2 rounded-lg border border-blue-800">---</span> Hours</div>
+									<div class="text-xs lg:text-sm tracking-widest"><span class="minutes font-bold text-2xl lg:text-4xl bg-blue-800/50 px-2 rounded-lg border border-blue-800">---</span> Minutes</div>
+									<div class="text-xs lg:text-sm tracking-widest"><span class="seconds font-bold text-2xl lg:text-4xl bg-blue-800/50 px-2 rounded-lg border border-blue-800">---</span> Seconds</div>
 								</div>
 							</div>
 						</div>
@@ -426,7 +427,7 @@ const proximamenteGames = [
 			const diff = releaseDate.getTime() - now.getTime();
 
 			if (diff <= 0) {
-				countdown.innerHTML = '<p class="text-green-400 text-4xl font-bold border-gray-600 py-2">LANZADO</p>';
+				countdown.innerHTML = '<p class="text-green-400 text-2xl lg:text-3xl font-bold border-gray-600 py-2">LANZADO</p>';
 				return;
 			}
 
