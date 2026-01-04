@@ -1,4 +1,5 @@
 ---
+import { fade } from "astro:transitions";
 import InfoCicle from "../icons/InfoCicle.astro";
 import DeviceTv from "../icons/DeviceTv.astro";
 import IconStar from "../icons/IconStar.astro";
@@ -7,12 +8,12 @@ const { movies = [] } = Astro.props;
 ---
 
 {
-    movies.map((item) => (
+    movies.map((item, index) => (
         <div class="relative mt-3">
             <!-- Badge fuera del overflow -->
             <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-10 border-2 border-gray-700 bg-zinc-900 rounded-lg">
                 <span class="FiraCodeFont text-xs text-white flex flex-row justify-center items-center gap-1 p-1">
-                    <InfoCicle width="16" height="16" /> {item.rank}
+                    <InfoCicle width="16" height="16" /> {index + 1}
                 </span>
             </div>
 
@@ -29,6 +30,8 @@ const { movies = [] } = Astro.props;
                     src={`https://${item.movie.images?.poster?.[0] || ''}`}
                     alt={item.movie.title}
                     class="w-full h-full rounded-lg"
+                    transition:name={`movie-poster-${item.movie.ids.trakt}`}
+                    transition:animate={fade({ duration: '0.3s' })}
                 />
                 
                 {item.user_rating && (

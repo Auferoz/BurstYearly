@@ -29,6 +29,48 @@ async function getUserRatings() {
     }
 }
 
+export async function getAllMovies() {
+    const years = [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026];
+    let allMovies = [];
+    let error = null;
+
+    try {
+        const userRatings = await getUserRatings();
+
+        const promises = years.map(year =>
+            fetch(
+                `https://api.trakt.tv/users/auferoz/lists/movies-${year}/items/movies?extended=full,images&sort_how=desc`,
+                { headers: traktHeaders }
+            ).then(res => res.ok ? res.json() : [])
+        );
+
+        const results = await Promise.all(promises);
+
+        results.forEach((movies, index) => {
+            const year = years[index];
+            movies.forEach(item => {
+                const traktId = item.movie.ids.trakt;
+                const userRating = userRatings[traktId] || null;
+                allMovies.push({
+                    ...item,
+                    year_watched: year,
+                    user_rating: userRating,
+                    movie: {
+                        ...item.movie,
+                        user_rating: userRating
+                    }
+                });
+            });
+        });
+
+    } catch (e) {
+        error = e.message;
+        console.error('Fetch error:', e);
+    }
+
+    return { movies: allMovies, error };
+}
+
 export async function getMoviesByYear(year) {
     let movies = [];
     let error = null;
@@ -39,7 +81,7 @@ export async function getMoviesByYear(year) {
         // Obtener películas de la lista y ratings en paralelo
         const [listResponse, userRatings] = await Promise.all([
             fetch(
-                `https://api.trakt.tv/users/auferoz/lists/movies-${year}/items/movies?extended=full,images`,
+                `https://api.trakt.tv/users/auferoz/lists/movies-${year}/items/movies?extended=full,images&sort_how=desc`,
                 { headers: traktHeaders }
             ),
             getUserRatings()

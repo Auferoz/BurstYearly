@@ -2,20 +2,22 @@
 import Layout from '../../layouts/Layout.astro';
 import NavHeader from '../../components/NavHeader.astro';
 import CardsMovieList from '../../components/CardsMovieList.astro';
-import { getMoviesByYear } from '../../services/apiMovies.js';
+import { getAllMovies } from '../../services/apiMovies.js';
 
 const years = [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026];
 
-export function getStaticPaths() {
-    const years = [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026];
-    return years.map(year => ({
-        params: { year: year.toString() }
-    }));
-}
+const { movies, error } = await getAllMovies();
 
-const { year } = Astro.params;
-const { movies, error } = await getMoviesByYear(parseInt(year));
-const currentYear = parseInt(year);
+// Agrupar películas por año
+const moviesByYear = movies.reduce((acc, movie) => {
+    const year = movie.year_watched;
+    if (!acc[year]) acc[year] = [];
+    acc[year].push(movie);
+    return acc;
+}, {});
+
+// Ordenar años de más reciente a más antiguo
+const sortedYears = Object.keys(moviesByYear).sort((a, b) => Number(b) - Number(a));
 
 // Calcular tiempo total de visualización
 const totalMinutes = movies.reduce((sum, item) => sum + (item.movie.runtime || 0), 0);
@@ -34,13 +36,11 @@ const timeToWatch = [
 
         <div class="max-w-screen-xl max-w-7xl mx-auto p-4 pt-8">
 
-            <!-- <pre>{JSON.stringify(movies, null, 2)}</pre> -->
-
             <div class="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-3 mb-5">
 
                 <div>
                     <h2 class="text-md lg:text-2xl font-bold text-white text-start flex align-center items-center">
-                        <span class="">Lista de Peliculas vista en {year}</span>
+                        <span class="">Lista de Peliculas vistas (Todas)</span>
                     </h2>
 
                     <p class="FiraCodeFont">
@@ -56,20 +56,14 @@ const timeToWatch = [
                     <div class="flex flex-wrap gap-2" role="group">
                         <a
                             href="/Movies/ListAll"
-                            class="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium rounded-lg border border-zinc-700 bg-zinc-800 text-zinc-300 hover:bg-zinc-700 hover:text-white transition-colors focus:z-10 focus:ring-2 focus:ring-sky-500 focus:outline-none"
+                            class="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium rounded-lg border border-sky-600 bg-sky-600 text-white transition-colors focus:z-10 focus:ring-2 focus:ring-sky-500 focus:outline-none"
                         >
                             Todas
                         </a>
                         {years.map((y) => (
                             <a
                                 href={`/Movies/List${y}`}
-                                class:list={[
-                                    "px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium rounded-lg border border-zinc-700 transition-colors",
-                                    "focus:z-10 focus:ring-2 focus:ring-sky-500 focus:outline-none",
-                                    currentYear === y
-                                        ? "bg-sky-600 text-white border-sky-600"
-                                        : "bg-zinc-800 text-zinc-300 hover:bg-zinc-700 hover:text-white"
-                                ]}
+                                class="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium rounded-lg border border-zinc-700 bg-zinc-800 text-zinc-300 hover:bg-zinc-700 hover:text-white transition-colors focus:z-10 focus:ring-2 focus:ring-sky-500 focus:outline-none"
                             >
                                 {y}
                             </a>
@@ -79,9 +73,19 @@ const timeToWatch = [
 
             </div>
 
-            <div class="grid gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-6">
-                <CardsMovieList movies={movies} />
-            </div>
+            {sortedYears.map((year) => (
+                <div class="mb-8">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="h-px flex-1 bg-zinc-700"></div>
+                        <h3 class="text-xl font-bold text-sky-500 FiraCodeFont">{year}</h3>
+                        <span class="text-sm text-zinc-400">({moviesByYear[year].length} películas)</span>
+                        <div class="h-px flex-1 bg-zinc-700"></div>
+                    </div>
+                    <div class="grid gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-6">
+                        <CardsMovieList movies={moviesByYear[year]} />
+                    </div>
+                </div>
+            ))}
         </div>
     </main>
 </Layout>
