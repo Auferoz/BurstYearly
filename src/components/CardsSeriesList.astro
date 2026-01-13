@@ -1,6 +1,7 @@
 ---
 import InfoCicle from "../icons/InfoCicle.astro";
 import DeviceTv from "../icons/DeviceTv.astro";
+import IconStar from "../icons/IconStar.astro";
 
 const { series = [] } = Astro.props;
 ---
@@ -15,19 +16,29 @@ const { series = [] } = Astro.props;
                 </span>
             </div>
 
-            <article class="flex flex-col justify-between relative rounded-xl border-2 border-gray-700 group hover:border-sky-700 overflow-hidden">
-                <div class="absolute bottom-0 left-0 w-full h-7 bg-gray-900/70 z-2 hidden group-hover:flex">
+            <article class={`flex flex-col justify-between relative rounded-xl border-2 border-gray-700 group overflow-hidden ${item.statusViewed === 'ongoing' ? 'ongoing' : 'completed'}`}>
+                {/* <div class="absolute bottom-0 left-0 w-full h-7 bg-gray-900/70 z-2 hidden group-hover:flex">
                     <a href={item.show.trailer} target="_blank">
                         <span class="FiraCodeFont text-xs text-white text-nowrap flex justify-center items-center gap-2 absolute -bottom-[-6px] -left-[-5px]">
                             <DeviceTv width="16" height="16" /> Ver Trailer
                         </span>
                     </a>
-                </div>
+                </div> */}
                 <img
-                    src={`https://${item.show.images?.poster?.[0] || ''}`}
+                    src={`https://${item.season.images?.poster?.[0] || ''}`}
                     alt={item.show.title}
                     class="w-full h-full rounded-lg"
                 />
+
+                <div class="absolute bottom-1 right-1 z-10 border-2 border-gray-700 bg-zinc-900 rounded-lg hidden group-hover:flex">
+                    <a href={item.show.trailer} target="_blank">
+                        <span class="FiraCodeFont text-xs text-white flex flex-row justify-center items-center gap-1 p-1">
+                            <DeviceTv width="16" height="16" /> Season {item.numberSeason} - {item.platformViewed}
+                        </span>
+                    </a>
+                </div>
+
+                
             </article>
         </div>
     ))

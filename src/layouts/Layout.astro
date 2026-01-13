@@ -31,10 +31,18 @@ import '@fontsource-variable/fira-code';
 		color: #fff;
 	}
 
+	body { margin: 0; padding: 0; }
+	body, body::before, body::after { box-sizing: border-box; }
+
 	.FiraCodeFont {
 		font-family: 'Fira Code Variable', monospace;
 	}
 
-	body { margin: 0; padding: 0; }
-	body, body::before, body::after { box-sizing: border-box; }
+    .ongoing:hover {
+        @apply border-green-700;
+    }
+
+    .completed:hover {
+        @apply border-sky-700;
+    }
 </style>

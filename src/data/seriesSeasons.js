@@ -1,0 +1,68 @@
+/**
+ * Base de datos local de temporadas de series vistas
+ *
+ * Campos:
+ * - idTrakt: Slug de la serie en Trakt
+ * - numberSeason: Número de temporada
+ * - yearViewed: Año en que se vio
+ * - platformViewed: Plataforma donde se vio
+ * - statusViewed: "ongoing" (en progreso) o "completed" (completada)
+ */
+
+export const ListSeriesSeasons = [
+    {
+        idTrakt: "east-new-york",
+        numberSeason: 1,
+        yearViewed: 2026,
+        platformViewed: "HBO Max",
+        statusViewed: "ongoing"
+    },
+    {
+        idTrakt: "wandavision",
+        numberSeason: 1,
+        yearViewed: 2026,
+        platformViewed: "Disney+",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "ghosts-2021",
+        numberSeason: 3,
+        yearViewed: 2025,
+        platformViewed: "Netflix",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "ghosts-2021",
+        numberSeason: 2,
+        yearViewed: 2025,
+        platformViewed: "Netflix",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "ghosts-2021",
+        numberSeason: 1,
+        yearViewed: 2025,
+        platformViewed: "Netflix",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "the-falcon-and-the-winter-soldier",
+        numberSeason: 1,
+        yearViewed: 2026,
+        platformViewed: "Disney+",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "loki-2021",
+        numberSeason: 1,
+        yearViewed: 2026,
+        platformViewed: "Disney+",
+        statusViewed: "ongoing"
+    },
+];
+
+// Helper para obtener todos los años únicos
+export const getAvailableYears = () => {
+    const years = [...new Set(ListSeriesSeasons.map(s => s.yearViewed))];
+    return years.sort((a, b) => b - a); // Ordenar descendente
+};
