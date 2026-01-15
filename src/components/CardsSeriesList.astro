@@ -16,7 +16,7 @@ const { series = [] } = Astro.props;
                 </span>
             </div>
 
-            <article class={`flex flex-col justify-between relative rounded-xl border-2 border-gray-700 group overflow-hidden ${item.statusViewed === 'ongoing' ? 'ongoing' : 'completed'}`}>
+            <article class={`flex flex-col justify-between relative rounded-xl border-2 border-gray-700 group overflow-hidden ${item.statusViewed === 'ongoing' ? 'ongoing' : 'completed'}`} data-show-id={item.show?.ids?.trakt || ''}>
                 {/* <div class="absolute bottom-0 left-0 w-full h-7 bg-gray-900/70 z-2 hidden group-hover:flex">
                     <a href={item.show.trailer} target="_blank">
                         <span class="FiraCodeFont text-xs text-white text-nowrap flex justify-center items-center gap-2 absolute -bottom-[-6px] -left-[-5px]">
@@ -25,15 +25,15 @@ const { series = [] } = Astro.props;
                     </a>
                 </div> */}
                 <img
-                    src={`https://${item.season.images?.poster?.[0] || ''}`}
-                    alt={item.show.title}
+                    src={`https://${item.season?.images?.poster?.[0] || item.show?.images?.poster?.[0] || ''}`}
+                    alt={item.show?.title || ''}
                     class="w-full h-full rounded-lg"
                 />
 
                 <div class="absolute bottom-1 right-1 z-10 border-2 border-gray-700 bg-zinc-900 rounded-lg hidden group-hover:flex">
-                    <a href={item.show.trailer} target="_blank">
+                    <a href={item.show?.trailer} target="_blank">
                         <span class="FiraCodeFont text-xs text-white flex flex-row justify-center items-center gap-1 p-1">
-                            <DeviceTv width="16" height="16" /> Season {item.numberSeason} - {item.platformViewed}
+                            <DeviceTv width="16" height="16" /> Season {item.numberSeason || ''} - {item.platformViewed || ''}
                         </span>
                     </a>
                 </div>
