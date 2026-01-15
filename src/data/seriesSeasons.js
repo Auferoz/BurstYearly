@@ -15,7 +15,7 @@ export const ListSeriesSeasons = [
         numberSeason: 1,
         yearViewed: 2026,
         platformViewed: "HBO Max",
-        statusViewed: "ongoing"
+        statusViewed: "completed"
     },
     {
         idTrakt: "wandavision",
@@ -57,7 +57,7 @@ export const ListSeriesSeasons = [
         numberSeason: 1,
         yearViewed: 2026,
         platformViewed: "Disney+",
-        statusViewed: "ongoing"
+        statusViewed: "completed"
     },
 ];
 

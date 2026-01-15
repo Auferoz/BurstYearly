@@ -1,4 +1,5 @@
 const TRAKT_CLIENT_ID = import.meta.env.TRAKT_CLIENT_ID;
+const TRAKT_ACCESS_TOKEN = import.meta.env.TRAKT_ACCESS_TOKEN;
 
 export async function getSeriesSeasonsByYear(seriesList, year) {
     let series = [];
