@@ -1,7 +1,6 @@
 ---
 import Cardsboard from '../../components/Cardsboard.astro';
 import ListCardsView from '../../components/ListCardsView.astro';
-import NavHeader from '../../components/NavHeader.astro';
 import Layout from '../../layouts/Layout.astro';
 
 export function getStaticPaths() {
@@ -16,8 +15,6 @@ const { year } = Astro.params;
 
 <Layout title={`List Games ${year} - BURST`}>
 	<main>
-
-		<NavHeader />
 
 		<Cardsboard yearView={year} />
 

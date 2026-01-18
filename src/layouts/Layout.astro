@@ -1,5 +1,6 @@
 ---
 import { ClientRouter } from "astro:transitions"
+import NavHeader from "../components/NavHeader.astro"
 const { title } = Astro.props
 
 // Supports weights 100-900
@@ -17,6 +18,7 @@ import '@fontsource-variable/fira-code';
 		<ClientRouter />
 	</head>
 	<body>
+		<NavHeader />
 		<slot />
 	</body>
 </html>

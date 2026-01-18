@@ -1,7 +1,10 @@
 ---
 import InfoCicle from "../icons/InfoCicle.astro";
-import DeviceTv from "../icons/DeviceTv.astro";
-import IconStar from "../icons/IconStar.astro";
+import DeviceTvOld from "../icons/DeviceTvOld.astro";
+import DisneyPlus from "../icons/DisneyPlus.astro";
+import Crunchyroll from "../icons/Crunchyroll.astro";
+import HboMax from "../icons/HboMax.astro";
+import Netflix from "../icons/Netflix.astro";
 
 const { series = [] } = Astro.props;
 ---
@@ -20,7 +23,7 @@ const { series = [] } = Astro.props;
                 {/* <div class="absolute bottom-0 left-0 w-full h-7 bg-gray-900/70 z-2 hidden group-hover:flex">
                     <a href={item.show.trailer} target="_blank">
                         <span class="FiraCodeFont text-xs text-white text-nowrap flex justify-center items-center gap-2 absolute -bottom-[-6px] -left-[-5px]">
-                            <DeviceTv width="16" height="16" /> Ver Trailer
+                            <DeviceTvOld width="16" height="16" /> Ver Trailer
                         </span>
                     </a>
                 </div> */}
@@ -30,10 +33,15 @@ const { series = [] } = Astro.props;
                     class="w-full h-full rounded-lg"
                 />
 
-                <div class="absolute bottom-1 right-1 z-10 border-2 border-gray-700 bg-zinc-900 rounded-lg hidden group-hover:flex">
+                <div class="absolute items-center justify-center h-7 w-full bottom-0 left-0 z-10 bg-zinc-900/80 border-t-1 border-zinc-950 rounded-xs hidden group-hover:flex">
                     <a href={item.show?.trailer} target="_blank">
                         <span class="FiraCodeFont text-xs text-white flex flex-row justify-center items-center gap-1 p-1">
-                            <DeviceTv width="16" height="16" /> Season {item.numberSeason || ''} - {item.platformViewed || ''}
+                            {item.platformViewed === 'Disney+' && <DisneyPlus width="16" height="16" />}
+                            {item.platformViewed === 'Crunchyroll' && <Crunchyroll width="16" height="16" />}
+                            {item.platformViewed === 'HBO Max' && <HboMax width="16" height="16" />}
+                            {item.platformViewed === 'Netflix' && <Netflix width="16" height="16" />}
+                            {item.platformViewed || ''} 
+                            <DeviceTvOld width="16" height="16" /> Season {item.numberSeason || ''}
                         </span>
                     </a>
                 </div>

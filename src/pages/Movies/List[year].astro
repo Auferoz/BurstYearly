@@ -1,6 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import NavHeader from '../../components/NavHeader.astro';
 import CardsMovieList from '../../components/CardsMovieList.astro';
 import YearNavigation from '../../components/YearNavigation.astro';
 import { getMoviesByYear } from '../../services/apiMovies.js';
@@ -31,8 +30,6 @@ const timeToWatch = [
 ---
 <Layout title="BURST Movies - My List Yearly">
     <main>
-
-        <NavHeader />
         
         <div class="max-w-screen-xl max-w-7xl mx-auto p-4 pt-8">
 

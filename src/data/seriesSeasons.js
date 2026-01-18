@@ -11,22 +11,8 @@
 
 export const ListSeriesSeasons = [
     {
-        idTrakt: "east-new-york",
-        numberSeason: 1,
-        yearViewed: 2026,
-        platformViewed: "HBO Max",
-        statusViewed: "completed"
-    },
-    {
-        idTrakt: "wandavision",
-        numberSeason: 1,
-        yearViewed: 2026,
-        platformViewed: "Disney+",
-        statusViewed: "completed"
-    },
-    {
         idTrakt: "ghosts-2021",
-        numberSeason: 3,
+        numberSeason: 1,
         yearViewed: 2025,
         platformViewed: "Netflix",
         statusViewed: "completed"
@@ -40,9 +26,23 @@ export const ListSeriesSeasons = [
     },
     {
         idTrakt: "ghosts-2021",
-        numberSeason: 1,
+        numberSeason: 3,
         yearViewed: 2025,
         platformViewed: "Netflix",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "east-new-york",
+        numberSeason: 1,
+        yearViewed: 2026,
+        platformViewed: "HBO Max",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "wandavision",
+        numberSeason: 1,
+        yearViewed: 2026,
+        platformViewed: "Disney+",
         statusViewed: "completed"
     },
     {
@@ -59,10 +59,31 @@ export const ListSeriesSeasons = [
         platformViewed: "Disney+",
         statusViewed: "completed"
     },
+    {
+        idTrakt: "spy-x-family",
+        numberSeason: 3,
+        yearViewed: 2026,
+        platformViewed: "Crunchyroll",
+        statusViewed: "ongoing"
+    },
+    {
+        idTrakt: "what-if-2021",
+        numberSeason: 1,
+        yearViewed: 2026,
+        platformViewed: "Disney+",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "hawkeye-2021",
+        numberSeason: 1,
+        yearViewed: 2026,
+        platformViewed: "Disney+",
+        statusViewed: "completed"
+    },
 ];
 
 // Helper para obtener todos los años únicos
 export const getAvailableYears = () => {
     const years = [...new Set(ListSeriesSeasons.map(s => s.yearViewed))];
-    return years.sort((a, b) => b - a); // Ordenar descendente
+    return years.sort((a, b) => a - b); // Ordenar descendente
 };

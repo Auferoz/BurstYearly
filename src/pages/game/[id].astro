@@ -3,7 +3,6 @@ export const prerender = true;
 
 import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
-import NavHeader from "../../components/NavHeader.astro";
 
 import IconPlayerPlay from "../../icons/PlayerPlay.astro";
 import IconCalendarCheck from "../../icons/CalendarCheck.astro";
@@ -32,7 +31,7 @@ export async function getStaticPaths() {
 
 const { game } = Astro.props
 const { slug, data } = game
-const { title, released, companie, poster, trailer, genre, estado, horas, logros_obt, logros_total, console_pc, igdbId, dates_played } = data
+const { title, released, companie, poster, trailer, genre, estado, horasTotal, logros_obt, logros_total, console_pc, igdbId, dates_played } = data
 const { Content } = await render(game)
 
 // Definimos un valor por defecto para year en SSG
@@ -63,8 +62,6 @@ const estadoStyle = currentEstado.iconColor;
 
 <Layout title={`${title} - BURST`}>
     <main class="w-full">
-
-        <NavHeader />
         
         <section class="p-4 mx-auto max-w-screen-xl">
 
@@ -117,7 +114,7 @@ const estadoStyle = currentEstado.iconColor;
                         <li class="flex items-center gap-2">
                             <span style={`color:${estadoStyle};`}><IconStopwatch width="20" height="20" /></span>
                             <span class="font-bold">Horas jugadas:</span> 
-                            {horas} hrs
+                            {horasTotal} hrs
                         </li>
                         <li class="flex items-center gap-2">
                             <span style={`color:${estadoStyle};`}><IconCalendarTime width="20" height="20" /></span>

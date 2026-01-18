@@ -1,238 +1,356 @@
 ---
 import CalendarStats from '../icons/CalendarStats.astro'
 import DatabaseCog from '../icons/DatabaseCog.astro'
+
+const gamesDropdown = [
+    { href: '/Games/List2026/', label: 'Games 2026' },
+    { href: '/Games/List2025/', label: 'Games 2025' },
+    { href: '/Games/List2024/', label: 'Games 2024' },
+    { href: '/Games/List2023/', label: 'Games 2023' },
+    { href: '/Games/List2022/', label: 'Games 2022' },
+];
+
+const moviesDropdown = [
+    { href: '/Movies/List2026/', label: 'Movies 2026' },
+    { href: '/Movies/List2025/', label: 'Movies 2025' },
+    { href: '/Movies/List2024/', label: 'Movies 2024' },
+    { href: '/Movies/List2023/', label: 'Movies 2023' },
+    { href: '/Movies/List2022/', label: 'Movies 2022' },
+];
 ---
 
-<header class="border-b border-gray-800 bg-gray-800/70 backdrop-blur-md">
-    <nav class="flex items-center justify-between p-4 max-w-7xl mx-auto">
-
+<!-- Header -->
+<header class="nav-header">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
         <!-- Logo -->
-        <a href="/" title="Home">
-            <h1 class="text-xl font-bold font-mono">BURST</h1>
+        <a href="/" title="Home" class="text-xl font-bold font-mono text-white hover:text-blue-400 transition-colors">
+            BURST
         </a>
 
-        <!-- Hamburger Button (mobile) -->
-        <button id="menu-toggle" class="lg:hidden p-2 text-white hover:text-blue-500 focus:outline-none" aria-label="Toggle menu">
-            <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-            </svg>
-            <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-            </svg>
-        </button>
-
-        <!-- Navigation Menu -->
-        <div id="nav-menu" class="hidden lg:flex lg:items-center lg:gap-8
-            fixed lg:static inset-0 top-[65px] lg:top-0
-            bg-slate-950 lg:bg-transparent
-            flex-col lg:flex-row
-            p-6 lg:p-0
-            z-50">
-
-            <a href="/" class="block py-3 lg:py-0 text-white hover:text-blue-500 border-b border-gray-800 lg:border-0">
+        <!-- Desktop Menu -->
+        <div class="hidden lg:flex lg:items-center lg:gap-6">
+            <a href="/" class="text-gray-300 hover:text-blue-400 transition-colors">
                 Home
             </a>
 
-            <!-- Games Dropdown -->
+            <!-- Games Dropdown (Desktop) -->
             <div class="nav-dropdown relative">
-                <button class="dropdown-toggle flex items-center justify-between w-full py-3 lg:py-0 text-white hover:text-blue-500 border-b border-gray-800 lg:border-0">
+                <button class="dropdown-toggle flex items-center gap-1 text-gray-300 hover:text-blue-400 transition-colors">
                     <span>Games</span>
-                    <svg class="dropdown-arrow w-4 h-4 ml-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="dropdown-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                     </svg>
                 </button>
-                <ul class="dropdown-menu hidden lg:absolute lg:top-full lg:left-0 lg:pt-2
-                    lg:min-w-[180px]
-                    pl-4 lg:pl-0">
-                    <div class="bg-slate-900 lg:bg-gray-800 lg:rounded-lg lg:shadow-lg overflow-hidden">
-                        <li>
-                            <a href="/Games/List2026/" class="flex items-center gap-2 py-3 px-4 text-white hover:bg-gray-700 hover:text-blue-400 transition">
-                                <CalendarStats />
-                                Games 2026
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Games/List2025/" class="flex items-center gap-2 py-3 px-4 text-white hover:bg-gray-700 hover:text-blue-400 transition">
-                                <CalendarStats />
-                                Games 2025
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Games/List2024/" class="flex items-center gap-2 py-3 px-4 text-white hover:bg-gray-700 hover:text-blue-400 transition">
-                                <CalendarStats />
-                                Games 2024
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Games/List2023/" class="flex items-center gap-2 py-3 px-4 text-white hover:bg-gray-700 hover:text-blue-400 transition">
-                                <CalendarStats />
-                                Games 2023
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Games/List2022/" class="flex items-center gap-2 py-3 px-4 text-white hover:bg-gray-700 hover:text-blue-400 transition">
-                                <CalendarStats />
-                                Games 2022
-                            </a>
-                        </li>
+                <ul class="dropdown-menu invisible opacity-0 absolute top-full left-1/2 -translate-x-1/2 pt-2 min-w-[160px] transition-all duration-200">
+                    <div class="bg-gray-800 rounded-lg border border-gray-700/50 overflow-hidden shadow-xl">
+                        {gamesDropdown.map(item => (
+                            <li>
+                                <a href={item.href} class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-700 hover:text-blue-400 transition-colors">
+                                    <CalendarStats />
+                                    {item.label}
+                                </a>
+                            </li>
+                        ))}
                     </div>
                 </ul>
             </div>
 
-            <a href="/Series/ListAll" class="block py-3 lg:py-0 text-white hover:text-blue-500 border-b border-gray-800 lg:border-0">
+            <a href="/Series/ListAll" class="text-gray-300 hover:text-blue-400 transition-colors">
                 Series
             </a>
 
-            <!-- Movies Dropdown -->
+            <!-- Movies Dropdown (Desktop) -->
             <div class="nav-dropdown relative">
-                <button class="dropdown-toggle flex items-center justify-between w-full py-3 lg:py-0 text-white hover:text-blue-500 border-b border-gray-800 lg:border-0">
+                <button class="dropdown-toggle flex items-center gap-1 text-gray-300 hover:text-blue-400 transition-colors">
                     <span>Movies</span>
-                    <svg class="dropdown-arrow w-4 h-4 ml-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="dropdown-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                     </svg>
                 </button>
-                <ul class="dropdown-menu hidden lg:absolute lg:top-full lg:left-0 lg:pt-2
-                    lg:min-w-[180px]
-                    pl-4 lg:pl-0">
-                    <div class="bg-slate-900 lg:bg-gray-800 lg:rounded-lg lg:shadow-lg overflow-hidden">
-                        <li>
-                            <a href="/Movies/List2026/" class="flex items-center gap-2 py-3 px-4 text-white hover:bg-gray-700 hover:text-blue-400 transition">
-                                <CalendarStats />
-                                Movies 2026
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Movies/List2025/" class="flex items-center gap-2 py-3 px-4 text-white hover:bg-gray-700 hover:text-blue-400 transition">
-                                <CalendarStats />
-                                Movies 2025
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Movies/List2024/" class="flex items-center gap-2 py-3 px-4 text-white hover:bg-gray-700 hover:text-blue-400 transition">
-                                <CalendarStats />
-                                Movies 2024
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Movies/List2023/" class="flex items-center gap-2 py-3 px-4 text-white hover:bg-gray-700 hover:text-blue-400 transition">
-                                <CalendarStats />
-                                Movies 2023
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Movies/List2022/" class="flex items-center gap-2 py-3 px-4 text-white hover:bg-gray-700 hover:text-blue-400 transition">
-                                <CalendarStats />
-                                Movies 2022
-                            </a>
-                        </li>
+                <ul class="dropdown-menu invisible opacity-0 absolute top-full left-1/2 -translate-x-1/2 pt-2 min-w-[160px] transition-all duration-200">
+                    <div class="bg-gray-800 rounded-lg border border-gray-700/50 overflow-hidden shadow-xl">
+                        {moviesDropdown.map(item => (
+                            <li>
+                                <a href={item.href} class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-700 hover:text-blue-400 transition-colors">
+                                    <CalendarStats />
+                                    {item.label}
+                                </a>
+                            </li>
+                        ))}
                     </div>
                 </ul>
             </div>
 
-            <!-- DatabaseCog (visible in mobile menu too) -->
-            <div class="mt-4 lg:mt-0 lg:ml-4 pt-4 lg:pt-0 border-t border-gray-800 lg:border-0">
+            <div class="ml-2 pl-4 border-l border-gray-700/50">
                 <DatabaseCog />
             </div>
         </div>
 
+        <!-- Hamburger Button (Mobile) -->
+        <button 
+            id="menu-toggle" 
+            class="lg:hidden p-2 text-gray-300 hover:text-white transition-colors"
+            aria-label="Open menu"
+            aria-expanded="false"
+        >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+        </button>
     </nav>
 </header>
 
+<!-- Mobile Overlay - OUTSIDE header for proper z-index -->
+<div 
+    id="mobile-overlay" 
+    class="mobile-overlay"
+    aria-hidden="true"
+></div>
+
+<!-- Mobile Menu Panel - OUTSIDE header for proper z-index -->
+<aside 
+    id="mobile-menu" 
+    class="mobile-menu"
+    aria-hidden="true"
+>
+    <!-- Mobile Menu Header -->
+    <div class="flex items-center justify-between px-4 py-3 border-b border-gray-800/50">
+        <span class="text-lg font-bold font-mono text-white">BURST</span>
+        <button 
+            id="menu-close" 
+            class="p-2 text-gray-400 hover:text-white transition-colors"
+            aria-label="Close menu"
+        >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Mobile Menu Content -->
+    <nav class="px-4 py-4">
+        <a href="/" class="block py-3 text-gray-300 hover:text-blue-400 border-b border-gray-800/50 transition-colors">
+            Home
+        </a>
+
+        <!-- Games Accordion (Mobile) -->
+        <div class="mobile-accordion border-b border-gray-800/50">
+            <button class="accordion-toggle flex items-center justify-between w-full py-3 text-gray-300 hover:text-blue-400 transition-colors">
+                <span>Games</span>
+                <svg class="accordion-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </button>
+            <div class="accordion-content">
+                <div class="pb-2 pl-2">
+                    {gamesDropdown.map(item => (
+                        <a href={item.href} class="flex items-center gap-2 py-2.5 px-3 text-sm text-gray-400 hover:text-blue-400 hover:bg-gray-800/50 rounded-lg transition-colors">
+                            <CalendarStats />
+                            {item.label}
+                        </a>
+                    ))}
+                </div>
+            </div>
+        </div>
+
+        <a href="/Series/ListAll" class="block py-3 text-gray-300 hover:text-blue-400 border-b border-gray-800/50 transition-colors">
+            Series
+        </a>
+
+        <!-- Movies Accordion (Mobile) -->
+        <div class="mobile-accordion border-b border-gray-800/50">
+            <button class="accordion-toggle flex items-center justify-between w-full py-3 text-gray-300 hover:text-blue-400 transition-colors">
+                <span>Movies</span>
+                <svg class="accordion-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </button>
+            <div class="accordion-content">
+                <div class="pb-2 pl-2">
+                    {moviesDropdown.map(item => (
+                        <a href={item.href} class="flex items-center gap-2 py-2.5 px-3 text-sm text-gray-400 hover:text-blue-400 hover:bg-gray-800/50 rounded-lg transition-colors">
+                            <CalendarStats />
+                            {item.label}
+                        </a>
+                    ))}
+                </div>
+            </div>
+        </div>
+
+        <!-- DatabaseCog -->
+        <div class="pt-4 mt-4 border-t border-gray-800/50">
+            <DatabaseCog />
+        </div>
+    </nav>
+</aside>
+
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    function initNavigation() {
         const menuToggle = document.getElementById('menu-toggle');
-        const navMenu = document.getElementById('nav-menu');
-        const menuIcon = document.getElementById('menu-icon');
-        const closeIcon = document.getElementById('close-icon');
-        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+        const accordionToggles = document.querySelectorAll('.accordion-toggle');
 
-        // Toggle mobile menu
-        menuToggle?.addEventListener('click', () => {
-            const isOpen = !navMenu?.classList.contains('hidden');
+        // Open mobile menu
+        function openMobileMenu() {
+            mobileMenu?.classList.add('is-open');
+            mobileOverlay?.classList.add('is-visible');
+            menuToggle?.setAttribute('aria-expanded', 'true');
+            mobileMenu?.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
 
-            if (isOpen) {
-                navMenu?.classList.add('hidden');
-                navMenu?.classList.remove('flex');
-                menuIcon?.classList.remove('hidden');
-                closeIcon?.classList.add('hidden');
-            } else {
-                navMenu?.classList.remove('hidden');
-                navMenu?.classList.add('flex');
-                menuIcon?.classList.add('hidden');
-                closeIcon?.classList.remove('hidden');
-            }
-        });
+        // Close mobile menu
+        function closeMobileMenu() {
+            mobileMenu?.classList.remove('is-open');
+            mobileOverlay?.classList.remove('is-visible');
+            menuToggle?.setAttribute('aria-expanded', 'false');
+            mobileMenu?.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
 
-        // Toggle dropdowns
-        dropdownToggles.forEach(toggle => {
-            toggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const dropdown = toggle.closest('.nav-dropdown');
-                const menu = dropdown?.querySelector('.dropdown-menu');
-                const arrow = toggle.querySelector('.dropdown-arrow');
+        // Toggle accordion
+        function toggleAccordion(toggle: Element) {
+            const accordion = toggle.closest('.mobile-accordion');
+            const content = accordion?.querySelector('.accordion-content') as HTMLElement;
+            const arrow = toggle.querySelector('.accordion-arrow');
+            const isOpen = content?.classList.contains('is-expanded');
 
-                // Close other dropdowns
-                dropdownToggles.forEach(otherToggle => {
-                    if (otherToggle !== toggle) {
-                        const otherDropdown = otherToggle.closest('.nav-dropdown');
-                        const otherMenu = otherDropdown?.querySelector('.dropdown-menu');
-                        const otherArrow = otherToggle.querySelector('.dropdown-arrow');
-                        otherMenu?.classList.add('hidden');
-                        otherArrow?.classList.remove('rotate-180');
-                    }
-                });
-
-                // Toggle current dropdown
-                menu?.classList.toggle('hidden');
-                arrow?.classList.toggle('rotate-180');
-            });
-        });
-
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', (e) => {
-            const target = e.target as HTMLElement;
-            if (!target.closest('.nav-dropdown')) {
-                document.querySelectorAll('.dropdown-menu').forEach(menu => {
-                    menu.classList.add('hidden');
-                });
-                document.querySelectorAll('.dropdown-arrow').forEach(arrow => {
-                    arrow.classList.remove('rotate-180');
-                });
-            }
-        });
-
-        // Close mobile menu when clicking a link
-        navMenu?.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth < 1024) {
-                    navMenu?.classList.add('hidden');
-                    navMenu?.classList.remove('flex');
-                    menuIcon?.classList.remove('hidden');
-                    closeIcon?.classList.add('hidden');
+            // Close all other accordions
+            accordionToggles.forEach(otherToggle => {
+                if (otherToggle !== toggle) {
+                    const otherAccordion = otherToggle.closest('.mobile-accordion');
+                    const otherContent = otherAccordion?.querySelector('.accordion-content');
+                    const otherArrow = otherToggle.querySelector('.accordion-arrow');
+                    otherContent?.classList.remove('is-expanded');
+                    otherArrow?.classList.remove('rotate-180');
                 }
             });
+
+            // Toggle current accordion
+            if (isOpen) {
+                content?.classList.remove('is-expanded');
+                arrow?.classList.remove('rotate-180');
+            } else {
+                content?.classList.add('is-expanded');
+                arrow?.classList.add('rotate-180');
+            }
+        }
+
+        // Event listeners
+        menuToggle?.addEventListener('click', openMobileMenu);
+        menuClose?.addEventListener('click', closeMobileMenu);
+        mobileOverlay?.addEventListener('click', closeMobileMenu);
+
+        // Accordion toggles
+        accordionToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => toggleAccordion(toggle));
         });
 
-        // Handle resize - reset menu state on desktop
-        window.addEventListener('resize', () => {
-            if (window.innerWidth >= 1024) {
-                navMenu?.classList.remove('flex');
-                navMenu?.classList.add('hidden');
-                menuIcon?.classList.remove('hidden');
-                closeIcon?.classList.add('hidden');
+        // Close menu on link click
+        mobileMenu?.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
             }
         });
-    });
+
+        // Handle resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) {
+                closeMobileMenu();
+            }
+        });
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', initNavigation);
+    
+    // Re-initialize on Astro page transitions (View Transitions)
+    document.addEventListener('astro:page-load', initNavigation);
 </script>
 
 <style>
-    /* Desktop hover for dropdown */
+    /* Header - sticky with high z-index */
+    .nav-header {
+        position: sticky;
+        top: 0;
+        z-index: 9990;
+        border-bottom: 1px solid rgba(31, 41, 55, 0.5);
+        background: rgba(17, 24, 39, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+
+    /* Mobile Overlay */
+    .mobile-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 9998;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        pointer-events: none;
+    }
+
+    .mobile-overlay.is-visible {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    /* Mobile Menu Panel */
+    .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 18rem;
+        z-index: 9999;
+        background: rgb(17, 24, 39);
+        transform: translateX(100%);
+        transition: transform 0.3s ease-out;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .mobile-menu.is-open {
+        transform: translateX(0);
+    }
+
+    /* Accordion content */
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+
+    .accordion-content.is-expanded {
+        max-height: 500px;
+    }
+
+    /* Desktop dropdown hover */
     @media (min-width: 1024px) {
         .nav-dropdown:hover .dropdown-menu {
-            display: block;
+            visibility: visible;
+            opacity: 1;
         }
         .nav-dropdown:hover .dropdown-arrow {
             transform: rotate(180deg);
+        }
+
+        /* Hide mobile elements on desktop */
+        .mobile-overlay,
+        .mobile-menu {
+            display: none !important;
         }
     }
 </style>
