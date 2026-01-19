@@ -1,5 +1,5 @@
 ---
-import InfoCicle from "../icons/InfoCicle.astro";
+import CheckupList from "../icons/CheckupList.astro";
 import DeviceTvOld from "../icons/DeviceTvOld.astro";
 import DisneyPlus from "../icons/DisneyPlus.astro";
 import Crunchyroll from "../icons/Crunchyroll.astro";
@@ -13,20 +13,40 @@ const { series = [] } = Astro.props;
     series.map((item) => (
         <div class="relative mt-4">
             <!-- Badge fuera del overflow -->
-            <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-10 border-2 border-gray-700 bg-zinc-900 rounded-lg">
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-10 border-1 border-gray-700 bg-zinc-900 rounded-lg">
                 <span class="FiraCodeFont text-xs text-white flex flex-row justify-center items-center gap-1 p-1">
-                    <InfoCicle width="16" height="16" /> {item.rank}
+                    <CheckupList width="16" height="16" /> {item.rank}
                 </span>
             </div>
 
             <article class={`flex flex-col justify-between relative rounded-xl border-2 border-gray-700 group overflow-hidden ${item.statusViewed === 'ongoing' ? 'ongoing' : 'completed'}`} data-show-id={item.show?.ids?.trakt || ''}>
-                {/* <div class="absolute bottom-0 left-0 w-full h-7 bg-gray-900/70 z-2 hidden group-hover:flex">
-                    <a href={item.show.trailer} target="_blank">
-                        <span class="FiraCodeFont text-xs text-white text-nowrap flex justify-center items-center gap-2 absolute -bottom-[-6px] -left-[-5px]">
-                            <DeviceTvOld width="16" height="16" /> Ver Trailer
-                        </span>
-                    </a>
-                </div> */}
+                
+                <!-- Botón Info para abrir modal -->
+                <button 
+                    class="btn-series-info absolute top-2 right-2 z-10 p-1.5 bg-zinc-900/90 border border-gray-600 rounded-lg opacity-0 group-hover:opacity-100 hover:bg-sky-700 hover:border-sky-600 transition-all duration-200"
+                    data-series={JSON.stringify({
+                        title: `${item.show?.title || ''} - Season ${item.numberSeason || ''}`,
+                        poster: `https://${item.show?.images?.poster?.[0] || item.show?.images?.poster?.[0] || ''}`,
+                        year: item.show?.year,
+                        rating: item.show?.rating ? Math.round(item.show.rating * 10) / 10 : null,
+                        runtime: item.show?.runtime ? `${item.show.runtime} min/ep` : null,
+                        genres: item.show?.genres,
+                        overview: item.season?.overview || item.show?.overview,
+                        trailer: item.show?.trailer,
+                        platform: item.platformViewed,
+                        type: 'Serie',
+                        episodes: item.season?.episode_count,
+                        actors: item.show?.actors || [],
+                        director: item.show?.director || null,
+                        country: item.show?.country || null
+                    })}
+                    aria-label={`Ver información de ${item.show?.title || ''}`}
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </button>
+
                 <img
                     src={`https://${item.season?.images?.poster?.[0] || item.show?.images?.poster?.[0] || ''}`}
                     alt={item.show?.title || ''}
@@ -34,16 +54,14 @@ const { series = [] } = Astro.props;
                 />
 
                 <div class="absolute items-center justify-center h-7 w-full bottom-0 left-0 z-10 bg-zinc-900/80 border-t-1 border-zinc-950 rounded-xs hidden group-hover:flex">
-                    <a href={item.show?.trailer} target="_blank">
-                        <span class="FiraCodeFont text-xs text-white flex flex-row justify-center items-center gap-1 p-1">
-                            {item.platformViewed === 'Disney+' && <DisneyPlus width="16" height="16" />}
-                            {item.platformViewed === 'Crunchyroll' && <Crunchyroll width="16" height="16" />}
-                            {item.platformViewed === 'HBO Max' && <HboMax width="16" height="16" />}
-                            {item.platformViewed === 'Netflix' && <Netflix width="16" height="16" />}
-                            {item.platformViewed || ''} 
-                            <DeviceTvOld width="16" height="16" /> Season {item.numberSeason || ''}
-                        </span>
-                    </a>
+                    <span class="FiraCodeFont text-xs text-white flex flex-row justify-center items-center gap-1 p-1">
+                        {item.platformViewed === 'Disney+' && <DisneyPlus width="16" height="16" />}
+                        {item.platformViewed === 'Crunchyroll' && <Crunchyroll width="16" height="16" />}
+                        {item.platformViewed === 'HBO Max' && <HboMax width="16" height="16" />}
+                        {item.platformViewed === 'Netflix' && <Netflix width="16" height="16" />}
+                        {item.platformViewed || ''} 
+                        <DeviceTvOld width="16" height="16" /> Season {item.numberSeason || ''}
+                    </span>
                 </div>
 
                 
@@ -51,3 +69,31 @@ const { series = [] } = Astro.props;
         </div>
     ))
 }
+
+<script is:inline>
+    (function() {
+        function initSeriesInfoButtons() {
+            document.querySelectorAll('.btn-series-info').forEach(function(btn) {
+                // Clone to remove old listeners
+                var newBtn = btn.cloneNode(true);
+                btn.parentNode.replaceChild(newBtn, btn);
+                
+                newBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var seriesData = JSON.parse(newBtn.getAttribute('data-series') || '{}');
+                    if (window.openModalViewed) {
+                        window.openModalViewed(seriesData);
+                    }
+                });
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initSeriesInfoButtons);
+        } else {
+            initSeriesInfoButtons();
+        }
+        document.addEventListener('astro:after-swap', initSeriesInfoButtons);
+    })();
+</script>

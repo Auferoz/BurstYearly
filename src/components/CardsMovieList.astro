@@ -1,6 +1,6 @@
 ---
 import { fade } from "astro:transitions";
-import InfoCicle from "../icons/InfoCicle.astro";
+import CheckupList from "../icons/CheckupList.astro";
 import DeviceTv from "../icons/DeviceTv.astro";
 import IconStar from "../icons/IconStar.astro";
 
@@ -13,7 +13,7 @@ const { movies = [] } = Astro.props;
             <!-- Badge fuera del overflow -->
             <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-10 border-2 border-gray-700 bg-zinc-900 rounded-lg">
                 <span class="FiraCodeFont text-xs text-white flex flex-row justify-center items-center gap-1 p-1">
-                    <InfoCicle width="16" height="16" /> {index + 1}
+                    <CheckupList width="16" height="16" /> {index + 1}
                 </span>
             </div>
 
@@ -26,6 +26,31 @@ const { movies = [] } = Astro.props;
                         </span>
                     </a>
                 </div>
+
+                <!-- Botón Info para abrir modal -->
+                <button 
+                    class="btn-movie-info absolute top-2 right-2 z-10 p-1.5 bg-zinc-900/90 border border-gray-600 rounded-lg opacity-0 group-hover:opacity-100 hover:bg-sky-700 hover:border-sky-600 transition-all duration-200"
+                    data-movie={JSON.stringify({
+                        title: item.movie.title,
+                        poster: `https://${item.movie.images?.poster?.[0] || ''}`,
+                        year: item.movie.year,
+                        rating: item.user_rating,
+                        runtime: item.movie.runtime,
+                        genres: item.movie.genres,
+                        overview: item.movie.overview,
+                        trailer: item.movie.trailer,
+                        type: 'Movie',
+                        actors: item.movie.actors || [],
+                        director: item.movie.director || null,
+                        country: item.movie.country || null
+                    })}
+                    aria-label={`Ver información de ${item.movie.title}`}
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </button>
+
                 <img
                     src={`https://${item.movie.images?.poster?.[0] || ''}`}
                     alt={item.movie.title}
@@ -41,12 +66,35 @@ const { movies = [] } = Astro.props;
                         </span>
                     </div>
                 )}
-                    {/* <div class="absolute bottom-2 right-13 z-10 border-2 border-gray-700 bg-zinc-900 rounded-lg hidden group-hover:flex">
-                        <span class="FiraCodeFont text-xs text-white flex flex-row justify-center items-center gap-1 p-1">
-                            <DeviceTv width="16" height="16" />
-                        </span>
-                    </div> */}
             </article>
         </div>
     ))
 }
+
+<script is:inline>
+    (function() {
+        function initMovieInfoButtons() {
+            document.querySelectorAll('.btn-movie-info').forEach(function(btn) {
+                // Clone to remove old listeners
+                var newBtn = btn.cloneNode(true);
+                btn.parentNode.replaceChild(newBtn, btn);
+                
+                newBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var movieData = JSON.parse(newBtn.getAttribute('data-movie') || '{}');
+                    if (window.openModalViewed) {
+                        window.openModalViewed(movieData);
+                    }
+                });
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initMovieInfoButtons);
+        } else {
+            initMovieInfoButtons();
+        }
+        document.addEventListener('astro:after-swap', initMovieInfoButtons);
+    })();
+</script>

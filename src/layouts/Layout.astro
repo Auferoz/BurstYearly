@@ -1,6 +1,7 @@
 ---
 import { ClientRouter } from "astro:transitions"
 import NavHeader from "../components/NavHeader.astro"
+import ModalViewed from "../components/ModalViewed.astro"
 const { title } = Astro.props
 
 // Supports weights 100-900
@@ -20,6 +21,7 @@ import '@fontsource-variable/fira-code';
 	<body>
 		<NavHeader />
 		<slot />
+		<ModalViewed />
 	</body>
 </html>
 
@@ -40,11 +42,28 @@ import '@fontsource-variable/fira-code';
 		font-family: 'Fira Code Variable', monospace;
 	}
 
+    /* Status glow effects */
+    .ongoing {
+        box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.3),
+                    0 0 15px -3px rgba(34, 197, 94, 0.25);
+        @apply border-green-700/40;
+    }
+
     .ongoing:hover {
-        @apply border-green-700;
+        box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.5),
+                    0 0 20px -3px rgba(34, 197, 94, 0.4);
+        @apply border-green-600;
+    }
+
+    .completed {
+        box-shadow: 0 0 0 1px rgba(14, 165, 233, 0.3),
+                    0 0 15px -3px rgba(14, 165, 233, 0.25);
+        @apply border-sky-700/40;
     }
 
     .completed:hover {
-        @apply border-sky-700;
+        box-shadow: 0 0 0 1px rgba(14, 165, 233, 0.5),
+                    0 0 20px -3px rgba(14, 165, 233, 0.4);
+        @apply border-sky-600;
     }
 </style>
