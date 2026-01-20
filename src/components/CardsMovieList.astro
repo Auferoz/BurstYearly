@@ -33,13 +33,14 @@ const { movies = [] } = Astro.props;
                     data-movie={JSON.stringify({
                         title: item.movie.title,
                         poster: `https://${item.movie.images?.poster?.[0] || ''}`,
-                        year: item.movie.year,
+                        logo: item.movie.images?.logo?.[0] ? `https://${item.movie.images.logo[0]}` : null,
+                        banner: item.movie.images?.banner?.[0] ? `https://${item.movie.images.banner[0]}` : null,
+                        releaseDate: item.movie.released || null,
                         rating: item.user_rating,
                         runtime: item.movie.runtime,
                         genres: item.movie.genres,
                         overview: item.movie.overview,
                         trailer: item.movie.trailer,
-                        type: 'Movie',
                         actors: item.movie.actors || [],
                         director: item.movie.director || null,
                         country: item.movie.country || null

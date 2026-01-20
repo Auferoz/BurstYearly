@@ -51,13 +51,16 @@ async function getMoviePeople(traktId) {
     }
 }
 
-// Extraer top N actores del cast
-function extractActors(people, limit = 5) {
+// Extraer top N actores del cast con sus personajes
+function extractActors(people, limit = 8) {
     if (!people?.cast || !Array.isArray(people.cast)) return [];
     return people.cast
         .slice(0, limit)
-        .map(item => item.person?.name)
-        .filter(Boolean);
+        .map(item => ({
+            name: item.person?.name,
+            character: item.character || item.characters?.[0] || null
+        }))
+        .filter(item => item.name);
 }
 
 // Extraer director del crew
@@ -151,7 +154,7 @@ export async function getAllMovies() {
                 movie: {
                     ...item.movie,
                     user_rating: userRating,
-                    actors: extractActors(people, 5),
+                    actors: extractActors(people, 8),
                     director: extractDirector(people)
                 }
             });
@@ -202,7 +205,7 @@ export async function getMoviesByYear(year) {
                     movie: {
                         ...item.movie,
                         user_rating: userRating,
-                        actors: extractActors(people, 5),
+                        actors: extractActors(people, 8),
                         director: extractDirector(people)
                     }
                 };

@@ -10,6 +10,11 @@ const gamesDropdown = [
     { href: '/Games/List2022/', label: 'Games 2022' },
 ];
 
+const seriesDropdown = [
+    { href: '/Series/List2026/', label: 'Series 2026' },
+    { href: '/Series/List2025/', label: 'Series 2025' },
+];
+
 const moviesDropdown = [
     { href: '/Movies/List2026/', label: 'Movies 2026' },
     { href: '/Movies/List2025/', label: 'Movies 2025' },
@@ -54,10 +59,28 @@ const moviesDropdown = [
                     </div>
                 </ul>
             </div>
-
-            <a href="/Series/ListAll" class="text-gray-300 hover:text-blue-400 transition-colors">
-                Series
-            </a>
+            
+            <!-- Series Dropdown (Desktop) -->
+            <div class="nav-dropdown relative">
+                <button class="dropdown-toggle flex items-center gap-1 text-gray-300 hover:text-blue-400 transition-colors">
+                    <span>Series</span>
+                    <svg class="dropdown-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <ul class="dropdown-menu invisible opacity-0 absolute top-full left-1/2 -translate-x-1/2 pt-2 min-w-[160px] transition-all duration-200">
+                    <div class="bg-gray-800 rounded-lg border border-gray-700/50 overflow-hidden shadow-xl">
+                        {seriesDropdown.map(item => (
+                            <li>
+                                <a href={item.href} class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-700 hover:text-blue-400 transition-colors">
+                                    <CalendarStats />
+                                    {item.label}
+                                </a>
+                            </li>
+                        ))}
+                    </div>
+                </ul>
+            </div>
 
             <!-- Movies Dropdown (Desktop) -->
             <div class="nav-dropdown relative">

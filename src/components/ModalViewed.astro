@@ -14,9 +14,20 @@
     <div id="modal-content" class="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto bg-zinc-900 border border-gray-700 rounded-xl shadow-2xl">
         
         <!-- Header -->
-        <div class="sticky top-0 z-10 flex items-center justify-between p-4 bg-zinc-900/95 backdrop-blur border-b border-gray-700">
-            <h2 id="modal-title" class="text-lg md:text-xl font-bold text-white truncate pr-4">Título</h2>
-            <button id="modal-close" class="flex-shrink-0 p-2 rounded-lg bg-gray-800 hover:bg-gray-700 border border-gray-600 hover:border-sky-600 transition-colors">
+        <div id="modal-header" class="sticky top-0 z-10 flex items-center justify-between p-4 bg-zinc-900/95 backdrop-blur border-b border-gray-700 relative overflow-hidden">
+            <!-- Banner Background -->
+            <div id="modal-banner-container" class="absolute inset-0 hidden">
+                <img 
+                    id="modal-banner" 
+                    src="" 
+                    alt="" 
+                    class="absolute right-0 top-1/2 -translate-y-1/2 h-full w-auto object-cover opacity-30"
+                />
+                <div class="absolute inset-0 bg-gradient-to-r from-zinc-900 via-zinc-900/80 to-transparent"></div>
+            </div>
+            <!-- Header Content -->
+            <h2 id="modal-title" class="text-lg md:text-xl font-bold text-white truncate pr-4 relative z-10">Título</h2>
+            <button id="modal-close" class="flex-shrink-0 p-2 rounded-lg bg-gray-800 hover:bg-gray-700 border border-gray-600 hover:border-sky-600 transition-colors relative z-10">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -26,14 +37,23 @@
         <!-- Body -->
         <div class="flex flex-col md:flex-row gap-6 p-4 md:p-6">
             
-            <!-- Poster -->
-            <div class="flex-shrink-0 mx-auto md:mx-0">
+            <!-- Poster + Logo -->
+            <div class="flex-shrink-0 mx-auto md:mx-0 flex flex-col">
                 <img 
                     id="modal-poster" 
                     src="" 
                     alt="Poster" 
                     class="w-48 md:w-56 rounded-lg border border-gray-700 shadow-lg"
                 />
+                <!-- Logo (debajo del poster, centrado) -->
+                <div id="modal-logo-container" class="hidden h-full h-20 flex justify-center items-center">
+                    <img 
+                        id="modal-logo" 
+                        src="" 
+                        alt="Logo" 
+                        class="max-h-20 max-w-full object-contain"
+                    />
+                </div>
             </div>
 
             <!-- Info -->
@@ -41,12 +61,12 @@
                 
                 <!-- Meta Info Row -->
                 <div class="flex flex-wrap gap-2">
-                    <!-- Año -->
-                    <span id="modal-year" class="FiraCodeFont inline-flex items-center gap-1.5 px-3 py-1.5 text-xs bg-gray-800 border border-gray-600 rounded-lg text-gray-300">
+                    <!-- Fecha (mes y año) -->
+                    <span id="modal-date" class="FiraCodeFont inline-flex items-center gap-1.5 px-3 py-1.5 text-xs bg-gray-800 border border-gray-600 rounded-lg text-gray-300">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
-                        <span class="year-value">2024</span>
+                        <span class="date-value">Jun 2024</span>
                     </span>
 
                     <!-- Rating -->
@@ -73,20 +93,20 @@
                         <span class="platform-value">Netflix</span>
                     </span>
 
-                    <!-- Tipo (Movie/Series) -->
-                    <span id="modal-type" class="FiraCodeFont inline-flex items-center gap-1.5 px-3 py-1.5 text-xs bg-gray-800 border border-gray-600 rounded-lg text-gray-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
-                        </svg>
-                        <span class="type-value">Movie</span>
-                    </span>
-
                     <!-- Episodes (solo para series) -->
                     <span id="modal-episodes" class="FiraCodeFont inline-flex items-center gap-1.5 px-3 py-1.5 text-xs bg-purple-900/50 border border-purple-700 rounded-lg text-purple-300 hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
                         </svg>
-                        <span class="episodes-value">10</span> eps
+                        <span class="episodes-value">10</span> episodes
+                    </span>
+
+                    <!-- Total Runtime (solo para series) -->
+                    <span id="modal-total-runtime" class="FiraCodeFont inline-flex items-center gap-1.5 px-3 py-1.5 text-xs bg-emerald-900/50 border border-emerald-700 rounded-lg text-emerald-300 hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span class="total-runtime-value">7h 30m</span>
                     </span>
 
                     <!-- Country -->
@@ -99,8 +119,11 @@
                 </div>
 
                 <!-- Géneros -->
-                <div id="modal-genres" class="flex flex-wrap gap-2">
-                    <!-- Se llenan dinámicamente -->
+                <div id="modal-genres-container" class="hidden">
+                    <h3 class="text-sm font-semibold text-gray-400 mb-2 uppercase tracking-wider">Genres</h3>
+                    <div id="modal-genres" class="flex flex-wrap gap-2">
+                        <!-- Se llenan dinámicamente -->
+                    </div>
                 </div>
 
                 <!-- Director -->
@@ -116,8 +139,8 @@
 
                 <!-- Actores -->
                 <div id="modal-actors-container" class="hidden">
-                    <h3 class="text-sm font-semibold text-gray-400 mb-2 uppercase tracking-wider">Actores</h3>
-                    <div id="modal-actors" class="flex flex-wrap gap-2">
+                    <h3 class="text-sm font-semibold text-gray-400 mb-2 uppercase tracking-wider">Actors</h3>
+                    <div id="modal-actors" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
                         <!-- Se llenan dinámicamente -->
                     </div>
                 </div>
@@ -236,6 +259,89 @@
             });
         }
 
+        // Country code to full name mapping
+        var countryNames = {
+            'us': 'United States',
+            'uk': 'United Kingdom',
+            'gb': 'United Kingdom',
+            'jp': 'Japan',
+            'kr': 'South Korea',
+            'cn': 'China',
+            'fr': 'France',
+            'de': 'Germany',
+            'es': 'Spain',
+            'it': 'Italy',
+            'ca': 'Canada',
+            'au': 'Australia',
+            'br': 'Brazil',
+            'mx': 'Mexico',
+            'in': 'India',
+            'ru': 'Russia',
+            'se': 'Sweden',
+            'no': 'Norway',
+            'dk': 'Denmark',
+            'fi': 'Finland',
+            'nl': 'Netherlands',
+            'be': 'Belgium',
+            'ch': 'Switzerland',
+            'at': 'Austria',
+            'pl': 'Poland',
+            'pt': 'Portugal',
+            'ie': 'Ireland',
+            'nz': 'New Zealand',
+            'za': 'South Africa',
+            'ar': 'Argentina',
+            'cl': 'Chile',
+            'co': 'Colombia',
+            'tw': 'Taiwan',
+            'hk': 'Hong Kong',
+            'sg': 'Singapore',
+            'th': 'Thailand',
+            'id': 'Indonesia',
+            'my': 'Malaysia',
+            'ph': 'Philippines',
+            'vn': 'Vietnam',
+            'tr': 'Turkey',
+            'eg': 'Egypt',
+            'il': 'Israel',
+            'ae': 'United Arab Emirates',
+            'sa': 'Saudi Arabia'
+        };
+
+        // Format date to "Mon YYYY" format
+        function formatDate(dateString) {
+            if (!dateString) return 'N/A';
+            try {
+                var date = new Date(dateString);
+                if (isNaN(date.getTime())) return 'N/A';
+                var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                return months[date.getMonth()] + ' ' + date.getFullYear();
+            } catch (e) {
+                return 'N/A';
+            }
+        }
+
+        // Get full country name from code
+        function getCountryName(code) {
+            if (!code) return null;
+            var lowerCode = code.toLowerCase();
+            return countryNames[lowerCode] || code.toUpperCase();
+        }
+
+        // Format runtime from minutes to "Xh Ym" format
+        function formatRuntime(minutes) {
+            if (!minutes || minutes <= 0) return null;
+            var hours = Math.floor(minutes / 60);
+            var mins = minutes % 60;
+            if (hours === 0) {
+                return mins + 'm';
+            } else if (mins === 0) {
+                return hours + 'h';
+            } else {
+                return hours + 'h ' + mins + 'm';
+            }
+        }
+
         // Open modal with data - exposed globally
         window.openModalViewed = function(data) {
             var modal = document.getElementById('modal-viewed');
@@ -244,30 +350,64 @@
             // Get elements
             var title = document.getElementById('modal-title');
             var poster = document.getElementById('modal-poster');
-            var yearEl = document.querySelector('#modal-year .year-value');
+            var dateEl = document.querySelector('#modal-date .date-value');
+            var dateContainer = document.getElementById('modal-date');
             var ratingEl = document.querySelector('#modal-rating .rating-value');
             var ratingContainer = document.getElementById('modal-rating');
             var runtimeEl = document.querySelector('#modal-runtime .runtime-value');
             var runtimeContainer = document.getElementById('modal-runtime');
             var platformEl = document.querySelector('#modal-platform .platform-value');
             var platformContainer = document.getElementById('modal-platform');
-            var typeEl = document.querySelector('#modal-type .type-value');
             var genresContainer = document.getElementById('modal-genres');
+            var genresWrapper = document.getElementById('modal-genres-container');
             var overview = document.getElementById('modal-overview');
             var trailerContainer = document.getElementById('modal-trailer-container');
             var trailerLink = document.getElementById('modal-trailer-link');
 
             // Title
             if (title) title.textContent = data.title || 'Sin título';
+
+            // Banner (header background)
+            var bannerEl = document.getElementById('modal-banner');
+            var bannerContainer = document.getElementById('modal-banner-container');
+            if (bannerEl && bannerContainer) {
+                if (data.banner) {
+                    bannerEl.setAttribute('src', data.banner);
+                    bannerContainer.classList.remove('hidden');
+                } else {
+                    bannerContainer.classList.add('hidden');
+                }
+            }
             
             // Poster
             if (poster) {
                 poster.setAttribute('src', data.poster || 'https://placehold.co/224x336?text=No+Poster');
                 poster.setAttribute('alt', data.title || 'Poster');
             }
+
+            // Logo
+            var logoEl = document.getElementById('modal-logo');
+            var logoContainer = document.getElementById('modal-logo-container');
+            if (logoEl && logoContainer) {
+                if (data.logo) {
+                    logoEl.setAttribute('src', data.logo);
+                    logoEl.setAttribute('alt', (data.title || 'Logo') + ' logo');
+                    logoContainer.classList.remove('hidden');
+                } else {
+                    logoContainer.classList.add('hidden');
+                }
+            }
             
-            // Year
-            if (yearEl) yearEl.textContent = String(data.year || 'N/A');
+            // Release Date (month and year)
+            if (dateEl && dateContainer) {
+                var formattedDate = formatDate(data.releaseDate);
+                if (formattedDate !== 'N/A') {
+                    dateEl.textContent = formattedDate;
+                    dateContainer.classList.remove('hidden');
+                } else {
+                    dateContainer.classList.add('hidden');
+                }
+            }
             
             // Rating
             if (ratingEl && ratingContainer) {
@@ -299,14 +439,11 @@
                 }
             }
 
-            // Type
-            if (typeEl) typeEl.textContent = data.type || 'Movie';
-
             // Episodes (solo para series)
             var episodesEl = document.querySelector('#modal-episodes .episodes-value');
             var episodesContainer = document.getElementById('modal-episodes');
             if (episodesEl && episodesContainer) {
-                if (data.episodes && data.type === 'Serie') {
+                if (data.episodes) {
                     episodesEl.textContent = String(data.episodes);
                     episodesContainer.classList.remove('hidden');
                 } else {
@@ -314,12 +451,26 @@
                 }
             }
 
-            // Country
+            // Total Runtime (solo para series) - formatted as hours and minutes
+            var totalRuntimeEl = document.querySelector('#modal-total-runtime .total-runtime-value');
+            var totalRuntimeContainer = document.getElementById('modal-total-runtime');
+            if (totalRuntimeEl && totalRuntimeContainer) {
+                var formattedTotalRuntime = formatRuntime(data.totalRuntime);
+                if (formattedTotalRuntime) {
+                    totalRuntimeEl.textContent = formattedTotalRuntime;
+                    totalRuntimeContainer.classList.remove('hidden');
+                } else {
+                    totalRuntimeContainer.classList.add('hidden');
+                }
+            }
+
+            // Country (full name)
             var countryEl = document.querySelector('#modal-country .country-value');
             var countryContainer = document.getElementById('modal-country');
             if (countryEl && countryContainer) {
-                if (data.country) {
-                    countryEl.textContent = data.country.toUpperCase();
+                var countryName = getCountryName(data.country);
+                if (countryName) {
+                    countryEl.textContent = countryName;
                     countryContainer.classList.remove('hidden');
                 } else {
                     countryContainer.classList.add('hidden');
@@ -327,7 +478,7 @@
             }
 
             // Genres
-            if (genresContainer) {
+            if (genresContainer && genresWrapper) {
                 genresContainer.innerHTML = '';
                 if (data.genres && data.genres.length > 0) {
                     data.genres.forEach(function(genre) {
@@ -336,6 +487,9 @@
                         badge.textContent = genre;
                         genresContainer.appendChild(badge);
                     });
+                    genresWrapper.classList.remove('hidden');
+                } else {
+                    genresWrapper.classList.add('hidden');
                 }
             }
 
@@ -351,17 +505,27 @@
                 }
             }
 
-            // Actors
+            // Actors (with character names) - grid 2 columns layout
             var actorsContainer = document.getElementById('modal-actors');
             var actorsWrapper = document.getElementById('modal-actors-container');
             if (actorsContainer && actorsWrapper) {
                 actorsContainer.innerHTML = '';
                 if (data.actors && data.actors.length > 0) {
                     data.actors.forEach(function(actor) {
-                        var badge = document.createElement('span');
-                        badge.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 text-xs bg-gray-800 border border-gray-600 rounded-full text-gray-300';
-                        badge.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>' + actor;
-                        actorsContainer.appendChild(badge);
+                        // Handle both old format (string) and new format (object with name and character)
+                        var actorName = typeof actor === 'string' ? actor : actor.name;
+                        var characterName = typeof actor === 'object' && actor.character ? actor.character : null;
+                        
+                        var card = document.createElement('div');
+                        card.className = 'flex flex-col px-3 py-2 bg-gray-800/50 border border-gray-700 rounded-lg';
+                        
+                        var nameHtml = '<span class="text-sm font-medium text-gray-200 truncate">' + actorName + '</span>';
+                        var characterHtml = characterName 
+                            ? '<span class="text-xs text-gray-500 truncate">as ' + characterName + '</span>' 
+                            : '';
+                        
+                        card.innerHTML = nameHtml + characterHtml;
+                        actorsContainer.appendChild(card);
                     });
                     actorsWrapper.classList.remove('hidden');
                 } else {

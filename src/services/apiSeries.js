@@ -25,13 +25,16 @@ async function getShowPeople(traktId) {
     }
 }
 
-// Extraer top N actores del cast
-function extractActors(people, limit = 5) {
+// Extraer top N actores del cast con sus personajes
+function extractActors(people, limit = 8) {
     if (!people?.cast || !Array.isArray(people.cast)) return [];
     return people.cast
         .slice(0, limit)
-        .map(item => item.person?.name)
-        .filter(Boolean);
+        .map(item => ({
+            name: item.person?.name,
+            character: item.character || item.characters?.[0] || null
+        }))
+        .filter(item => item.name);
 }
 
 // Extraer creador/director del crew (para series suele ser "created by" o "executive producer")
@@ -157,7 +160,7 @@ export async function getSeriesSeasonsByYear(seriesList, year) {
                 season: seasonData,
                 show: {
                     ...showData,
-                    actors: extractActors(people, 5),
+                    actors: extractActors(people, 8),
                     director: extractDirector(people)
                 },
                 yearViewed: item.yearViewed,
