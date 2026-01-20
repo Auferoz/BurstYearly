@@ -85,6 +85,13 @@ export const ListSeriesSeasons = [
         numberSeason: 1,
         yearViewed: 2026,
         platformViewed: "Disney+",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "ms-marvel",
+        numberSeason: 1,
+        yearViewed: 2026,
+        platformViewed: "Disney+",
         statusViewed: "ongoing"
     },
 ];
