@@ -11,6 +11,125 @@
 
 export const ListSeriesSeasons = [
     {
+        idTrakt: "the-prince-of-tennis-ii-u-17-world-cup",
+        numberSeason: 1,
+        yearViewed: 2024,
+        platformViewed: "crunchyroll",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "blue-lock",
+        numberSeason: 1,
+        yearViewed: 2025,
+        platformViewed: "crunchyroll",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "castlevania-nocturne",
+        numberSeason: 1,
+        yearViewed: 2025,
+        platformViewed: "Netflix",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "castlevania-nocturne",
+        numberSeason: 2,
+        yearViewed: 2025,
+        platformViewed: "Netflix",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "my-love-story",
+        numberSeason: 1,
+        yearViewed: 2025,
+        platformViewed: "crunchyroll",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "white-collar",
+        numberSeason: 1,
+        yearViewed: 2025,
+        platformViewed: "Disney+",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "white-collar",
+        numberSeason: 2,
+        yearViewed: 2025,
+        platformViewed: "Disney+",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "white-collar",
+        numberSeason: 3,
+        yearViewed: 2025,
+        platformViewed: "Disney+",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "white-collar",
+        numberSeason: 4,
+        yearViewed: 2025,
+        platformViewed: "Disney+",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "white-collar",
+        numberSeason: 5,
+        yearViewed: 2025,
+        platformViewed: "Disney+",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "white-collar",
+        numberSeason: 6,
+        yearViewed: 2025,
+        platformViewed: "Disney+",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "dragon-ball-daima",
+        numberSeason: 1,
+        yearViewed: 2025,
+        platformViewed: "crunchyroll",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "formula-1-drive-to-survive",
+        numberSeason: 7,
+        yearViewed: 2025,
+        platformViewed: "netflix",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "solo-leveling",
+        numberSeason: 1,
+        yearViewed: 2025,
+        platformViewed: "crunchyroll",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "you",
+        numberSeason: 4,
+        yearViewed: 2025,
+        platformViewed: "netflix",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "you",
+        numberSeason: 5,
+        yearViewed: 2025,
+        platformViewed: "netflix",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "black-mirror",
+        numberSeason: 7,
+        yearViewed: 2025,
+        platformViewed: "netflix",
+        statusViewed: "completed"
+    },
+    {
         idTrakt: "ghosts-2021",
         numberSeason: 1,
         yearViewed: 2025,
@@ -22,6 +141,76 @@ export const ListSeriesSeasons = [
         numberSeason: 2,
         yearViewed: 2025,
         platformViewed: "Netflix",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "chrono-crusade",
+        numberSeason: 1,
+        yearViewed: 2025,
+        platformViewed: "crunchyroll",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "the-beginning-after-the-end",
+        numberSeason: 1,
+        yearViewed: 2025,
+        platformViewed: "crunchyroll",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "squid-game",
+        numberSeason: 3,
+        yearViewed: 2025,
+        platformViewed: "Disney+",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "the-day-of-the-jackal",
+        numberSeason: 1,
+        yearViewed: 2025,
+        platformViewed: "Disney+",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "my-hero-academia-vigilantes",
+        numberSeason: 1,
+        yearViewed: 2025,
+        platformViewed: "Crunchyroll",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "chespirito-not-really-on-purpose",
+        numberSeason: 1,
+        yearViewed: 2025,
+        platformViewed: "HBO Max",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "the-playlist-2022",
+        numberSeason: 1,
+        yearViewed: 2025,
+        platformViewed: "Netflix",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "kaiju-no-8",
+        numberSeason: 1,
+        yearViewed: 2025,
+        platformViewed: "Crunchyroll",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "anne-shirley",
+        numberSeason: 1,
+        yearViewed: 2025,
+        platformViewed: "Crunchyroll",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "it-welcome-to-derry",
+        numberSeason: 1,
+        yearViewed: 2025,
+        platformViewed: "HBO Max",
         statusViewed: "completed"
     },
     {
@@ -93,6 +282,20 @@ export const ListSeriesSeasons = [
         yearViewed: 2026,
         platformViewed: "Disney+",
         statusViewed: "completed"
+    },
+    {
+        idTrakt: "i-am-groot",
+        numberSeason: 1,
+        yearViewed: 2026,
+        platformViewed: "Disney+",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "she-hulk-attorney-at-law",
+        numberSeason: 1,
+        yearViewed: 2026,
+        platformViewed: "Disney+",
+        statusViewed: "ongoing"
     },
 ];
 

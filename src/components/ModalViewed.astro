@@ -21,7 +21,7 @@
                     id="modal-banner" 
                     src="" 
                     alt="" 
-                    class="absolute right-0 top-1/2 -translate-y-1/2 h-full w-auto object-cover opacity-30"
+                    class="absolute h-full w-auto object-cover w-full"
                 />
                 <div class="absolute inset-0 bg-gradient-to-r from-zinc-900 via-zinc-900/80 to-transparent"></div>
             </div>
@@ -46,7 +46,8 @@
                     class="w-48 md:w-56 rounded-lg border border-gray-700 shadow-lg"
                 />
                 <!-- Logo (debajo del poster, centrado) -->
-                <div id="modal-logo-container" class="hidden h-full h-20 flex justify-center items-center">
+                <div id="modal-logo-container" class="hidden h-full h-20 flex flex-col justify-center items-start">
+                    <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider">LOGO</h3>
                     <img 
                         id="modal-logo" 
                         src="" 
@@ -85,6 +86,14 @@
                         <span class="runtime-value">120</span> min
                     </span>
 
+                    <!-- Total Runtime (solo para series) -->
+                    <span id="modal-total-runtime" class="FiraCodeFont inline-flex items-center gap-1.5 px-3 py-1.5 text-xs bg-emerald-900/50 border border-emerald-700 rounded-lg text-emerald-300 hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span class="total-runtime-value">7h 30m</span> total
+                    </span>
+
                     <!-- Plataforma -->
                     <span id="modal-platform" class="FiraCodeFont inline-flex items-center gap-1.5 px-3 py-1.5 text-xs bg-gray-800 border border-gray-600 rounded-lg text-gray-300">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -99,14 +108,6 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
                         </svg>
                         <span class="episodes-value">10</span> episodes
-                    </span>
-
-                    <!-- Total Runtime (solo para series) -->
-                    <span id="modal-total-runtime" class="FiraCodeFont inline-flex items-center gap-1.5 px-3 py-1.5 text-xs bg-emerald-900/50 border border-emerald-700 rounded-lg text-emerald-300 hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span class="total-runtime-value">7h 30m</span>
                     </span>
 
                     <!-- Country -->

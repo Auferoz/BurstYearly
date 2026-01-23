@@ -23,7 +23,7 @@ const { series = [] } = Astro.props;
                 
                 <!-- Botón Info para abrir modal -->
                 <button 
-                    class="btn-series-info absolute top-2 right-2 z-10 p-1.5 bg-zinc-900/90 border border-gray-600 rounded-lg opacity-0 group-hover:opacity-100 hover:bg-sky-700 hover:border-sky-600 transition-all duration-200"
+                    class="btn-series-info absolute bottom-8 right-2 z-10 p-1.5 bg-zinc-900/90 border border-gray-600 rounded-lg opacity-0 group-hover:opacity-100 hover:bg-sky-700 hover:border-sky-600 transition-all duration-200"
                     data-series={JSON.stringify({
                         title: `${item.show?.title || ''} - Season ${item.numberSeason || ''}`,
                         poster: `https://${item.show?.images?.poster?.[0] || item.show?.images?.poster?.[0] || ''}`,
@@ -52,7 +52,7 @@ const { series = [] } = Astro.props;
                 <img
                     src={`https://${item.season?.images?.poster?.[0] || item.show?.images?.poster?.[0] || ''}`}
                     alt={item.show?.title || ''}
-                    class="w-full h-full rounded-lg"
+                    class="w-full h-full rounded-lg min-h-[296px]"
                 />
 
                 <div class="absolute items-center justify-center h-7 w-full bottom-0 left-0 z-10 bg-zinc-900/80 border-t-1 border-zinc-950 rounded-xs hidden group-hover:flex">
