@@ -23,12 +23,15 @@ const { series = [] } = Astro.props;
                 
                 <!-- Botón Info para abrir modal -->
                 <button 
-                    class="btn-series-info absolute bottom-8 right-2 z-10 p-1.5 bg-zinc-900/90 border border-gray-600 rounded-lg opacity-0 group-hover:opacity-100 hover:bg-sky-700 hover:border-sky-600 transition-all duration-200"
+                    class="btn-series-info absolute bottom-8 left-2 z-10 p-1.5 bg-zinc-900/90 border border-gray-600 rounded-lg opacity-0 group-hover:opacity-100 hover:bg-sky-700 hover:border-sky-600 transition-all duration-200"
                     data-series={JSON.stringify({
                         title: `${item.show?.title || ''} - Season ${item.numberSeason || ''}`,
                         poster: `https://${item.show?.images?.poster?.[0] || item.show?.images?.poster?.[0] || ''}`,
-                        logo: item.show?.images?.logo?.[0] ? `https://${item.show.images.logo[0]}` : null,
-                        banner: item.show?.images?.banner?.[0] ? `https://${item.show.images.banner[0]}` : null,
+                        logo: item.season?.images?.logo?.[0] ? `https://${item.season.images.logo[0]}` : (item.show?.images?.logo?.[0] ? `https://${item.show.images.logo[0]}` : null),
+                        banner: item.season?.images?.banner?.[0] ? `https://${item.season.images.banner[0]}` : (item.show?.images?.banner?.[0] ? `https://${item.show.images.banner[0]}` : null),
+                        fanart: item.season?.images?.fanart?.[0] ? `https://${item.season.images.fanart[0]}` : (item.show?.images?.fanart?.[0] ? `https://${item.show.images.fanart[0]}` : null),
+                        clearart: item.season?.images?.clearart?.[0] ? `https://${item.season.images.clearart[0]}` : (item.show?.images?.clearart?.[0] ? `https://${item.show.images.clearart[0]}` : null),
+                        thumb: item.season?.images?.thumb?.[0] ? `https://${item.season.images.thumb[0]}` : (item.show?.images?.thumb?.[0] ? `https://${item.show.images.thumb[0]}` : null),
                         releaseDate: item.season?.first_aired || item.show?.first_aired || null,
                         rating: item.show?.rating ? Math.round(item.show.rating * 10) / 10 : null,
                         runtime: item.show?.runtime ? `${item.show.runtime} min/ep` : null,

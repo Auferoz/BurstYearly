@@ -3,6 +3,7 @@
  * ModalViewed - Modal minimalista para mostrar información de películas/series
  * Se activa mediante JavaScript desde las cards
  */
+import CarruselImagesTrakt from './CarruselImagesTrakt.astro';
 ---
 
 <!-- Modal Container -->
@@ -38,23 +39,15 @@
         <div class="flex flex-col md:flex-row gap-6 p-4 md:p-6">
             
             <!-- Poster + Logo -->
-            <div class="flex-shrink-0 mx-auto md:mx-0 flex flex-col">
+            <div class="flex-shrink-0 mx-auto md:mx-0 flex flex-col justify-between">
                 <img 
                     id="modal-poster" 
                     src="" 
                     alt="Poster" 
                     class="w-48 md:w-56 rounded-lg border border-gray-700 shadow-lg"
                 />
-                <!-- Logo (debajo del poster, centrado) -->
-                <div id="modal-logo-container" class="hidden h-full h-20 flex flex-col justify-center items-start">
-                    <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider">LOGO</h3>
-                    <img 
-                        id="modal-logo" 
-                        src="" 
-                        alt="Logo" 
-                        class="max-h-20 max-w-full object-contain"
-                    />
-                </div>
+                <!-- Carrusel de imágenes (fanart, logo, clearart, banner, thumb) -->
+                <CarruselImagesTrakt />
             </div>
 
             <!-- Info -->
@@ -386,17 +379,15 @@
                 poster.setAttribute('alt', data.title || 'Poster');
             }
 
-            // Logo
-            var logoEl = document.getElementById('modal-logo');
-            var logoContainer = document.getElementById('modal-logo-container');
-            if (logoEl && logoContainer) {
-                if (data.logo) {
-                    logoEl.setAttribute('src', data.logo);
-                    logoEl.setAttribute('alt', (data.title || 'Logo') + ' logo');
-                    logoContainer.classList.remove('hidden');
-                } else {
-                    logoContainer.classList.add('hidden');
-                }
+            // Carrusel de imágenes (fanart, logo, clearart, banner, thumb)
+            if (typeof window.loadCarouselImages === 'function') {
+                window.loadCarouselImages({
+                    fanart: data.fanart || null,
+                    logo: data.logo || null,
+                    clearart: data.clearart || null,
+                    banner: data.banner || null,
+                    thumb: data.thumb || null
+                });
             }
             
             // Release Date (month and year)
