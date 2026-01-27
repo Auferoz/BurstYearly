@@ -2,11 +2,14 @@
   "name": "burstyearly",
   "type": "module",
   "version": "0.0.1",
-  "scripts": {
+"scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "fetch-movies": "node scripts/fetch-movies.js",
+    "fetch-series": "node scripts/fetch-series.js",
+    "fetch-data": "node scripts/fetch-movies.js && node scripts/fetch-series.js"
   },
   "dependencies": {
     "@fontsource-variable/fira-code": "^5.2.7",
