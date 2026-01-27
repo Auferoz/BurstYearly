@@ -1,0 +1,307 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CarruselCardsMovies from '../../components/CarruselCardsMovies.astro';
+import { getMoviesByYear } from '../../services/apiMovies.js';
+
+// Años disponibles para películas
+const availableYears = [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026];
+
+export function getStaticPaths() {
+    const years = [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026];
+    return years.map(year => ({
+        params: { year: year.toString() }
+    }));
+}
+
+const { year } = Astro.params;
+const currentYear = parseInt(year);
+const { movies, error } = await getMoviesByYear(currentYear);
+
+// Obtener datos de la primera película para el estado inicial
+const firstMovie = movies[0];
+const initialFanart = firstMovie?.movie?.images?.fanart?.[0] 
+    ? `https://${firstMovie.movie.images.fanart[0]}`.replace('/medium/', '/full/')
+    : '';
+const initialTitle = firstMovie?.movie?.title || '';
+const initialYear = firstMovie?.movie?.year || '';
+const initialreleaseDate = firstMovie?.movie?.released || null;
+const formattedReleaseDate = initialreleaseDate 
+    ? new Date(initialreleaseDate).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+    : null;
+
+// Función para formatear minutos a horas y minutos
+const formatRuntime = (totalMinutes) => {
+    if (!totalMinutes) return '';
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+    if (hours > 0 && minutes > 0) return `${hours}h ${minutes}m`;
+    if (hours > 0) return `${hours}h`;
+    return `${minutes}m`;
+};
+
+const initialRuntime = firstMovie?.movie?.runtime || 0;
+const initialRuntimeFormatted = initialRuntime ? formatRuntime(initialRuntime) : '';
+const initialgenres = firstMovie?.movie?.genres?.join(', ') || '';
+const initialactors = firstMovie?.movie?.actors?.map(actor => actor.name).join(', ') || '';
+const initialdirector = firstMovie?.movie?.director || '';
+const initialUserRating = firstMovie?.user_rating || '';
+
+// Función para convertir código de país a nombre completo
+const getCountryName = (countryCode) => {
+    if (!countryCode) return '';
+    try {
+        const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
+        return regionNames.of(countryCode.toUpperCase());
+    } catch (e) {
+        return countryCode;
+    }
+};
+const initialcountry = getCountryName(firstMovie?.movie?.country);
+
+---
+<Layout title={`BURST Movies - FullView ${year}`}>
+    <main 
+        id="main-bg" 
+        class="bg-cover bg-center transition-opacity duration-500 main-height"
+        style={`background-image: url('${initialFanart}');`}
+    >
+        <!-- Overlay oscuro para mejorar legibilidad -->
+        <div class="bg-black/50 main-height">
+            <div class="mx-auto flex flex-col justify-between h-full main-height p-4">
+
+                <div class="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-3">
+                    <div>
+                        <h2 class="text-md lg:text-2xl font-bold text-white text-start flex align-center items-center">
+                            <span id="movie-title" class="transition-opacity duration-300 FiraCodeFont">
+                                {initialTitle}
+                            </span>
+                            <span id="movie-year" class="text-gray-400 ml-2 transition-opacity duration-300 FiraCodeFont">
+                                {initialYear ? `(${initialYear})` : ''}
+                            </span>
+                        </h2>
+                        <p id="movie-release-date" class="text-sm lg:text-md text-white text-start transition-opacity duration-300 FiraCodeFont">
+                            {formattedReleaseDate ? <><strong>Released:</strong> {formattedReleaseDate}</> : ''}
+                        </p>
+                        <p id="movie-runtime" class="text-sm lg:text-md text-white text-start transition-opacity duration-300 FiraCodeFont">
+                            {initialRuntimeFormatted ? <><strong>Runtime:</strong> {initialRuntimeFormatted}</> : ''}
+                        </p>
+                        <p id="movie-genres" class="text-sm lg:text-md text-white text-start transition-opacity duration-300 FiraCodeFont capitalize">
+                            {initialgenres ? <><strong>Genres:</strong> {initialgenres}</> : ''}
+                        </p>
+                        <p id="movie-director" class="text-sm lg:text-md text-white text-start transition-opacity duration-300 FiraCodeFont">
+                            {initialdirector ? <><strong>Director:</strong> {initialdirector}</> : ''}
+                        </p>
+                        <p id="movie-actors" class="text-sm lg:text-md text-white text-start transition-opacity duration-300 FiraCodeFont">
+                            {initialactors ? <><strong>Actors:</strong> {initialactors}</> : ''}
+                        </p>
+                        <p id="movie-country" class="text-sm lg:text-md text-white text-start transition-opacity duration-300 FiraCodeFont">
+                            {initialcountry ? <><strong>Country:</strong> {initialcountry}</> : ''}
+                        </p>
+                        <p id="movie-rating" class="text-sm lg:text-md text-white text-start transition-opacity duration-300 FiraCodeFont">
+                            {initialUserRating ? <><strong>My Rating:</strong> {initialUserRating}/10</> : ''}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-auto pb-8">
+                    <CarruselCardsMovies movies={movies} />
+                </div>
+                
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<style>
+    /* Altura del contenido restando el nav de 53px */
+    .main-height {
+        min-height: calc(100dvh - 53px);
+    }
+
+    /* Transición suave para el fondo */
+    #main-bg {
+        transition: background-image 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        background-position: center;
+        background-size: cover;
+    }
+
+    /* Clase para fade out */
+    #main-bg.fade-out {
+        opacity: 0.7;
+    }
+
+    /* Transición para el título y metadatos */
+    #movie-title,
+    #movie-year,
+    #movie-release-date,
+    #movie-runtime,
+    #movie-genres,
+    #movie-actors,
+    #movie-director,
+    #movie-country,
+    #movie-rating {
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    #movie-title.fade-out,
+    #movie-year.fade-out,
+    #movie-release-date.fade-out,
+    #movie-runtime.fade-out,
+    #movie-genres.fade-out,
+    #movie-actors.fade-out,
+    #movie-director.fade-out,
+    #movie-country.fade-out,
+    #movie-rating.fade-out {
+        opacity: 0;
+    }
+</style>
+
+<script is:inline>
+(function() {
+    function initFullView() {
+        const mainBg = document.getElementById('main-bg');
+        const movieTitle = document.getElementById('movie-title');
+        const movieYear = document.getElementById('movie-year');
+        const movieReleaseDate = document.getElementById('movie-release-date');
+        const movieRuntime = document.getElementById('movie-runtime');
+        const movieGenres = document.getElementById('movie-genres');
+        const movieActors = document.getElementById('movie-actors');
+        const movieDirector = document.getElementById('movie-director');
+        const movieCountry = document.getElementById('movie-country');
+        const movieRating = document.getElementById('movie-rating');
+        
+        // Array de todos los elementos de metadata para facilitar operaciones
+        const metadataElements = [
+            movieTitle, movieYear, movieReleaseDate, movieRuntime,
+            movieGenres, movieActors, movieDirector, movieCountry, movieRating
+        ].filter(el => el !== null);
+        
+        if (!mainBg || !movieTitle) return;
+
+        // Formatear fecha a mes completo y año en inglés
+        function formatReleaseDate(dateString) {
+            if (!dateString) return '';
+            try {
+                const date = new Date(dateString);
+                return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+            } catch (e) {
+                return '';
+            }
+        }
+
+        // Convertir código de país a nombre completo
+        function getCountryName(countryCode) {
+            if (!countryCode) return '';
+            try {
+                const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
+                return regionNames.of(countryCode.toUpperCase());
+            } catch (e) {
+                return countryCode;
+            }
+        }
+
+        // Formatear minutos a horas y minutos
+        function formatMinutesToHours(totalMinutes) {
+            if (!totalMinutes) return '';
+            const mins = parseInt(totalMinutes);
+            const hours = Math.floor(mins / 60);
+            const minutes = mins % 60;
+            if (hours > 0 && minutes > 0) return `${hours}h ${minutes}m`;
+            if (hours > 0) return `${hours}h`;
+            return `${minutes}m`;
+        }
+
+        // Manejar cambio de card activa
+        function handleCarruselChange(event) {
+            const { fanart, title, releaseDate, runtime, genres, actors, director, country, userRating, year } = event.detail;
+            
+            // Fade out de todos los elementos
+            metadataElements.forEach(el => el.classList.add('fade-out'));
+            
+            // Fade out del fondo
+            mainBg.classList.add('fade-out');
+            
+            // Después de la transición, cambiar contenido
+            setTimeout(() => {
+                // Actualizar fondo
+                if (fanart) {
+                    mainBg.style.backgroundImage = `url('${fanart}')`;
+                }
+                
+                // Actualizar título
+                movieTitle.textContent = title || '';
+                
+                // Actualizar año
+                if (movieYear) {
+                    movieYear.textContent = year ? `(${year})` : '';
+                }
+                
+                // Actualizar fecha
+                if (movieReleaseDate) {
+                    const formattedDate = formatReleaseDate(releaseDate);
+                    movieReleaseDate.innerHTML = formattedDate ? `<strong>Released:</strong> ${formattedDate}` : '';
+                }
+                
+                // Actualizar runtime
+                if (movieRuntime) {
+                    const runtimeText = formatMinutesToHours(runtime);
+                    movieRuntime.innerHTML = runtimeText ? `<strong>Runtime:</strong> ${runtimeText}` : '';
+                }
+                
+                // Actualizar géneros
+                if (movieGenres) {
+                    movieGenres.innerHTML = genres ? `<strong>Genres:</strong> ${genres}` : '';
+                }
+                
+                // Actualizar actores
+                if (movieActors) {
+                    movieActors.innerHTML = actors ? `<strong>Actors:</strong> ${actors}` : '';
+                }
+                
+                // Actualizar director
+                if (movieDirector) {
+                    movieDirector.innerHTML = director ? `<strong>Director:</strong> ${director}` : '';
+                }
+                
+                // Actualizar país
+                if (movieCountry) {
+                    const countryName = getCountryName(country);
+                    movieCountry.innerHTML = countryName ? `<strong>Country:</strong> ${countryName}` : '';
+                }
+                
+                // Actualizar rating
+                if (movieRating) {
+                    movieRating.innerHTML = userRating ? `<strong>My Rating:</strong> ${userRating}/10` : '';
+                }
+                
+                // Fade in de todos los elementos
+                mainBg.classList.remove('fade-out');
+                metadataElements.forEach(el => el.classList.remove('fade-out'));
+            }, 300);
+        }
+
+        // Manejar inicialización del carrusel
+        function handleCarruselInit(event) {
+            const { fanart, title } = event.detail;
+            
+            // Setear valores iniciales sin animación
+            if (fanart) {
+                mainBg.style.backgroundImage = `url('${fanart}')`;
+            }
+            
+            movieTitle.textContent = title || '';
+        }
+
+        // Escuchar eventos del carrusel de películas
+        document.addEventListener('carrusel-movies:change', handleCarruselChange);
+        document.addEventListener('carrusel-movies:init', handleCarruselInit);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initFullView);
+    } else {
+        initFullView();
+    }
+    document.addEventListener('astro:after-swap', initFullView);
+})();
+</script>

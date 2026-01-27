@@ -149,7 +149,7 @@ export async function getSeriesSeasonsByYear(seriesList, year) {
             }
 
             const showData = await showResponse.json();
-
+            
             await delay(300);
 
             // Obtener people
@@ -174,7 +174,7 @@ export async function getSeriesSeasonsByYear(seriesList, year) {
         console.error('Fetch error:', e);
     }
 
-    return { series, error };
+    return { series: series.reverse(), error };
 }
 
 export async function getSeries() {

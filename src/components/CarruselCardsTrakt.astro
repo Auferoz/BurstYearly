@@ -1,0 +1,309 @@
+---
+import CheckupList from "../icons/CheckupList.astro";
+import DeviceTvOld from "../icons/DeviceTvOld.astro";
+import DisneyPlus from "../icons/DisneyPlus.astro";
+import Crunchyroll from "../icons/Crunchyroll.astro";
+import HboMax from "../icons/HboMax.astro";
+import Netflix from "../icons/Netflix.astro";
+
+const { series = [] } = Astro.props;
+
+// Preparar datos de la primera serie para inicialización
+const firstSeries = series[0];
+const initialFanart = firstSeries?.season?.images?.fanart?.[0] 
+    ? `https://${firstSeries.season.images.fanart[0]}`.replace('/medium/', '/full/')
+    : (firstSeries?.show?.images?.fanart?.[0] 
+        ? `https://${firstSeries.show.images.fanart[0]}`.replace('/medium/', '/full/') 
+        : '');
+const initialTitle = firstSeries?.show?.title || '';
+const initialSeason = firstSeries?.numberSeason || '';
+---
+
+<div class="carrusel-container relative" 
+     data-initial-fanart={initialFanart}
+     data-initial-title={initialTitle}
+     data-initial-season={initialSeason}>
+    <!-- Flecha Izquierda -->
+    <button 
+        class="carrusel-btn carrusel-btn-prev absolute left-0 top-1/2 -translate-y-1/2 z-20 p-2 bg-zinc-900/90 border border-gray-600 rounded-full hover:bg-sky-700 hover:border-sky-600 transition-all duration-200 hidden"
+        aria-label="Anterior"
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+    </button>
+
+    <!-- Contenedor del Carrusel -->
+    <div class="carrusel-track flex gap-4 overflow-x-auto scroll-smooth" style="scrollbar-width: none; -ms-overflow-style: none;">
+        {series.map((item, index) => {
+            const fanart = item.season?.images?.fanart?.[0] 
+                ? `https://${item.season.images.fanart[0]}`.replace('/medium/', '/full/')
+                : (item.show?.images?.fanart?.[0] 
+                    ? `https://${item.show.images.fanart[0]}`.replace('/medium/', '/full/') 
+                    : '');
+            
+            return (
+                <div 
+                    class={`carrusel-item flex-shrink-0 relative mt-4 cursor-pointer ${index === 0 ? 'active' : ''}`}
+                    data-index={index}
+                    data-fanart={fanart}
+                    data-title={item.show?.title || ''}
+                    data-season={item.numberSeason || ''}
+                    data-release-date={item.season?.first_aired || item.show?.first_aired || ''}
+                    data-platform={item.platformViewed || ''}
+                    data-runtime={item.show?.runtime || ''}
+                    data-episode-count={item.season?.episode_count || ''}
+                    data-genres={item.show?.genres?.join(', ') || ''}
+                    data-actors={item.show?.actors?.map(actor => actor.name).join(', ') || ''}
+                    data-director={item.show?.director || ''}
+                    data-country={item.show?.country || ''}
+                >
+                    <!-- Badge fuera del overflow -->
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-10 border-1 border-gray-700 bg-zinc-900 rounded-lg">
+                        <span class="FiraCodeFont text-xs text-white flex flex-row justify-center items-center gap-1 p-1">
+                            <CheckupList width="16" height="16" /> {item.rank}
+                        </span>
+                    </div>
+
+                    <article 
+                        class="card-article flex flex-col justify-between relative rounded-xl border-2 border-gray-700 group overflow-hidden transition-all duration-300"
+                        data-show-id={item.show?.ids?.trakt || ''}
+                    >
+                        <img
+                            src={`https://${item.season?.images?.poster?.[0] || item.show?.images?.poster?.[0] || ''}`}
+                            alt={item.show?.title || ''}
+                            class="w-full h-full rounded-lg min-h-[296px] object-cover"
+                        />
+
+                        <div class="absolute items-center justify-center h-7 w-full bottom-0 left-0 z-10 bg-zinc-900/80 border-t-1 border-zinc-950 rounded-xs hidden group-hover:flex">
+                            <span class="FiraCodeFont text-xs text-white flex flex-row justify-center items-center gap-1 p-1">
+                                {item.platformViewed === 'Disney+' && <DisneyPlus width="16" height="16" />}
+                                {item.platformViewed === 'Crunchyroll' && <Crunchyroll width="16" height="16" />}
+                                {item.platformViewed === 'HBO Max' && <HboMax width="16" height="16" />}
+                                {item.platformViewed === 'Netflix' && <Netflix width="16" height="16" />}
+                                {item.platformViewed || ''} 
+                                <DeviceTvOld width="16" height="16" /> Season {item.numberSeason || ''}
+                            </span>
+                        </div>
+                    </article>
+                </div>
+            );
+        })}
+    </div>
+
+    <!-- Flecha Derecha -->
+    <button 
+        class="carrusel-btn carrusel-btn-next absolute right-0 top-1/2 -translate-y-1/2 z-20 p-2 bg-zinc-900/90 border border-gray-600 rounded-full hover:bg-sky-700 hover:border-sky-600 transition-all duration-200"
+        aria-label="Siguiente"
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+    </button>
+</div>
+
+<style>
+    /* Ocultar scrollbar en webkit browsers */
+    .carrusel-track::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Responsive: ajustar ancho de cada item */
+    /* xs: 2 cards */
+    .carrusel-item {
+        width: calc((100% - 0.5rem) / 2) !important;
+    }
+
+    /* sm: 3 cards */
+    @media (min-width: 640px) {
+        .carrusel-item {
+            width: calc((100% - 1rem) / 3) !important;
+        }
+    }
+
+    /* md: 4 cards */
+    @media (min-width: 768px) {
+        .carrusel-item {
+            width: calc((100% - 1.5rem) / 4) !important;
+        }
+    }
+
+    /* lg: 5 cards */
+    @media (min-width: 1024px) {
+        .carrusel-item {
+            width: calc((100% - 2rem) / 5) !important;
+        }
+    }
+
+    /* xl: 6 cards */
+    @media (min-width: 1280px) {
+        .carrusel-item {
+            width: calc((100% - 2.5rem) / 6) !important;
+        }
+    }
+
+    /* xxxl:  cards */
+    @media (min-width: 1600px) {
+        .carrusel-item {
+            width: calc((100% - 2.5rem) / 12) !important;
+        }
+    }
+
+    /* Card activa - borde verde */
+    .carrusel-item.active .card-article {
+        border-color: oklch(68.5% 0.169 237.323);
+        box-shadow: 0 0 15px rgba(8, 87, 234, 0.3);
+    }
+
+    /* Card inactiva - borde gris */
+    .carrusel-item:not(.active) .card-article {
+        border-color: rgb(55 65 81); /* gray-700 */
+    }
+</style>
+
+<script is:inline>
+(function() {
+    function initCarrusel() {
+        const containers = document.querySelectorAll('.carrusel-container');
+        
+        containers.forEach(container => {
+            const track = container.querySelector('.carrusel-track');
+            const prevBtn = container.querySelector('.carrusel-btn-prev');
+            const nextBtn = container.querySelector('.carrusel-btn-next');
+            const items = container.querySelectorAll('.carrusel-item');
+            
+            if (!track || !prevBtn || !nextBtn || items.length === 0) return;
+
+            let activeIndex = 0;
+
+            // Emitir evento de cambio de card activa
+            function emitChangeEvent(item) {
+                const fanart = item.getAttribute('data-fanart') || '';
+                const title = item.getAttribute('data-title') || '';
+                const season = item.getAttribute('data-season') || '';
+                const releaseDate = item.getAttribute('data-release-date') || '';
+                const platform = item.getAttribute('data-platform') || '';
+                const runtime = item.getAttribute('data-runtime') || '';
+                const episodeCount = item.getAttribute('data-episode-count') || '';
+                const genres = item.getAttribute('data-genres') || '';
+                const actors = item.getAttribute('data-actors') || '';
+                const director = item.getAttribute('data-director') || '';
+                const country = item.getAttribute('data-country') || '';
+                
+                const event = new CustomEvent('carrusel:change', {
+                    detail: { fanart, title, season, releaseDate, platform, runtime, episodeCount, genres, actors, director, country },
+                    bubbles: true
+                });
+                container.dispatchEvent(event);
+            }
+
+            // Establecer card activa
+            function setActiveCard(index) {
+                if (index < 0 || index >= items.length) return;
+                
+                // Quitar clase active de todas
+                items.forEach(item => item.classList.remove('active'));
+                
+                // Agregar clase active a la seleccionada
+                items[index].classList.add('active');
+                activeIndex = index;
+                
+                // Emitir evento
+                emitChangeEvent(items[index]);
+                
+                // Actualizar botones
+                updateButtons();
+            }
+
+            // Calcular ancho de una card
+            function getCardWidth() {
+                const item = track.querySelector('.carrusel-item');
+                if (!item) return 0;
+                const width = item.offsetWidth;
+                return width + 8; // 8px = gap-2
+            }
+
+            // Actualizar visibilidad de botones
+            function updateButtons() {
+                const scrollLeft = track.scrollLeft;
+                const maxScroll = track.scrollWidth - track.clientWidth;
+                
+                // Ocultar flecha izquierda si está al inicio
+                if (scrollLeft <= 0) {
+                    prevBtn.classList.add('hidden');
+                } else {
+                    prevBtn.classList.remove('hidden');
+                }
+                
+                // Ocultar flecha derecha si está al final
+                if (scrollLeft >= maxScroll - 1) {
+                    nextBtn.classList.add('hidden');
+                } else {
+                    nextBtn.classList.remove('hidden');
+                }
+            }
+
+            // Scroll hacia adelante (1 card) y activar siguiente
+            function scrollNext() {
+                const cardWidth = getCardWidth();
+                track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                
+                // Activar siguiente card
+                if (activeIndex < items.length - 1) {
+                    setActiveCard(activeIndex + 1);
+                }
+            }
+
+            // Scroll hacia atrás (1 card) y activar anterior
+            function scrollPrev() {
+                const cardWidth = getCardWidth();
+                track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+                
+                // Activar anterior card
+                if (activeIndex > 0) {
+                    setActiveCard(activeIndex - 1);
+                }
+            }
+
+            // Clic en una card
+            function handleCardClick(e) {
+                const item = e.currentTarget;
+                const index = parseInt(item.getAttribute('data-index'), 10);
+                setActiveCard(index);
+            }
+
+            // Event listeners
+            nextBtn.addEventListener('click', scrollNext);
+            prevBtn.addEventListener('click', scrollPrev);
+            track.addEventListener('scroll', updateButtons);
+            window.addEventListener('resize', updateButtons);
+
+            // Agregar click a cada card
+            items.forEach(item => {
+                item.addEventListener('click', handleCardClick);
+            });
+
+            // Inicializar estado de botones
+            updateButtons();
+
+            // Emitir evento inicial con la primera card
+            const initialFanart = container.getAttribute('data-initial-fanart') || '';
+            const initialTitle = container.getAttribute('data-initial-title') || '';
+            const initialSeason = container.getAttribute('data-initial-season') || '';
+            
+            const initEvent = new CustomEvent('carrusel:init', {
+                detail: { fanart: initialFanart, title: initialTitle, season: initialSeason },
+                bubbles: true
+            });
+            container.dispatchEvent(initEvent);
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCarrusel);
+    } else {
+        initCarrusel();
+    }
+    document.addEventListener('astro:after-swap', initCarrusel);
+})();
+</script>

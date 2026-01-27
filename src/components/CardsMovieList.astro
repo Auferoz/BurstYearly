@@ -29,7 +29,7 @@ const { movies = [] } = Astro.props;
 
                 <!-- Botón Info para abrir modal -->
                 <button 
-                    class="btn-movie-info absolute top-2 right-2 z-10 p-1.5 bg-zinc-900/90 border border-gray-600 rounded-lg opacity-0 group-hover:opacity-100 hover:bg-sky-700 hover:border-sky-600 transition-all duration-200"
+                    class="btn-movie-info absolute bottom-8 left-2 z-10 p-1.5 bg-zinc-900/90 border border-gray-600 rounded-lg opacity-0 group-hover:opacity-100 hover:bg-sky-700 hover:border-sky-600 transition-all duration-200"
                     data-movie={JSON.stringify({
                         title: item.movie.title,
                         poster: `https://${item.movie.images?.poster?.[0] || ''}`,
