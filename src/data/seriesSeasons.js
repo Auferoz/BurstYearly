@@ -297,6 +297,13 @@ export const ListSeriesSeasons = [
         platformViewed: "Disney+",
         statusViewed: "completed"
     },
+    {
+        idTrakt: "secret-invasion",
+        numberSeason: 1,
+        yearViewed: 2026,
+        platformViewed: "Disney+",
+        statusViewed: "ongoing"
+    },
 ];
 
 // Helper para obtener todos los años únicos
