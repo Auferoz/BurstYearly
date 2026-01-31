@@ -82,7 +82,7 @@ async function fetchWithRetry(url, retries = 5, delayMs = 1000) {
 // Obtener cast y crew de una serie
 async function getShowPeople(traktId) {
     const response = await fetchWithRetry(
-        `https://api.trakt.tv/shows/${traktId}/people`
+        `https://api.trakt.tv/shows/${traktId}/people?extended=full,images`
     );
 
     if (!response) return { cast: [], crew: {} };
@@ -91,14 +91,15 @@ async function getShowPeople(traktId) {
     return people;
 }
 
-// Extraer top N actores del cast con sus personajes
+// Extraer top N actores del cast con sus personajes e imágenes
 function extractActors(people, limit = 8) {
     if (!people?.cast || !Array.isArray(people.cast)) return [];
     return people.cast
         .slice(0, limit)
         .map(item => ({
             name: item.person?.name,
-            character: item.character || item.characters?.[0] || null
+            character: item.character || item.characters?.[0] || null,
+            headshot: item.person?.images?.headshot?.[0] || item.images?.headshot?.[0] || null
         }))
         .filter(item => item.name);
 }

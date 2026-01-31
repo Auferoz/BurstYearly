@@ -28,7 +28,7 @@ const moviesDropdown = [
 
 <!-- Header -->
 <header class="nav-header">
-    <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-1">
         <!-- Logo -->
         <a href="/" title="Home" class="text-xl font-bold font-mono text-white hover:text-blue-400 transition-colors">
             BURST
@@ -178,9 +178,25 @@ const moviesDropdown = [
             </div>
         </div>
 
-        <a href="/Series/ListAll" class="block py-3 text-gray-300 hover:text-blue-400 border-b border-gray-800/50 transition-colors">
-            Series
-        </a>
+        <!-- Series Accordion (Mobile) -->
+        <div class="mobile-accordion border-b border-gray-800/50">
+            <button class="accordion-toggle flex items-center justify-between w-full py-3 text-gray-300 hover:text-blue-400 transition-colors">
+                <span>Series</span>
+                <svg class="accordion-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </button>
+            <div class="accordion-content">
+                <div class="pb-2 pl-2">
+                        {seriesDropdown.map(item => (
+                            <a href={item.href} class="flex items-center gap-2 py-2.5 px-3 text-sm text-gray-400 hover:text-blue-400 hover:bg-gray-800/50 rounded-lg transition-colors">
+                                <CalendarStats />
+                                {item.label}
+                            </a>
+                        ))}
+                </div>
+            </div>
+        </div>
 
         <!-- Movies Accordion (Mobile) -->
         <div class="mobile-accordion border-b border-gray-800/50">
@@ -238,30 +254,36 @@ const moviesDropdown = [
         // Toggle accordion
         function toggleAccordion(toggle: Element) {
             const accordion = toggle.closest('.mobile-accordion');
-            const content = accordion?.querySelector('.accordion-content') as HTMLElement;
-            const arrow = toggle.querySelector('.accordion-arrow');
-            const isOpen = content?.classList.contains('is-expanded');
+            const content = accordion?.querySelector('.accordion-content') as HTMLElement | null;
+            const arrow = toggle.querySelector('.accordion-arrow') as HTMLElement | null;
 
-            // Close all other accordions
+            if (!content) return;
+
+            const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+            // Cerrar otros accordions
             accordionToggles.forEach(otherToggle => {
                 if (otherToggle !== toggle) {
                     const otherAccordion = otherToggle.closest('.mobile-accordion');
-                    const otherContent = otherAccordion?.querySelector('.accordion-content');
-                    const otherArrow = otherToggle.querySelector('.accordion-arrow');
-                    otherContent?.classList.remove('is-expanded');
+                    const otherContent = otherAccordion?.querySelector('.accordion-content') as HTMLElement | null;
+                    const otherArrow = otherToggle.querySelector('.accordion-arrow') as HTMLElement | null;
+
+                    if (otherContent) otherContent.style.maxHeight = '0px';
                     otherArrow?.classList.remove('rotate-180');
                 }
             });
 
-            // Toggle current accordion
+            // Toggle actual
             if (isOpen) {
-                content?.classList.remove('is-expanded');
+                content.style.maxHeight = '0px';
                 arrow?.classList.remove('rotate-180');
             } else {
-                content?.classList.add('is-expanded');
+                content.style.maxHeight = content.scrollHeight + 'px';
                 arrow?.classList.add('rotate-180');
             }
         }
+
+
 
         // Event listeners
         menuToggle?.addEventListener('click', openMobileMenu);
@@ -352,15 +374,23 @@ const moviesDropdown = [
     }
 
     /* Accordion content */
-    .accordion-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease-out;
-    }
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
 
     .accordion-content.is-expanded {
-        max-height: 500px;
+        grid-template-rows: 1fr;
     }
+
+    .accordion-content > div {
+        overflow: hidden;
+        min-height: 0; /* 👈 ESTA es la clave en mobile */
+    }
+
+
 
     /* Desktop dropdown hover */
     @media (min-width: 1024px) {

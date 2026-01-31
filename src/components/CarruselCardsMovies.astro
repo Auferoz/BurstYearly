@@ -127,8 +127,15 @@ const initialTitle = firstMovie?.movie?.title || '';
         }
     }
 
+    /* xxl: 6 cards */
+    @media (min-width: 1440px) {
+        .carrusel-item {
+            width: calc((100% - 2.5rem) / 8) !important;
+        }
+    }
+
     /* xxxl: 12 cards */
-    @media (min-width: 1600px) {
+    @media (min-width: 1920px) {
         .carrusel-item {
             width: calc((100% - 2.5rem) / 12) !important;
         }

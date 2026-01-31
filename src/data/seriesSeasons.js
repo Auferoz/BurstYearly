@@ -302,6 +302,20 @@ export const ListSeriesSeasons = [
         numberSeason: 1,
         yearViewed: 2026,
         platformViewed: "Disney+",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "i-am-groot",
+        numberSeason: 2,
+        yearViewed: 2026,
+        platformViewed: "Disney+",
+        statusViewed: "completed"
+    },
+    {
+        idTrakt: "loki-2021",
+        numberSeason: 2,
+        yearViewed: 2026,
+        platformViewed: "Disney+",
         statusViewed: "ongoing"
     },
 ];

@@ -12,8 +12,8 @@ const { series = [] } = Astro.props;
 const firstSeries = series[0];
 const initialFanart = firstSeries?.season?.images?.fanart?.[0] 
     ? `https://${firstSeries.season.images.fanart[0]}`.replace('/medium/', '/full/')
-    : (firstSeries?.show?.images?.fanart?.[0] 
-        ? `https://${firstSeries.show.images.fanart[0]}`.replace('/medium/', '/full/') 
+    : (firstSeries?.season?.images?.fanart?.[0] 
+        ? `https://${firstSeries.season.images.fanart[0]}`.replace('/medium/', '/full/') 
         : '');
 const initialTitle = firstSeries?.show?.title || '';
 const initialSeason = firstSeries?.numberSeason || '';
@@ -54,9 +54,10 @@ const initialSeason = firstSeries?.numberSeason || '';
                     data-runtime={item.show?.runtime || ''}
                     data-episode-count={item.season?.episode_count || ''}
                     data-genres={item.show?.genres?.join(', ') || ''}
-                    data-actors={item.show?.actors?.map(actor => actor.name).join(', ') || ''}
+                    data-actors={JSON.stringify(item.show?.actors?.slice(0, 4) || [])}
                     data-director={item.show?.director || ''}
                     data-country={item.show?.country || ''}
+                    data-certification={item.show?.certification || ''}
                 >
                     <!-- Badge fuera del overflow -->
                     <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-10 border-1 border-gray-700 bg-zinc-900 rounded-lg">
@@ -72,7 +73,7 @@ const initialSeason = firstSeries?.numberSeason || '';
                         <img
                             src={`https://${item.season?.images?.poster?.[0] || item.show?.images?.poster?.[0] || ''}`}
                             alt={item.show?.title || ''}
-                            class="w-full h-full rounded-lg min-h-[296px] object-cover"
+                            class="w-full h-full rounded-lg object-cover"
                         />
 
                         <div class="absolute items-center justify-center h-7 w-full bottom-0 left-0 z-10 bg-zinc-900/80 border-t-1 border-zinc-950 rounded-xs hidden group-hover:flex">
@@ -111,7 +112,7 @@ const initialSeason = firstSeries?.numberSeason || '';
     /* Responsive: ajustar ancho de cada item */
     /* xs: 2 cards */
     .carrusel-item {
-        width: calc((100% - 0.5rem) / 2) !important;
+        width: calc((100% - 0.5rem) / 1.5) !important;
     }
 
     /* sm: 3 cards */
@@ -142,8 +143,15 @@ const initialSeason = firstSeries?.numberSeason || '';
         }
     }
 
-    /* xxxl:  cards */
-    @media (min-width: 1600px) {
+    /* xxl: 6 cards */
+    @media (min-width: 1440px) {
+        .carrusel-item {
+            width: calc((100% - 2.5rem) / 10) !important;
+        }
+    }
+
+    /* xxxl: 12 cards */
+    @media (min-width: 1920px) {
         .carrusel-item {
             width: calc((100% - 2.5rem) / 12) !important;
         }
@@ -189,9 +197,10 @@ const initialSeason = firstSeries?.numberSeason || '';
                 const actors = item.getAttribute('data-actors') || '';
                 const director = item.getAttribute('data-director') || '';
                 const country = item.getAttribute('data-country') || '';
-                
+                const certification = item.getAttribute('data-certification') || '';
+
                 const event = new CustomEvent('carrusel:change', {
-                    detail: { fanart, title, season, releaseDate, platform, runtime, episodeCount, genres, actors, director, country },
+                    detail: { fanart, title, season, releaseDate, platform, runtime, episodeCount, genres, actors, director, country, certification },
                     bubbles: true
                 });
                 container.dispatchEvent(event);

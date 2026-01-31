@@ -46,13 +46,15 @@ const initialRuntimePerEp = firstSeries?.show?.runtime || 0;
 const initialEpisodeCount = firstSeries?.season?.episode_count || 0;
 const initialTotalMinutes = initialRuntimePerEp * initialEpisodeCount;
 const initialRuntimeFormatted = initialTotalMinutes && initialEpisodeCount && initialRuntimePerEp
-    ? `Total runtime: ${formatRuntime(initialTotalMinutes)} (${initialEpisodeCount} episodes ${initialRuntimePerEp}m/ep)`
+    ? `${initialEpisodeCount} episodes ${initialRuntimePerEp}m/ep (${formatRuntime(initialTotalMinutes)} total)`
     : '';
-const initialgenres = firstSeries?.show?.genres?.join(', ') || '';
+const initialgenres = firstSeries?.show?.genres || [];
 const initialoverview = '';
 const initialtrailer = '';
+const initialcertification = firstSeries?.show?.certification || '';
 const initialepisodes = firstSeries?.season?.episode_count || '';
-const initialactors = firstSeries?.show?.actors?.map(actor => actor.name).join(', ') || '';
+const initialactors = firstSeries?.show?.actors || '';
+const initialcharacter = firstSeries?.show?.actors?.map(actor => actor.character).join(', ') || '';
 const initialdirector = firstSeries?.show?.director || '';
 // Función para convertir código de país a nombre completo
 const getCountryName = (countryCode) => {
@@ -73,45 +75,54 @@ const initialcountry = getCountryName(firstSeries?.show?.country);
         class="bg-cover bg-center transition-opacity duration-500 main-height"
         style={`background-image: url('${initialFanart}');`}
     >
+
+    <!-- <pre class="debdug-json" id="debug-jsson">
+        {JSON.stringify(series[2], null, 2)}
+    </pre> -->
+
         <!-- Overlay oscuro para mejorar legibilidad -->
         <div class="bg-black/50 main-height">
             <div class="mx-auto flex flex-col justify-between h-full main-height p-4">
 
                 <div class="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-3">
                     <div>
-                        <h2 class="text-md lg:text-2xl font-bold text-white text-start flex align-center items-center">
+                        <h2 class="text-xs lg:text-4xl font-bold text-white text-start flex align-center items-center">
                             <span id="series-title" class="transition-opacity duration-300 FiraCodeFont">
-                                {initialTitle}
+                                {initialTitle}{initialcertification ? <span class="text-xs lg:text-xs font-normal FiraCodeFont">{initialcertification}</span> : ''}
                             </span>
                         </h2>
-                        <p id="series-season" class="text-md lg:text-lg text-white text-start transition-opacity duration-300 FiraCodeFont">
-                            {initialSeason ? <><strong>Season</strong> {initialSeason}</> : ''}
+                        <p id="series-season" class="text-xs lg:text-lg text-white text-start transition-opacity duration-300 FiraCodeFont">
+                            {initialSeason ? <><span class="font-bold">Season {initialSeason}</span></> : ''} <span class="text-xs">by {initialdirector ? <>{initialdirector}</> : ''}</span>
                         </p>
-                        <p id="series-release-date" class="text-sm lg:text-md text-white text-start transition-opacity duration-300 FiraCodeFont">
-                            {formattedReleaseDate ? <><strong>Date aired:</strong> {formattedReleaseDate}</> : ''}
+                        <p id="series-release-date" class="text-xs lg:text-xs text-white text-start transition-opacity duration-300 FiraCodeFont">
+                            {formattedReleaseDate ? <>{formattedReleaseDate}</> : ''} - {initialplatform ? <>{initialplatform}</> : ''} - {initialcountry ? <>{initialcountry}</> : ''}
                         </p>
-                        <p id="series-platform" class="text-sm lg:text-md text-white text-start transition-opacity duration-300 FiraCodeFont">
-                            {initialplatform ? <><strong>Platform:</strong> {initialplatform}</> : ''}
+                        <p id="series-runtime" class="text-xs lg:text-xs text-white text-start transition-opacity duration-300 FiraCodeFont">
+                            {initialRuntimeFormatted ? <>{initialRuntimeFormatted.replace('Total runtime: ', '')}</> : ''}
                         </p>
-                        <p id="series-runtime" class="text-sm lg:text-md text-white text-start transition-opacity duration-300 FiraCodeFont">
-                            {initialRuntimeFormatted ? <><strong>Total runtime:</strong> {initialRuntimeFormatted.replace('Total runtime: ', '')}</> : ''}
-                        </p>
-                        <p id="series-genres" class="text-sm lg:text-md text-white text-start transition-opacity duration-300 FiraCodeFont capitalize">
-                            {initialgenres ? <><strong>Genres:</strong> {initialgenres}</> : ''}
-                        </p>
-                        <p id="series-director" class="text-sm lg:text-md text-white text-start transition-opacity duration-300 FiraCodeFont">
-                            {initialdirector ? <><strong>Director:</strong> {initialdirector}</> : ''}
-                        </p>
-                        <p id="series-actors" class="text-sm lg:text-md text-white text-start transition-opacity duration-300 FiraCodeFont">
-                            {initialactors ? <><strong>Actors:</strong> {initialactors}</> : ''}
-                        </p>
-                        <p id="series-country" class="text-sm lg:text-md text-white text-start transition-opacity duration-300 FiraCodeFont">
-                            {initialcountry ? <><strong>Country:</strong> {initialcountry}</> : ''}
-                        </p>
+                        <div id="series-genres" class="flex flex-row flex-wrap gap-1 text-xs lg:text-xs text-white text-start transition-opacity duration-300 FiraCodeFont capitalize">
+                            {initialgenres.map(genre => (
+                                <span class="bg-sky-900/30 px-2 py-1 inline-block rounded-md">{genre}</span>
+                            ))}
+                        </div>
+                        <div id="series-actors" class="flex flex-row items-start gap-4 pt-2 overflow-x-auto">
+                            {initialactors?.slice(0, 4).map(actor => (
+                                <article class="flex flex-col items-center">
+                                    <img class="w-[50px] rounded-lg"
+                                    src={`https://${actor.headshot}`} alt={actor.name}>
+                                    <p class="text-xs lg:text-xs text-white text-start transition-opacity duration-300 FiraCodeFont">
+                                        {actor.name}
+                                    </p>
+                                    <p class="text-xs lg:text-xs text-white text-start transition-opacity duration-300 FiraCodeFont">
+                                        {actor.character}
+                                    </p>
+                                </article>
+                            ))}
+                        </div>
                     </div>
                 </div>
 
-                <div class="mt-auto pb-8">
+                <div class="mt-auto">
                     <CarruselCardsTrakt series={series} />
                 </div>
                 
@@ -219,76 +230,95 @@ const initialcountry = getCountryName(firstSeries?.show?.country);
             return `${minutes}m`;
         }
 
-        // Formatear runtime completo: "Total runtime: 5h 12m (13 episodes 24m/ep)"
+        // Formatear runtime completo: "13 episodes 24m/ep (5h 12m total)"
         function formatRuntimeComplete(runtime, episodeCount) {
             if (!runtime || !episodeCount) return '';
             const totalMinutes = parseInt(runtime) * parseInt(episodeCount);
-            return `Total runtime: ${formatMinutesToHours(totalMinutes)} (${episodeCount} episodes ${runtime}m/ep)`;
+            return `${episodeCount} episodes ${runtime}m/ep (${formatMinutesToHours(totalMinutes)} total)`;
         }
 
         // Manejar cambio de card activa
         function handleCarruselChange(event) {
-            const { fanart, title, season, releaseDate, platform, runtime, episodeCount, genres, actors, director, country } = event.detail;
-            
+            const { fanart, title, season, releaseDate, platform, runtime, episodeCount, genres, actors, director, country, certification } = event.detail;
+
             // Fade out de todos los elementos
             metadataElements.forEach(el => el.classList.add('fade-out'));
-            
+
             // Fade out del fondo
             mainBg.classList.add('fade-out');
-            
+
             // Después de la transición, cambiar contenido
             setTimeout(() => {
                 // Actualizar fondo
                 if (fanart) {
                     mainBg.style.backgroundImage = `url('${fanart}')`;
                 }
-                
-                // Actualizar título
-                seriesTitle.textContent = title || '';
-                
-                // Actualizar fecha
+
+                // Actualizar título con certification
+                if (seriesTitle) {
+                    const certSpan = certification ? `<span class="text-xs lg:text-xs font-normal FiraCodeFont">${certification}</span>` : '';
+                    seriesTitle.innerHTML = (title || '') + certSpan;
+                }
+
+                // Actualizar temporada y director
+                if (seriesSeason) {
+                    const seasonPart = season ? `<span class="font-bold">Season ${season}</span>` : '';
+                    const directorPart = director ? `<span class="text-xs">by ${director}</span>` : '';
+                    seriesSeason.innerHTML = `${seasonPart} ${directorPart}`;
+                }
+
+                // Actualizar fecha, plataforma y país
                 if (seriesReleaseDate) {
                     const formattedDate = formatReleaseDate(releaseDate);
-                    seriesReleaseDate.innerHTML = formattedDate ? `<strong>Date aired:</strong> ${formattedDate}` : '';
+                    const countryName = getCountryName(country);
+                    const parts = [formattedDate, platform, countryName].filter(Boolean);
+                    seriesReleaseDate.innerHTML = parts.join(' - ');
                 }
-                
-                // Actualizar temporada
-                if (seriesSeason) {
-                    seriesSeason.innerHTML = season ? `<strong>Season</strong> ${season}` : '';
-                }
-                
-                // Actualizar plataforma
-                if (seriesPlatform) {
-                    seriesPlatform.innerHTML = platform ? `<strong>Platform:</strong> ${platform}` : '';
-                }
-                
+
                 // Actualizar runtime
                 if (seriesRuntime) {
-                    const runtimeText = formatRuntimeComplete(runtime, episodeCount);
-                    seriesRuntime.innerHTML = runtimeText ? `<strong>Total runtime:</strong> ${runtimeText.replace('Total runtime: ', '')}` : '';
+                    seriesRuntime.innerHTML = formatRuntimeComplete(runtime, episodeCount);
                 }
-                
+
                 // Actualizar géneros
                 if (seriesGenres) {
-                    seriesGenres.innerHTML = genres ? `<strong>Genres:</strong> ${genres}` : '';
+                    if (genres) {
+                        const genresArray = genres.split(', ').filter(Boolean);
+                        seriesGenres.innerHTML = genresArray.map(genre =>
+                            `<span class="bg-sky-900/30 px-2 py-1 inline-block rounded-md">${genre}</span>`
+                        ).join('');
+                    } else {
+                        seriesGenres.innerHTML = '';
+                    }
                 }
-                
+
                 // Actualizar actores
                 if (seriesActors) {
-                    seriesActors.innerHTML = actors ? `<strong>Actors:</strong> ${actors}` : '';
+                    try {
+                        const actorsArray = typeof actors === 'string' ? JSON.parse(actors) : actors;
+                        if (Array.isArray(actorsArray) && actorsArray.length > 0) {
+                            seriesActors.innerHTML = actorsArray.map(actor => `
+                                <article class="flex flex-col items-center">
+                                    <img class="w-[50px] rounded-lg"
+                                         src="${actor.headshot ? 'https://' + actor.headshot : ''}"
+                                         alt="${actor.name || ''}"
+                                         onerror="this.style.display='none'">
+                                    <p class="text-xs lg:text-xs text-white text-start transition-opacity duration-300 FiraCodeFont">
+                                        ${actor.name || ''}
+                                    </p>
+                                    <p class="text-xs lg:text-xs text-white text-start transition-opacity duration-300 FiraCodeFont">
+                                        ${actor.character || ''}
+                                    </p>
+                                </article>
+                            `).join('');
+                        } else {
+                            seriesActors.innerHTML = '';
+                        }
+                    } catch (e) {
+                        seriesActors.innerHTML = '';
+                    }
                 }
-                
-                // Actualizar director
-                if (seriesDirector) {
-                    seriesDirector.innerHTML = director ? `<strong>Director:</strong> ${director}` : '';
-                }
-                
-                // Actualizar país
-                if (seriesCountry) {
-                    const countryName = getCountryName(country);
-                    seriesCountry.innerHTML = countryName ? `<strong>Country:</strong> ${countryName}` : '';
-                }
-                
+
                 // Fade in de todos los elementos
                 mainBg.classList.remove('fade-out');
                 metadataElements.forEach(el => el.classList.remove('fade-out'));
