@@ -316,7 +316,7 @@ export const ListSeriesSeasons = [
         numberSeason: 2,
         yearViewed: 2026,
         platformViewed: "Disney+",
-        statusViewed: "ongoing"
+        statusViewed: "completed"
     },
 ];
 
